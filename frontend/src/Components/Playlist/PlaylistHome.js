@@ -17,7 +17,7 @@ function PlaylistHome() {
         className='bg-zinc-900 hover:bg-zinc-800 transition-all bg-opacity-80 rounded-sm pr-2 overflow-hidden flex items-center space-x-3  text-left'
     > 
         <div className='flex items-center flex-1 space-x-3'>
-            <img src="../images/song.jpg" className='w-16 rounded-sm' />
+            <img src="../images/song.jpg" className='w-16 rounded-sm' alt="song" />
             <p> Playlist name </p>
         </div>
 

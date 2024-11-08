@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
  import { Link } from 'react-router-dom'
 import { login } from '../../Components/Redux/Slices/UserSlice'
- 
+import axios from "axios"
+import { ServerUrl } from '../../Components/Functions'
+
 function Login() { 
     const dispatch = useDispatch()
 
@@ -17,7 +19,15 @@ function Login() {
     const LoginFunction = (event) => {
         event.preventDefault();
 
-        dispatch(login(user))
+        axios.get(`${ServerUrl}/users`)
+            .then((res)=> {
+                console.log(res);
+            })
+            .catch((err)=> {
+                console.error(err);
+            })
+
+        // dispatch(login(user))
     }
     
 

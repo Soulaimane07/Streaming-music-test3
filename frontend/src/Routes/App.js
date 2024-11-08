@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../Pages/App/Home/Home'
 import Discover from '../Pages/App/Discover/Discover'

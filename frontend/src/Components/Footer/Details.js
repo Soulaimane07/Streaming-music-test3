@@ -12,7 +12,7 @@ function Details() {
             <p> 0:00/1:00 </p>
             
             <div className='flex items-center'>
-                {volume == 0 && (<FaVolumeMute size={20} />)}
+                {volume === 0 && (<FaVolumeMute size={20} />)}
                 {(volume > 0 && volume <= 49) && (<FaVolumeLow size={20} />)}
                 {volume >= 50 && (<FaVolumeUp size={20} />)}
             </div>

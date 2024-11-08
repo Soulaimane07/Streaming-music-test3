@@ -9188,6 +9188,7 @@
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
       "Dapper >= 2.1.35",
+      "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.10",
       "Microsoft.IdentityModel.Tokens >= 8.2.0",
@@ -9249,6 +9250,10 @@
           "Dapper": {
             "target": "Package",
             "version": "[2.1.35, )"
+          },
+          "Microsoft.AspNetCore.Cors": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",

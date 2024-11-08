@@ -1,33 +1,37 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
- import { Link } from 'react-router-dom'
+ import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../Components/Redux/Slices/UserSlice'
 import axios from "axios"
 import { ServerUrl } from '../../Components/Functions'
 
+
 function Login() { 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
 
-    let user = { email, pass}
+    let user = { email, password: pass}
 
     
 
     const LoginFunction = (event) => {
         event.preventDefault();
 
-        axios.get(`${ServerUrl}/users`)
+        axios.post(`${ServerUrl}/users/login`, user)
             .then((res)=> {
-                console.log(res);
+                if(res.status === 200){
+                    console.log(res.data)
+                    dispatch(login(res.data))
+                    navigate('/')
+                }
             })
             .catch((err)=> {
                 console.error(err);
             })
-
-        // dispatch(login(user))
     }
     
 

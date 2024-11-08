@@ -4,6 +4,16 @@ using User.Service.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder => builder
+            .WithOrigins("http://localhost:3000")  // React app URL
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());  // If you need credentials like cookies or tokens
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -14,6 +24,8 @@ string postgresConnection = builder.Configuration.GetConnectionString("PostgresC
 builder.Services.AddScoped<UsersRepository>(_ => new UsersRepository(postgresConnection));
 
 var app = builder.Build();
+
+app.UseCors("AllowFrontend");
 
 if (app.Environment.IsDevelopment())
 {

@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { login } from '../../Components/Redux/Slices/UserSlice'
+import { ServerUrl } from '../../Components/Functions'
 
 function Signup() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState("")
     const [fullName, setFullName] = useState("")
     const [password, setPassword] = useState("")
@@ -9,10 +16,20 @@ function Signup() {
     const newUser = {email, fullName, password}
 
     
-    const SignupFunction = (event) => {
+    const SignupFunction = async (event) => {
         event.preventDefault();
 
-        localStorage.setItem("spotify-user", JSON.stringify(newUser))
+        axios.post(`${ServerUrl}/users`, newUser)
+            .then((res)=> {
+                if(res.status === 201){
+                    console.log(res.data)
+                    dispatch(login(res.data))
+                    navigate('/')
+                }
+            })
+            .catch((err)=> {
+                console.error(err);
+            })
     }
     
 

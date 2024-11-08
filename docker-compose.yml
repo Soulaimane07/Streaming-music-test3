@@ -26,14 +26,16 @@ services:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=postgres;Database=spotify;Username=postgres;Password=123456
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Username=postgres;Password=123456;Database=spotify
     depends_on:
       - postgres
+    command: ["sh", "-c", "until pg_isready -h postgres -p 5432; do sleep 2; done; dotnet User.Service.dll"]
     networks:
-      - app-network
+          - app-network
 
 volumes:
   pgdata:  # For PostgreSQL data persistence
 
 networks:
-  app-network:  # Define a custom network for services to communicate
+  app-network:
+    driver: bridge

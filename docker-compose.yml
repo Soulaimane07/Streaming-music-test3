@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: streaming-user-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: spotify
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  # User Service backend
+  user-service:
+    container_name: streaming-user-backend
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=spotify;Username=postgres;Password=123456
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+volumes:
+  pgdata:  # For PostgreSQL data persistence
+
+networks:
+  app-network:  # Define a custom network for services to communicate

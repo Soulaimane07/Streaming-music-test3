@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/Dockerfile
-    image: ${DOCKER_IMAGE_BACKEND}:2.0.0
+    image: soulaimane00/service-user:2.0.0
     container_name: Service-User
     ports:
       - "8080:8080"
@@ -39,7 +39,7 @@ services:
     build:
       context: .
       dockerfile: docker/frontend/Dockerfile
-    image: ${DOCKER_IMAGE_FRONTEND}:2.0.0
+    image: soulaimane00/frontend:2.0.0
     container_name: Frontend
     ports:
       - "3000:3000"

@@ -19,9 +19,7 @@ services:
   # User Service backend
   user-service:
     container_name: User-Service
-    build:
-      context: .
-      dockerfile: ./docker/backend/Dockerfile
+    image: soulaimane00/user-service:latest  # Update with Docker Hub image name
     ports:
       - "8080:8080"
     environment:
@@ -35,16 +33,13 @@ services:
 
   frontend:
     container_name: Frontend
-    build:
-      context: .
-      dockerfile: ./docker/frontend/Dockerfile
+    image: soulaimane00/frontend:latest  # Update with Docker Hub image name
     ports:
       - "3000:3000"
     depends_on:
       - user-service
     networks:
           - app-network
-
 
 volumes:
   pgdata:  # For PostgreSQL data persistence

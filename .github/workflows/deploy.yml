@@ -44,8 +44,8 @@ jobs:
     steps:
       - name: Push Backend Image to Docker Hub
         run: |
-          docker push soulaimane00/user-service:latest
+          docker push soulaimane00/user-service2:latest
 
       - name: Push Frontend Image to Docker Hub
         run: |
-          docker push soulaimane00/frontend:latest
+          docker push soulaimane00/frontend2:latest

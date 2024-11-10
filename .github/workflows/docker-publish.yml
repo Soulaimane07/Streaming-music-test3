@@ -6,7 +6,7 @@ on:
       - dev  # Trigger this workflow on push to the 'dev' branch
 
 jobs:
-  build images:
+  build-images:
     runs-on: ubuntu-latest
 
     env:
@@ -29,8 +29,8 @@ jobs:
           # Build the images using docker-compose
           docker-compose -f docker-compose-publish.yml build --no-cache
 
-  push images to docker hub:
-    needs: build images  # Ensures that this job runs only after the build job is completed
+  push-images-to-dockerhub:
+    needs: build-images  # Ensures that this job runs only after the build job is completed
     runs-on: ubuntu-latest
 
     env:

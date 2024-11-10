@@ -22,7 +22,7 @@ jobs:
       # Build the images using docker-compose
       - name: Build with Docker Compose
         run: |
-          docker-compose -f ../../docker-compose-actions.yml build
+          docker-compose -f docker-compose-actions.yml build
           docker images # List images to confirm the build
 
   # Job for logging into Docker Hub

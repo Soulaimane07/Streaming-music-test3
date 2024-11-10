@@ -34,7 +34,7 @@ jobs:
       - name: Build and Push with Docker Compose
         run: |
           # Build the images using docker-compose
-          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose-actions.yml build
 
           # Push the backend image to Docker Hub
           docker push $DOCKER_IMAGE_BACKEND:1.0.0

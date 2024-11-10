@@ -1,3 +1,10 @@
+name: Build, Login to Docker Hub, and Push to Docker Hub
+
+on:
+  push:
+    branches:
+      - dev  # Trigger this workflow on push to the 'dev' branch
+
 jobs:
   # Job for building the Docker images (Backend and Frontend)
   build:

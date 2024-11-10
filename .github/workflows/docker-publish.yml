@@ -26,7 +26,6 @@ jobs:
       # Build images using docker-compose
       - name: Build images with Docker Compose
         run: |
-          # Build the images using docker-compose
           docker-compose -f docker-compose-publish.yml build --no-cache
 
   push-images-to-dockerhub:
@@ -47,15 +46,15 @@ jobs:
       # Push the backend image to Docker Hub
       - name: Push Backend Image
         run: |
-          docker push soulaimane00/service-user:1.0.0
+          docker push soulaimane00/service-user:2.0.0  # Correct tag
 
       # Push the frontend image to Docker Hub
       - name: Push Frontend Image
         run: |
-          docker pushsoulaimane00/frontend:1.0.0
+          docker push soulaimane00/frontend:2.0.0  # Correct tag
 
-      # Optionally: Clean up Docker images after pushing (to avoid large disk usage)
+      # Optionally: Clean up Docker images after pushing
       - name: Clean up Docker images
         run: |
-          docker rmi soulaimane00/service-user:1.0.0
-          docker rmi soulaimane00/frontend:1.0.0
+          docker rmi soulaimane00/service-user:2.0.0
+          docker rmi soulaimane00/frontend:2.0.0

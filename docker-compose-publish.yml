@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/Dockerfile
-    image: soulaimane00/service-user:2.0.0
+    image: soulaimane00/service-user:2.0.0  # Use the correct image tag
     container_name: Service-User
     ports:
       - "8080:8080"
@@ -39,7 +39,7 @@ services:
     build:
       context: .
       dockerfile: docker/frontend/Dockerfile
-    image: soulaimane00/frontend:2.0.0
+    image: soulaimane00/frontend:2.0.0  # Use the correct image tag
     container_name: Frontend
     ports:
       - "3000:3000"

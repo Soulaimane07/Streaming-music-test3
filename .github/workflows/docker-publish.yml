@@ -3,44 +3,47 @@ name: Docker Publish
 on:
   push:
     branches:
-      - dev  # Trigger on pushes to the dev branch
+      - dev 
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_IMAGE_BACKEND: soulaimane00/service-user
+      DOCKER_IMAGE_FRONTEND: soulaimane00/frontend
+
     steps:
-    # Checkout the repository
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v2  # Check out the latest code from the repository
 
-    # Set up Docker Buildx (optional but recommended for multi-platform builds)
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      # Install docker-compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
-    # Log in to Docker Hub
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      # Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2  # Log in to Docker Hub to push images
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Set up Docker Compose (ensure it's available on the runner)
-    - name: Set up Docker Compose
-      uses: docker/setup-qemu-action@v2
-      with:
-        platforms: linux/amd64,linux/arm64
+      # Build and push images using docker-compose
+      - name: Build and Push with Docker Compose
+        run: |
+          # Build the images using docker-compose
+          docker-compose -f docker-compose-publish.yml build --no-cache
 
-    # Build and push Docker images using Docker Compose
-    - name: Build and push Docker images
-      run: |
-        docker-compose -f docker-compose-publish.yml build
-        docker-compose -f docker-compose-publish.yml push
+          # Push the backend image to Docker Hub
+          docker push $DOCKER_IMAGE_BACKEND:2.0.0
 
-    # Optional: Tag and push images manually if necessary
-    # - name: Tag and push images
-    #   run: |
-    #     docker tag frontend:latest ${{ secrets.DOCKER_USERNAME }}/frontend:latest
-    #     docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
-    #     docker tag backend:latest ${{ secrets.DOCKER_USERNAME }}/backend:latest
-    #     docker push ${{ secrets.DOCKER_USERNAME }}/backend:latest
+          # Push the frontend image to Docker Hub
+          docker push $DOCKER_IMAGE_FRONTEND:2.0.0
+
+      # Optionally: Clean up Docker images after pushing (to avoid large disk usage)
+      - name: Clean up Docker images
+        run: |
+          docker rmi $DOCKER_IMAGE_BACKEND:2.0.0
+          docker rmi $DOCKER_IMAGE_FRONTEND:2.0.0

@@ -4,7 +4,7 @@ FROM node:20
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json to install dependencies
 COPY ./frontend/package*.json ./
 
 # Install dependencies

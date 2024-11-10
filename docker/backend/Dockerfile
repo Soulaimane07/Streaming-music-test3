@@ -7,13 +7,13 @@ COPY ./backend/User.Service/*.csproj ./
 RUN dotnet restore
 
 # Copy the entire source code and publish the app
-COPY ./backend/User.Service/. .
+COPY ./backend/User.Service/. ./
 RUN dotnet publish -c Release -o /app/publish
 
 # Use the ASP.NET runtime image to run the app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=build /app/publish ./
 
 # Expose the correct port
 EXPOSE 8080

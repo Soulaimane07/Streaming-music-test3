@@ -11,7 +11,7 @@ COPY ./frontend/package*.json ./
 RUN npm install
 
 # Copy the rest of the application files
-COPY ./frontend/. .
+COPY ./frontend/. ./
 
 # Expose the port that the app runs on
 EXPOSE 3000

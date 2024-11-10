@@ -19,7 +19,7 @@ services:
   # User Service backend
   user-service:
     container_name: User-Service
-    image: soulaimane00/user-service:latest  # Update with Docker Hub image name
+    image: soulaimane00/user-service:latest  # This should match the Docker Hub image name
     ports:
       - "8080:8080"
     environment:
@@ -29,17 +29,18 @@ services:
       - postgres
     command: ["sh", "-c", "until pg_isready -h postgres -p 5432; do sleep 2; done; dotnet User.Service.dll"]
     networks:
-          - app-network
+      - app-network
 
+  # Frontend
   frontend:
     container_name: Frontend
-    image: soulaimane00/frontend:latest  # Update with Docker Hub image name
+    image: soulaimane00/frontend:latest  # This should match the Docker Hub image name
     ports:
       - "3000:3000"
     depends_on:
       - user-service
     networks:
-          - app-network
+      - app-network
 
 volumes:
   pgdata:  # For PostgreSQL data persistence

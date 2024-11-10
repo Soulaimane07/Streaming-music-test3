@@ -17,12 +17,12 @@ jobs:
       # Build the backend Docker image
       - name: Build Backend Image
         run: |
-          docker build -t soulaimane00/user-service:latest2 -f docker/backend/Dockerfile .
+          docker build -t soulaimane00/user-service:latest -f docker/backend/Dockerfile .
 
       # Build the frontend Docker image
       - name: Build Frontend Image
         run: |
-          docker build -t soulaimane00/frontend:latest2 -f docker/frontend/Dockerfile .
+          docker build -t soulaimane00/frontend:latest -f docker/frontend/Dockerfile .
 
   # Job for logging into Docker Hub
   docker-login:
@@ -44,8 +44,8 @@ jobs:
     steps:
       - name: Push Backend Image to Docker Hub
         run: |
-          docker push soulaimane00/user-service:2
+          docker push soulaimane00/user-service:latest
 
       - name: Push Frontend Image to Docker Hub
         run: |
-          docker push soulaimane00/frontend:2
+          docker push soulaimane00/frontend:latest

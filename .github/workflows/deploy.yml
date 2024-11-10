@@ -1,9 +1,9 @@
-name: Build and Deploy Frontend and User service
+name: Build and Deploy Frontend and User Service
 
 on:
   push:
     branches:
-      - dev
+      - dev  # Trigger this workflow on push to the 'dev' branch
 
 jobs:
   build:
@@ -15,23 +15,35 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Check out the latest code from the repository
+
+      # Install docker-compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       # Log in to Docker Hub
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v2  # Log in to Docker Hub to push images
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Build and push the backend Docker image
-      - name: Build and push backend image
+      # Build and push images using docker-compose
+      - name: Build and Push with Docker Compose
         run: |
-          docker build -t $DOCKER_IMAGE_BACKEND:latest -f docker/backend/Dockerfile .
+          # Build the images using docker-compose
+          docker-compose -f docker-compose.yml build
+
+          # Push the backend image to Docker Hub
           docker push $DOCKER_IMAGE_BACKEND:latest
 
-      # Build and push the frontend Docker image
-      - name: Build and push frontend image
-        run: |
-          docker build -t $DOCKER_IMAGE_FRONTEND:latest -f docker/frontend/Dockerfile .
+          # Push the frontend image to Docker Hub
           docker push $DOCKER_IMAGE_FRONTEND:latest
+
+      # Optionally: Clean up Docker images after pushing (to avoid large disk usage)
+      - name: Clean up Docker images
+        run: |
+          docker rmi $DOCKER_IMAGE_BACKEND:latest
+          docker rmi $DOCKER_IMAGE_FRONTEND:latest

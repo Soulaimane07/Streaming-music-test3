@@ -1,0 +1,46 @@
+name: Docker Publish
+
+on:
+  push:
+    branches:
+      - dev  # Trigger on pushes to the dev branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Set up Docker Buildx (optional but recommended for multi-platform builds)
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    # Log in to Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # Set up Docker Compose (ensure it's available on the runner)
+    - name: Set up Docker Compose
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: linux/amd64,linux/arm64
+
+    # Build and push Docker images using Docker Compose
+    - name: Build and push Docker images
+      run: |
+        docker-compose -f docker-compose-publish.yml build
+        docker-compose -f docker-compose-publish.yml push
+
+    # Optional: Tag and push images manually if necessary
+    # - name: Tag and push images
+    #   run: |
+    #     docker tag frontend:latest ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+    #     docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+    #     docker tag backend:latest ${{ secrets.DOCKER_USERNAME }}/backend:latest
+    #     docker push ${{ secrets.DOCKER_USERNAME }}/backend:latest

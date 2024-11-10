@@ -1,10 +1,9 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database
   postgres:
     image: postgres:15
-    container_name: User-DB
+    container_name: DB-User
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
@@ -16,12 +15,11 @@ services:
     networks:
       - app-network
 
-  # User Service backend
   user-service:
-    container_name: User-Service
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile
+      dockerfile: docker/backend/Dockerfile
+    container_name: Service-User
     ports:
       - "8080:8080"
     environment:
@@ -29,22 +27,20 @@ services:
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Username=postgres;Password=123456;Database=spotify
     depends_on:
       - postgres
-    command: ["sh", "-c", "until pg_isready -h postgres -p 5432; do sleep 2; done; dotnet User.Service.dll"]
     networks:
-          - app-network
+      - app-network
 
   frontend:
-    container_name: Frontend
     build:
       context: .
-      dockerfile: ./docker/frontend/Dockerfile
+      dockerfile: docker/frontend/Dockerfile
+    container_name: Frontend
     ports:
       - "3000:3000"
     depends_on:
       - user-service
     networks:
-          - app-network
-
+      - app-network
 
 volumes:
   pgdata:  # For PostgreSQL data persistence

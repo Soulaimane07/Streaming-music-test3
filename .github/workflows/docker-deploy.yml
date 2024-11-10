@@ -3,7 +3,7 @@ name: Docker Deploy to Desktop
 on:
   push:
     branches:
-      - main # or the branch you want to trigger deployment from
+      - dev # or the branch you want to trigger deployment from
 
 jobs:
   docker-build:

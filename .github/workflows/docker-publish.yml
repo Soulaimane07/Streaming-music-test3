@@ -56,19 +56,19 @@ jobs:
 
       # Pull images from Docker Hub
       - name: Pull Backend Image
-        run: docker pull ${{ env.DOCKER_IMAGE_BACKEND }}:1.0.0
+        run: docker pull $DOCKER_IMAGE_BACKEND:1.0.0
 
       - name: Pull Frontend Image
-        run: docker pull ${{ env.DOCKER_IMAGE_FRONTEND }}:1.0.0
+        run: docker pull $DOCKER_IMAGE_FRONTEND:1.0.0
 
       # Run the containers
       - name: Run Backend Container
         run: |
-          docker run -d --name user-service -p 8080:8080 ${{ env.DOCKER_IMAGE_BACKEND }}:1.0.0
+          docker run -d --name user-service -p 8080:8080 $DOCKER_IMAGE_BACKEND:1.0.0
 
       - name: Run Frontend Container
         run: |
-          docker run -d --name frontend -p 3000:3000 ${{ env.DOCKER_IMAGE_FRONTEND }}:1.0.0
+          docker run -d --name frontend -p 3000:3000 $DOCKER_IMAGE_FRONTEND:1.0.0
 
       # Verify running containers
       - name: List Running Containers

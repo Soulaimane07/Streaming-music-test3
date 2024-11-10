@@ -14,18 +14,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3  # Updated to v3 (the latest version)
 
-      # Build the backend Docker image
-      - name: Build Backend Image
+      - name: Set up Docker Compose
         run: |
-          echo "Building backend Docker image..."
-          docker build -t soulaimane00/user-service:latest -f docker/backend/Dockerfile .  # Use correct path
-          docker images # List images to confirm the build
+          sudo apt-get update
+          sudo apt-get install docker-compose
 
-      # Build the frontend Docker image
-      - name: Build Frontend Image
+      # Build the images using docker-compose
+      - name: Build with Docker Compose
         run: |
-          echo "Building frontend Docker image..."
-          docker build -t soulaimane00/frontend:latest -f docker/frontend/Dockerfile .  # Use correct path
+          docker-compose -f docker-compose.yml build
           docker images # List images to confirm the build
 
   # Job for logging into Docker Hub

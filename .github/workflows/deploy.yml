@@ -17,15 +17,15 @@ jobs:
       # Build the backend Docker image
       - name: Build Backend Image
         run: |
-          docker build -t soulaimane00/user-service:latest -f docker/backend/Dockerfile .
+          docker build -t soulaimane00/user-service:latest2 -f docker/backend/Dockerfile .
 
       # Build the frontend Docker image
       - name: Build Frontend Image
         run: |
-          docker build -t soulaimane00/frontend:latest -f docker/frontend/Dockerfile .
+          docker build -t soulaimane00/frontend:latest2 -f docker/frontend/Dockerfile .
 
   # Job for logging into Docker Hub
-  dockerhub-login:
+  docker-login:
     runs-on: ubuntu-latest
     needs: build  # Ensure that login only happens after the build job is successful
 
@@ -39,13 +39,13 @@ jobs:
   # Job for pushing the Docker images to Docker Hub
   docker-push:
     runs-on: ubuntu-latest
-    needs: dockerhub-login  # Ensure pushing happens only after login
+    needs: docker-login  # Ensure pushing happens only after login
 
     steps:
       - name: Push Backend Image to Docker Hub
         run: |
-          docker push soulaimane00/user-service2:latest
+          docker push soulaimane00/user-service:2
 
       - name: Push Frontend Image to Docker Hub
         run: |
-          docker push soulaimane00/frontend2:latest
+          docker push soulaimane00/frontend:2

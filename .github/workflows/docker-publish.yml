@@ -3,10 +3,10 @@ name: Docker Publish
 on:
   push:
     branches:
-      - dev  # Trigger this workflow on push to the 'dev' branch
+      - dev 
 
 jobs:
-  build-images:
+  build:
     runs-on: ubuntu-latest
 
     env:
@@ -17,44 +17,33 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2  # Check out the latest code from the repository
 
-      # Install Docker and Docker Compose
-      - name: Install Docker and Docker Compose
+      # Install docker-compose
+      - name: Install Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
-      # Build images using docker-compose
-      - name: Build images with Docker Compose
-        run: |
-          docker-compose -f docker-compose-publish.yml build --no-cache
-
-  push-images-to-dockerhub:
-    needs: build-images  # Ensures that this job runs only after the build job is completed
-    runs-on: ubuntu-latest
-
-    env:
-      DOCKER_IMAGE_BACKEND: soulaimane00/service-user
-      DOCKER_IMAGE_FRONTEND: soulaimane00/frontend
-
-    steps:
+      # Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2  # Log in to Docker Hub to push images
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Push the backend image to Docker Hub
-      - name: Push Backend Image
+      # Build and push images using docker-compose
+      - name: Build and Push with Docker Compose
         run: |
-          docker push soulaimane00/service-user:2.0.0  # Correct tag
+          # Build the images using docker-compose
+          docker-compose -f docker-compose-publish.yml build --no-cache
 
-      # Push the frontend image to Docker Hub
-      - name: Push Frontend Image
-        run: |
-          docker push soulaimane00/frontend:2.0.0  # Correct tag
+          # Push the backend image to Docker Hub
+          docker push $DOCKER_IMAGE_BACKEND:2.0.0
 
-      # Optionally: Clean up Docker images after pushing
+          # Push the frontend image to Docker Hub
+          docker push $DOCKER_IMAGE_FRONTEND:2.0.0
+
+      # Optionally: Clean up Docker images after pushing (to avoid large disk usage)
       - name: Clean up Docker images
         run: |
-          docker rmi soulaimane00/service-user:2.0.0
-          docker rmi soulaimane00/frontend:2.0.0
+          docker rmi $DOCKER_IMAGE_BACKEND:2.0.0
+          docker rmi $DOCKER_IMAGE_FRONTEND:2.0.0

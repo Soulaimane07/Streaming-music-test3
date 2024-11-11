@@ -46,6 +46,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_IMAGE_BACKEND: soulaimane00/service-user
+      DOCKER_IMAGE_FRONTEND: soulaimane00/frontend
+
     steps:
       # Log in to Docker Hub
       - name: Log in to Docker Hub

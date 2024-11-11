@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # PostgreSQL Database service
   postgres:
     image: postgres:15
     container_name: DB-User
@@ -15,6 +16,7 @@ services:
     networks:
       - app-network
 
+  # User Service backend
   user-service:
     build:
       context: .
@@ -30,6 +32,7 @@ services:
     networks:
       - app-network
 
+  # Frontend service
   frontend:
     build:
       context: .

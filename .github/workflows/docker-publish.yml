@@ -41,39 +41,3 @@ jobs:
 
           # Push the frontend image to Docker Hub
           docker push $DOCKER_IMAGE_FRONTEND:1.0.0
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    env:
-      DOCKER_IMAGE_BACKEND: soulaimane00/service-user
-      DOCKER_IMAGE_FRONTEND: soulaimane00/frontend
-
-    steps:
-      # Log in to Docker Hub
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # Pull images from Docker Hub
-      - name: Pull Backend Image
-        run: docker pull $DOCKER_IMAGE_BACKEND:1.0.0
-
-      - name: Pull Frontend Image
-        run: docker pull $DOCKER_IMAGE_FRONTEND:1.0.0
-
-      # Run the containers
-      - name: Run Backend Container
-        run: |
-          docker run -d --name user-service -p 8080:8080 $DOCKER_IMAGE_BACKEND:1.0.0
-
-      - name: Run Frontend Container
-        run: |
-          docker run -d --name frontend -p 3000:3000 $DOCKER_IMAGE_FRONTEND:1.0.0
-
-      # Verify running containers
-      - name: List Running Containers
-        run: docker ps

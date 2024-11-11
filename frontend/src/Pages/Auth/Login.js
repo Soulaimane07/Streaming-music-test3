@@ -39,7 +39,7 @@ function Login() {
     <div className='bg-purple-600 py-20 h-screen flex items-center text-white bg-gradient-to-r from-indigo-400 '>
         <div className='bg-black py-6 pb-12 w-2/5 mx-auto rounded-md'>
             <img src="../images/logo.png" className='w-16 mx-auto' alt='logo' />
-            <h1 className='   text-2xl pt-2 pb-6 text-center font-bold'>Login to Spotify</h1>
+            <h1 className='   text-2xl pt-2 pb-6 text-center font-bold'>Login to X</h1>
             <form onSubmit={LoginFunction} className='px-32 text-left' >
                 <div>
                     <label > Email</label>

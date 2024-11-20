@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the .csproj file and restore dependencies
-COPY ./backend/User.Service/*.csproj ./
+COPY ./backend/User_Service/*.csproj ./
 RUN dotnet restore
 
 # Copy the entire source code and publish the app
-COPY ./backend/User.Service/. ./
+COPY ./backend/User_Service/. ./
 RUN dotnet publish -c Release -o /app/publish
 
 # Use the ASP.NET runtime image to run the app

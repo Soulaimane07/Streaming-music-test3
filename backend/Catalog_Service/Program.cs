@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSingleton<MongoDbService>();
-builder.Services.AddSingleton<ElasticsearchService>();
+// builder.Services.AddSingleton<ElasticsearchService>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();

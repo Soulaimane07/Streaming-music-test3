@@ -31,7 +31,7 @@ namespace Catalog_Service.Controllers
         public async Task<ActionResult> CreateArtist([FromBody] Artist artist)
         {
             await _mongoDbService.Artists.InsertOneAsync(artist);
-            await _elasticsearchService.IndexDocumentAsync(artist);  // Index artist in Elasticsearch
+            // await _elasticsearchService.IndexDocumentAsync(artist);  // Index artist in Elasticsearch
             return Ok();
         }
 
@@ -59,7 +59,7 @@ namespace Catalog_Service.Controllers
         [HttpPost("index-artist")]
         public IActionResult IndexArtist([FromBody] Artist artist)
         {
-            _elasticsearchService.IndexDocument(artist, artist.Id);
+            // _elasticsearchService.IndexDocument(artist, artist.Id);
             return Ok();
         }
 

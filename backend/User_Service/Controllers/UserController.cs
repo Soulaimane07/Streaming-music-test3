@@ -106,7 +106,7 @@ namespace User_Service.Controllers
             }
 
             var token = GenerateJwtToken(user);
-            return Ok(new { Token = token });
+            return Ok(user);
         }
 
 

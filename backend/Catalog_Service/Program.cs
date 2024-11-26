@@ -1,6 +1,7 @@
 using Catalog_Service.Data;
 using Catalog_Service.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<CatalogDbContext>(serviceProvider =>
@@ -8,6 +9,19 @@ builder.Services.AddSingleton<CatalogDbContext>(serviceProvider =>
     var connectionString = builder.Configuration.GetConnectionString("MongoDb");
     return new CatalogDbContext(connectionString);
 });
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Replace with your frontend URL
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -22,5 +36,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowFrontend");
 app.MapControllers();
 app.Run();

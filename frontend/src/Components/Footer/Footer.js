@@ -13,8 +13,8 @@ function Footer() {
 
 
   return (
-    <div className='fixed bottom-0 bg-black w-full pt-5 Glass'>
-      <input type='range' onChange={(e)=> setLine(e.target.value)} value={line} className='w-full  absolute -mt-6 bg-transparent rounded-none' />
+    <div className='fixed bottom-0 bg-black w-full pt-5 '>
+      {/* <input type='range' onChange={(e)=> setLine(e.target.value)} value={line} className='w-full  absolute -mt-6 bg-transparent rounded-none' /> */}
       
       <div className='pt-0 pb-2 px-8 flex items-stretch justify-between'>
         <Song music={music.data} />

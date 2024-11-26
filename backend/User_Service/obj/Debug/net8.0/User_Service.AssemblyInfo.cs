@@ -13,19 +13,9 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("User_Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-<<<<<<< HEAD:backend/User.Service/obj/Debug/net8.0/User.Service.AssemblyInfo.cs
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+167cca71e450fc631555f2527a0d3ea976f0f2f8")]
-[assembly: System.Reflection.AssemblyProductAttribute("User.Service")]
-[assembly: System.Reflection.AssemblyTitleAttribute("User.Service")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6498f0464ea314936e0feda2daa9140f6d100934")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bcbf09aeca653ac18f3fa4ecb85bdbb612a0c97")]
->>>>>>> backend
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbfeef59eb105b922ae4c1bd723eda86c89f8ce1")]
 [assembly: System.Reflection.AssemblyProductAttribute("User_Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("User_Service")]
->>>>>>> backend:backend/User_Service/obj/Debug/net8.0/User_Service.AssemblyInfo.cs
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.

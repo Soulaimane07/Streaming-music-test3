@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
  import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../Components/Redux/Slices/UserSlice'
 import axios from "axios"
-import { ServerUrl } from '../../Components/Functions'
+import { UserServiceUrl } from '../../Components/Functions'
 
 
 function Login() { 
@@ -21,7 +21,7 @@ function Login() {
     const LoginFunction = (event) => {
         event.preventDefault();
 
-        axios.post(`${ServerUrl}/users/login`, user)
+        axios.post(`${UserServiceUrl}/users/login`, user)
             .then((res)=> {
                 if(res.status === 200){
                     console.log(res.data)

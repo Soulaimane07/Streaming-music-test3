@@ -6,7 +6,7 @@ import Box3 from './Box3'
 
 function Home() {
   return (
-    <div className='flex text-white w-full'>
+    <div className='flex text-white'>
 
       <main className='flex-1 relative pb-60'>
         <Header />

@@ -5,6 +5,8 @@ import Appp from './Routes/App'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { login, logout } from './Components/Redux/Slices/UserSlice';
+import { getArtists } from './Components/Redux/Slices/ArtistsSlice';
+import { getSongs } from './Components/Redux/Slices/SongsSlice';
 
 function App() {
   const dispatch = useDispatch()
@@ -18,11 +20,14 @@ function App() {
     if (userLocal !== null) {
       dispatch(login(userLocal))
       setIsLogged(true)
+
+      dispatch(getArtists());
+      dispatch(getSongs());
     } else {
       dispatch(logout())
       setIsLogged(false)
     }
-  }, [user])
+  }, [user, dispatch])
 
   
 

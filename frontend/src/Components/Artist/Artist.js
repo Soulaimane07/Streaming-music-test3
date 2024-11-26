@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaPlay } from "react-icons/fa";
 
-function Artist() {
+function Artist({data}) {
     const [display, setDisplay] = useState(false)
 
   return (
@@ -13,7 +13,7 @@ function Artist() {
         <div style={{ backgroundImage: `url('../images/singer.jpg')` }} className='w-48 relative h-48 mx-auto BGImage rounded-full'>
             {display && <button className=' absolute bottom-3 shadow-md drop-shadow-lg  right-3 transition-all bg-purple-600 p-4 rounded-full' > <FaPlay size={16} /> </button>}
         </div>
-        <p className=' text-center mt-2 font-medium'> Artist name </p>
+        <p className=' text-center mt-2 font-medium'> {data.name} </p>
     </button>
   )
 }

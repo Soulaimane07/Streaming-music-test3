@@ -14,11 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-<<<<<<< HEAD:backend/User.Service/Properties/launchSettings.json
-      "applicationUrl": "http://localhost:8080",
-=======
-      "applicationUrl": "http://localhost:5131",
->>>>>>> backend:backend/Catalog_Service/Properties/launchSettings.json
+      "applicationUrl": "http://localhost:5003",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

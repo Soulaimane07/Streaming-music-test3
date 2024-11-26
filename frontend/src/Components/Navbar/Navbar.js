@@ -47,7 +47,7 @@ function Navbar() {
     
 
   return (
-    <nav className='fixed top-0 w-64 bg-zinc-950 h-screen overflow-y-scroll scrollbar-hidden pb-40 py-6'>
+    <nav className=' h-full sticky rounded-md overflow-hidden top-0 w-64 bg-zinc-900 h-screenn overflow-y-scroll Scroll pb-40 py-6 pr-2 mb-20'>
         <Link to={"/"} className='w-full'>
             <img src="../images/logo.png" alt='logo' className='w-16 mx-auto' />
         </Link>

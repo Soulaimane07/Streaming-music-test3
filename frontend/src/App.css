@@ -61,3 +61,52 @@
   background-size: cover;
   background-position: center;
 }
+
+
+
+.Scroll {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #424242;
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+
+.Scroll {
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 8px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 8px;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 8px;
+  }
+}

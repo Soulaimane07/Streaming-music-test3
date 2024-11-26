@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Catalog_Service.Services;
+using Catalog_Service.Data;
+using Catalog_Service.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddSingleton<MongoDbService>();
-// builder.Services.AddSingleton<ElasticsearchService>();
-builder.Services.AddControllers();
+builder.Services.AddSingleton<CatalogDbContext>(serviceProvider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("MongoDb");
+    return new CatalogDbContext(connectionString);
+});
 
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -21,8 +21,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 app.MapControllers();
-
 app.Run();

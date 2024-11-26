@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog_Service.Models
 {
     public class Song
     {
-        public ObjectId Id { get; set; }
-        public ObjectId AlbumId { get; set; }
-        public string Name { get; set; }
-        public string Duration { get; set; }
-        public string AudioUrl { get; set; }
+        [BsonId]  // MongoDB's default identifier
+        public ObjectId Id { get; set; }  // MongoDB ObjectId for _id
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public required int Duration { get; set; }
+        public required string AudioUrl { get; set; }
+        public required string ImageUrl { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)] // Store as ObjectId in MongoDB
+        public string ArtistId { get; set; }  // Reference to the Artist
     }
 }

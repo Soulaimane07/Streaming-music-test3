@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog_Service.Models
 {
     public class Artist
     {
-        public ObjectId Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
+        [BsonId]  // MongoDB's default identifier
+        public ObjectId Id { get; set; }  // MongoDB ObjectId for _id
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public required string ImageUrl { get; set; }
     }
 }

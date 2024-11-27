@@ -16,7 +16,8 @@ function Details() {
                 {(volume > 0 && volume <= 49) && (<FaVolumeLow size={20} />)}
                 {volume >= 50 && (<FaVolumeUp size={20} />)}
             </div>
-            <input type='range' onChange={(e)=> setVolume(e.target.value)} value={volume} />
+            
+            <input type='range' onChange={(e)=> setVolume(e.target.value)} value={volume} className='h-1' />
         </div>
     </div>
   )

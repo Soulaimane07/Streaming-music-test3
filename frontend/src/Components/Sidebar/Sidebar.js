@@ -10,7 +10,7 @@ function Sidebar() {
   
 
   return (
-    <div className='w-72 bg-zinc-950 right-0 h-screen top-0  px-4 py-6 pt-14 rounded-md overflow-hidden'>
+    <div className='w-72 pt-14 px-4 Scroll bg-zinc-900 rounded-md overflow-y-auto'>
       <button onClick={()=> dispatch(closeDetails())} className=' absolute top-5 opacity-50 hover:opacity-100 transition-all right-4'> <IoClose size={30} /> </button>
         
       <div>

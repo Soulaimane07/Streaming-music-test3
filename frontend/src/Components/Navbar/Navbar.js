@@ -47,7 +47,7 @@ function Navbar() {
     
 
   return (
-    <nav className=' h-full sticky rounded-md overflow-hidden top-0 w-64 bg-zinc-900 h-screenn overflow-y-scroll Scroll pb-40 py-6 pr-2 mb-20'>
+    <nav className='w-64 py-6 Scroll bg-zinc-900 rounded-md overflow-y-auto px-4'>
         <Link to={"/"} className='w-full'>
             <img src="../images/logo.png" alt='logo' className='w-16 mx-auto' />
         </Link>
@@ -60,7 +60,7 @@ function Navbar() {
                             to={item.path} 
                             key={key} 
                             className={({ isActive }) => 
-                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-8 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60  border-transparent"}`
+                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-3 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60  border-transparent"}`
                             }
                         >
                             {item.icon}
@@ -71,14 +71,14 @@ function Navbar() {
             </div>
 
             <div className='mt-10'>
-                <h1 className='mb-4 px-6 text-sm opacity-60'> LIBRARY </h1>
+                <h1 className='mb-2 px-3 text-sm opacity-60'> LIBRARY </h1>
                 <ul>
                     {library.map((item, key) => (
                         <NavLink 
                             to={item.path} 
                             key={key} 
                             className={({ isActive }) => 
-                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-8 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60 border-transparent"}`
+                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-3 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60 border-transparent"}`
                             }
                         >
                             {item.icon}
@@ -89,7 +89,7 @@ function Navbar() {
             </div>
 
             <div className='mt-10'>
-                <div className='mb-4 px-6 text-sm opacity-60 flex items-center justify-between'> 
+                <div className='mb-2 px-3 text-sm opacity-60 flex items-center justify-between'> 
                     <h1> PLAYLIST </h1>
                     <button> + </button>
                 </div>
@@ -99,7 +99,7 @@ function Navbar() {
                             to={item.path} 
                             key={key} 
                             className={ 
-                                `w-full items-center flex space-x-2.5 hover:bg-zinc-900 transition-all mb-1 px-8 py-3 opacity-60 `
+                                `w-full items-center flex space-x-2.5 hover:bg-zinc-900 transition-all mb-1 px-3 py-3 opacity-60 `
                             }
                         >
                             <TbPlaylist size={20} />

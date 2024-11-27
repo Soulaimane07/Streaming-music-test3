@@ -10,22 +10,22 @@ function App() {
   const music = useSelector(state => state.music)
 
   return (
-    <div className='bg-black text-white '>
-      <div className='flex mx-2 py-2'>
+    <div className='bg-black text-white flex flex-col h-screen'>
+      <div className='py-2 px-2 flex-1 w-full overflow-y-auto flex space-x-2'>
         <Navbar />
 
-        <div className='Scroll bg-zinc-900 mx-2 min-h-screen flex-1 rounded-md overflow-hidden'>
+        <div className='Scroll bg-zinc-900 flex-1 rounded-md overflow-y-auto'>
           <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/discover" element={<Discover />} />
-              <Route path='/*' element={<Navigate to="/" replace={true} />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path='/*' element={<Navigate to="/" replace={true} />} />
           </Routes>
         </div>
 
         {music.isDetails && <Sidebar />}
       </div>
-      {/* {music.data && <Footer />} */}
-      <Footer />
+
+      {music.data && <Footer />}
     </div>
   )
 }

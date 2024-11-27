@@ -3,16 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const musicSlice = createSlice({
   name: 'music',
   initialState: {
-    data: {
-      musicName: "Euphoria",
-      musicImage: '../images/song.jpg',
-      artists: {
-        image: '../images/singer.jpg',
-        name: "Kendrick Lamar"
-      }
-    },
-    isPlaying: true,
-    isDetails: true
+    data: null,
+    isPlaying: false,
+    isDetails: false
   },
   reducers: {
     play: (state, action) => {

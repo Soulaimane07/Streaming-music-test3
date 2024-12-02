@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../Pages/App/Home/Home';
-import Discover from '../Pages/App/Discover/Discover';
 import Sidebar from '../Components/Sidebar/Sidebar';
 import Footer from '../Components/Footer/Footer';
 import { useSelector } from 'react-redux';
@@ -25,7 +24,6 @@ function App() {
         <div className="Scroll bg-zinc-900 flex-1 rounded-md overflow-y-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/discover" element={<Discover />} />
             <Route path="/artists">
               <Route path=":id">
                 <Route index element={<Artist />} />

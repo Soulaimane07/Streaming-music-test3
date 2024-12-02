@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 import { FaPlay } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
-import { play } from '../Redux/Slices/MusicSlice';
+import { Link } from 'react-router-dom';
 
 
 function PlaylistHome({data}) {
-    const dispatch = useDispatch()
-
     const [display, setDisplay] = useState(false)
 
   return (
-    <button 
+    <Link 
+        to={`/playlists/${data?.title}`} 
         onMouseEnter={()=> setDisplay(true)} 
         onMouseLeave={()=> setDisplay(false)}
-        onClick={()=> dispatch(play())} 
-        className='bg-zinc-900 hover:bg-zinc-800 transition-all bg-opacity-80 rounded-sm pr-2 overflow-hidden flex items-center space-x-3  text-left'
+        className='bg-zinc-900 hover:bg-zinc-800 relative transition-all bg-opacity-80 rounded-sm pr-2 overflow-hidden flex items-center space-x-3  text-left'
     > 
         <div className='flex items-center flex-1 space-x-3'>
             <div className='bg-gradient-to-tr from-purple-700 to-white'> 
@@ -28,8 +25,10 @@ function PlaylistHome({data}) {
             <p> {data?.title  ?? "Playlist name"} </p>
         </div>
 
-        {display && <i className=' transition-all bg-purple-600 p-3 rounded-full' > <FaPlay size={16} /> </i>}
-    </button>
+        <i className={`bg-purple-600 p-3 rounded-full absolute right-3 transition-all duration-300 ease-in-out transform ${display ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+          <FaPlay size={16} />
+        </i>
+    </Link>
   )
 }
 

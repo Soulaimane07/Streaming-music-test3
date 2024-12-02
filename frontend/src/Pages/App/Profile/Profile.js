@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaUserAlt } from "react-icons/fa";
-import Artist from '../../../Components/Artist/Artist';
+import Artist from '../../../Components/Elements/Artist/Artist';
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RiEditCircleLine } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';

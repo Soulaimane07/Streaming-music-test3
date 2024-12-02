@@ -9,8 +9,9 @@ function Box1({nameDivRef}) {
         <h1 ref={nameDivRef} className='text-3xl font-medium mb-6'> Good evening </h1>
         <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
             {playlists.map((item, key)=> (
-              key < 7 ? <PlaylistHome data={item} key={key} /> : <PlaylistHome data={{title: "Favorite songs", icon: <FaHeart size={24} />}} key={key} />
+              key < 7 &&  <PlaylistHome data={item} key={key} />
             ))}
+            <PlaylistHome data={{title: "Favorite songs", icon: <FaHeart size={24} />}} />
         </div>
     </div>
   )

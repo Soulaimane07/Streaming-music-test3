@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Artist from '../../../Components/Artist/Artist'
+import Artist from '../../../Components/Elements/Artist/Artist'
 // import { useSelector } from 'react-redux'
 import { artists } from '../../../Components/Functions'
 

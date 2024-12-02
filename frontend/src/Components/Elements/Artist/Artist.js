@@ -16,7 +16,9 @@ function Artist({data}) {
         {data?.image 
           ?
             <div style={{ backgroundImage: `url('../images/singer.jpg')` }} className='w-40 relative h-40 mx-auto BGImage rounded-full'>
-                {display && <button className=' absolute bottom-3 shadow-md drop-shadow-lg  right-3 transition-all bg-purple-600 p-4 rounded-full' > <FaPlay size={16} /> </button>}
+                <i className={`bg-purple-600 p-4 rounded-full absolute right-3 transition-all duration-300 ease-in-out transform ${display ? "opacity-100 translate-y-28" : "opacity-0 translate-y-32"}`}>
+                  <FaPlay size={18} />
+                </i>
             </div>
           :  
             <div className='w-40 relative h-40 mx-auto BGImage rounded-full items-center justify-center flex bg-gradient-to-tr from-purple-700 to-purple-300'>

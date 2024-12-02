@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { artists } from '../../../../Components/Functions'
+import { artists, GetTop } from '../../../../Components/Functions'
 import Header from '../../../../Components/Header/Header'
-import Artist from '../../../../Components/Artist/Artist'
+import Artist from '../../../../Components/Elements/Artist/Artist'
 
 function PopularArtists() {
   const [showName, setShowName] = useState(false);
@@ -25,6 +25,8 @@ function PopularArtists() {
             }
         };
     }, []);
+
+    GetTop("Popular artists")
 
   return (
     <div className='relative py-2 pb-80'>

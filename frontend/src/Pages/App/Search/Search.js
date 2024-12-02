@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Header from '../../../Components/Header/Header'
 import { useSelector } from 'react-redux';
 import { artists, genres, playlists, tracks } from '../../../Components/Functions'
-import Artist from '../../../Components/Artist/Artist'
+import Artist from '../../../Components/Elements/Artist/Artist'
 import PlaylistBox from '../../../Components/Playlist/PlaylistBox'
 import { ProfileTrack } from '../../../Components/Elements/Tracks/Tracks';
 
@@ -39,6 +39,7 @@ function Search() {
     
 
     const [option, setOption] = useState("All")
+    const [hover, setHover] = useState(null)
 
 
   return (
@@ -72,7 +73,7 @@ function Search() {
                         <button onClick={()=>setOption("Songs")} className='text-2xl font-bold mb-4 hover:underline transition-all'> Songs </button>
                         <ul className='space-y-2'>
                             {tracks?.map((item,key)=>(
-                                key < 5 && <ProfileTrack data={item} id={key} key={key} />
+                                key < 5 && <ProfileTrack data={item} hover={hover} setHover={setHover} id={key} key={key} />
                             ))}
                         </ul>
                     </div>

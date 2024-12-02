@@ -5,7 +5,7 @@ function TracksTable({showName}) {
   return (
     <div 
         aria-hidden={!showName} 
-        className={`sticky top-20  z-40  mb-2 text-xs text-gray-400 uppercase border-b bg-zinc-900 border-zinc-600 flex items-center transition-colors duration-300 ${
+        className={`sticky top-16  z-40  mb-2 text-xs text-gray-400 uppercase border-b bg-zinc-900 border-zinc-600 flex items-center transition-colors duration-300 ${
             showName ? 'bg-zinc-800 px-12' : 'bg-transparent mx-12'
         }`}
     >

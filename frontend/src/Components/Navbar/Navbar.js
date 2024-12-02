@@ -8,31 +8,10 @@ import { TbPlaylist } from "react-icons/tb";
 
 
 import { Link, NavLink } from 'react-router-dom';
+import { playlists } from '../Functions';
+import { NavbarPlaylist } from '../Elements/Playlists/Playlists';
 
 function Navbar() {
-    const pages = [
-        {
-            "title": "Home",
-            "icon": <RiHome3Fill size={20} />,
-            "path":"/"
-        },
-        {
-            "title": "Discover",
-            "icon": <RiCompassDiscoverFill size={20} />,
-            "path":"/discover"
-        },
-        {
-            "title": "Albums",
-            "icon": <IoIosAlbums size={20} />,
-            "path":"/albums"
-        },
-        {
-            "title": "Podcast",
-            "icon": <FaMicrophoneAlt size={20} />,
-            "path":"/podcast"
-        },
-    ]
-
     const library = [
         {
             "title": "Favorite Songs",
@@ -41,7 +20,6 @@ function Navbar() {
         },
     ]
 
-    const playlists = [1,2,3,4,5,6]
 
 
     
@@ -53,23 +31,6 @@ function Navbar() {
         </Link>
 
         <div>
-            <div className='mt-4'>
-                <ul>
-                    {pages.map((item, key) => (
-                        <NavLink 
-                            to={item.path} 
-                            key={key} 
-                            className={({ isActive }) => 
-                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-3 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60  border-transparent"}`
-                            }
-                        >
-                            {item.icon}
-                            <p>{item.title}</p>
-                        </NavLink>
-                    ))}
-                </ul>
-            </div>
-
             <div className='mt-10'>
                 <h1 className='mb-2 px-3 text-sm opacity-60'> LIBRARY </h1>
                 <ul>
@@ -78,7 +39,7 @@ function Navbar() {
                             to={item.path} 
                             key={key} 
                             className={({ isActive }) => 
-                                `items-center flex space-x-2.5 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-3 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60 border-transparent"}`
+                                `items-center flex space-x-2.5 hover:opacity-100 hover:bg-zinc-900 transition-all border-r-4 mb-1 px-3 py-3 ${isActive ? "border-purple-600 transition-all opacity-100" : "transition-all opacity-60 border-transparent"}`
                             }
                         >
                             {item.icon}
@@ -95,16 +56,7 @@ function Navbar() {
                 </div>
                 <ul>
                     {playlists.map((item, key) => (
-                        <button 
-                            to={item.path} 
-                            key={key} 
-                            className={ 
-                                `w-full items-center flex space-x-2.5 hover:bg-zinc-900 transition-all mb-1 px-3 py-3 opacity-60 `
-                            }
-                        >
-                            <TbPlaylist size={20} />
-                            <p> Playlist {key+1} </p>
-                        </button>
+                        <NavbarPlaylist data={item} key={key} />
                     ))}
                 </ul>
             </div>

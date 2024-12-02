@@ -110,3 +110,33 @@
     border-radius: 8px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+.table-header {
+  position: sticky;
+  top: 0; /* Ensure it sticks to the very top or align to layout needs */
+  z-index: 100; /* Ensure it stays above other elements */
+  background-color: #18181b; /* Matches a dark theme */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+  transition: background-color 0.3s ease; /* Smooth color change, if required */
+}
+
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling for small screens */
+}
+
+.table-header th {
+  min-width: 120px; /* Ensure enough width for smaller screens */
+}
+
+.table-row td {
+  white-space: nowrap; /* Prevent text wrapping for cleaner rows */
+}

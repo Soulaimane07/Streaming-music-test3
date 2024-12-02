@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { login } from '../../Components/Redux/Slices/UserSlice'
 import { UserServiceUrl } from '../../Components/Functions'
+import Spinner from '../../Components/Spinner/Spinner'
 
 function Signup() {
     const dispatch = useDispatch()
@@ -21,9 +22,12 @@ function Signup() {
         "profilePictureUrl": ""    
     }
 
+
+    const [spinner, setSpinner] = useState(false)
     
     const SignupFunction = async (event) => {
         event.preventDefault();
+        setSpinner(true)
 
         axios.post(`${UserServiceUrl}/users`, newUser)
             .then((res)=> {
@@ -31,10 +35,12 @@ function Signup() {
                     console.log(res.data)
                     dispatch(login(res.data))
                     navigate('/')
+                    setSpinner(false)
                 }
             })
             .catch((err)=> {
                 console.error(err);
+                setSpinner(false)
             })
     }
     
@@ -58,7 +64,12 @@ function Signup() {
                     <input name='password' onChange={(e)=> setPassword(e.target.value)} className='bg-transparent border rounded-md py-2 px-4 mt-1' type="password" />
                 </div>
 
-                <button className='bg-purple-500 hover:bg-purple-600 transition-all hover:scale-105 hover:shadow-purple-300 w-full mt-4 rounded-full py-3 font-medium'> Sign up </button>
+                <button className='bg-purple-500 hover:bg-purple-600 transition-all hover:scale-105 hover:shadow-purple-300 w-full mt-4 rounded-full py-3 font-medium'> 
+                    {spinner 
+                        ?   <Spinner />
+                        :   <p> Sign up </p>
+                    }
+                </button>
             </form>
 
             <div className='flex items-center justify-center space-x-2 mt-10'>

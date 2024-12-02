@@ -1,16 +1,15 @@
 import React from 'react'
 import PlaylistHome from '../../../Components/Playlist/PlaylistHome'
-import { useSelector } from 'react-redux'
+import { playlists } from '../../../Components/Functions'
+import { FaHeart } from "react-icons/fa6";
 
-function Box1() {
-    const songs = useSelector(state => state.songs.data)
-
+function Box1({nameDivRef}) {
   return (
-    <div className='h-80 bg-gradient-to-b from-purple-900 to-black pt-20 px-10'>
-        <h1 className='text-3xl font-medium mb-6'> Good evening </h1>
-        <div className=' grid grid-cols-4 gap-3'>
-            {songs.map((item, key)=> (
-              key < 6 && <PlaylistHome data={item} key={key} />
+    <div className='min-h-40 pt-40 -mt-20 pb-20 bg-gradient-to-b from-purple-900 to-zinc-900  px-10'>
+        <h1 ref={nameDivRef} className='text-3xl font-medium mb-6'> Good evening </h1>
+        <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
+            {playlists.map((item, key)=> (
+              key < 7 ? <PlaylistHome data={item} key={key} /> : <PlaylistHome data={{title: "Favorite songs", icon: <FaHeart size={24} />}} key={key} />
             ))}
         </div>
     </div>

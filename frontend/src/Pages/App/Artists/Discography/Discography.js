@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { CiClock2 } from "react-icons/ci";
-import { artist, tracks } from '../../../../Components/Functions';
+import { albums, artist } from '../../../../Components/Functions';
 import { FaHeart, FaUserAlt } from 'react-icons/fa';
-import { ArtistTrack } from '../../../../Components/Elements/Tracks/Tracks';
+import Elements from '../../../../Components/Elements/Discography/Elements';
 
 function Discography() {
     const [showName, setShowName] = useState(false);
@@ -28,9 +27,6 @@ function Discography() {
     }, []);
 
 
-    const [hover, setHover] = useState(null)
-
-
   return (
     <div className='pb-80'>
         <div className=' relative'>
@@ -53,7 +49,7 @@ function Discography() {
             <div ref={nameDivRef} className=' opacity-0 absolute bottom-16'> 0 </div>
         </div>
 
-        <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
+        <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-1 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
             <div className='flex items-center space-x-4'>
                 <div className='bg-zinc-600 w-14 h-14 overflow-hidden flex items-center justify-center rounded-full'>
                     {!artist?.name ? <FaUserAlt size={20} /> : <img src={artist?.image} /> }
@@ -66,29 +62,16 @@ function Discography() {
             </div>
         </div>
 
-        <div className='px-12 relative'>
-            <thead class="text-xs flex text-gray-400 uppercase border-b border-zinc-500">
-                <th scope="col" class="px-5 py-3">
-                    #
-                </th>
-                <th scope="col" class="py-3 w-full text-left">
-                    Title
-                </th>
-                <th scope="col" class=" items-center w-1/5 flex justify-end px-3">
-                    Plays
-                </th>
-                <th scope="col" class="flex w-1/3 ">
-                    
-                </th>
-                <th scope="col" class="px-5 py-3 w-40 flex justify-center">
-                    <CiClock2 size={20} />
-                </th>
-            </thead>
-            <ul className='mt-2 space-y-2'>
+        <div className=' relative px-16 space-y-16'>
+            {albums?.map((item,key)=>(
+                <Elements data={item} key={key} />
+            ))}
+            {/* <TracksTable showName={showName} type="plays" />
+            <ul className='mt-2 px-12 space-y-2'>
                 {tracks?.map((item,key)=>(
                     <ArtistTrack data={item} hover={hover} setHover={setHover} id={key} key={key} />
                 ))}
-            </ul>
+            </ul> */}
         </div>
     </div>
   )

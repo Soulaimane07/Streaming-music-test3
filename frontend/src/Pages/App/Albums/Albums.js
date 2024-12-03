@@ -1,17 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { playlist, tracks } from '../../../Components/Functions';
-import { FaHeart, FaPlay } from 'react-icons/fa';
-import { TbPlaylist } from 'react-icons/tb';
-import { PlaylistTrack } from '../../../Components/Elements/Tracks/Tracks';
-import TracksTable from '../../../Components/Elements/Tracks/TracksTable';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
-
-import { GoDotFill } from "react-icons/go";
+import { Link, useParams } from 'react-router-dom';
+import { playlist, tracks } from '../../../Components/Functions';
+import { TbPlaylist } from 'react-icons/tb';
+import { GoDotFill } from 'react-icons/go';
 import PlaylisControlls from '../../../Components/Elements/Playlists/PlaylisControlls';
+import TracksTable from '../../../Components/Elements/Tracks/TracksTable';
+import { ArtistTrack, PlaylistTrack } from '../../../Components/Elements/Tracks/Tracks';
+import { FaHeart, FaPlay } from 'react-icons/fa';
 
-
-function Playlists() {
+function Albums() {
     const [showName, setShowName] = useState(false);
     const nameDivRef = useRef(null);
 
@@ -59,11 +57,13 @@ function Playlists() {
                         </div>
 
                         <div>
-                            <h2 className='text-sm font-medium'> Playlist </h2>
+                            <h2 className='text-sm font-medium'> Album </h2>
                             <h1 className='text-6xl font-bold mt-4' > {id ?? "Playlist title"} </h1>
                             <h2 className=' mt-4 opacity-90 text-sm font-medium flex items-baseline space-x-2'> 
-                                <p>{playlist?.user ?? user?.name}</p> 
-                                <GoDotFill size={10} /> 
+                                <Link to={`/artists/${playlist?.user}`} className='hover:underline transition-all'>{playlist?.user ?? user?.name}</Link> 
+                                <GoDotFill size={10} className=' opacity-70' /> 
+                                <p className=' opacity-70'> 2024 </p>
+                                <GoDotFill size={10} className=' opacity-70' /> 
                                 <p className=' opacity-70'> 100 Songs </p>
                             </h2>
                         </div>
@@ -89,12 +89,12 @@ function Playlists() {
             </div>
 
 
-            <TracksTable showName={showName} nameDivRef={nameDivRef} type="album" />
+            <TracksTable showName={showName} nameDivRef={nameDivRef} type={"plays"} />
 
             <div className="min-h-screen relative">
                 <ul className='px-12'>
                     {tracks.map((item, key) => (
-                        <PlaylistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
+                        <ArtistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
                     ))}
                 </ul>
             </div>
@@ -102,4 +102,4 @@ function Playlists() {
     );
 }
 
-export default Playlists;
+export default Albums

@@ -13,6 +13,7 @@ import Search from '../Pages/App/Search/Search';
 import BrowseAll from '../Pages/App/Search/BrowseAll';
 import Genres from '../Pages/App/Genres/Genres';
 import Tracks from '../Pages/App/Top/Tracks/Tracks';
+import Albums from '../Pages/App/Albums/Albums';
 
 function App() {
   const music = useSelector(state => state.music);
@@ -30,6 +31,9 @@ function App() {
                 <Route path="discography" element={<Discography />} />
               </Route>
               <Route path="popular" element={<PopularArtists />} />
+            </Route>
+            <Route path="/albums">
+              <Route path=":id" element={<Albums />} />
             </Route>
             <Route path="/playlists">
               <Route path=":id" element={<Playlists />} />

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { artist, GetTop, playlists, tracks } from '../../../../Components/Functions';
+import { albums, artist, GetTop, playlists, tracks } from '../../../../Components/Functions';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaHeart } from "react-icons/fa6";
 import PlaylistBox from '../../../../Components/Playlist/PlaylistBox';
 import { Link } from 'react-router-dom';
 import { ArtistTrack } from '../../../../Components/Elements/Tracks/Tracks';
+import { ArtistAlbum } from '../../../../Components/Elements/Albums/Album';
 
 
 function Artist() {
@@ -92,8 +93,8 @@ function Artist() {
                     <Link to={"discography"} className='text-sm font-medium hover:underline'> Show all </Link>
                 </div>
                 <ul className='px-12 mt-6 space-x-4 flex'>
-                    {playlists?.map((item,key)=>(
-                        key < 6 && <PlaylistBox data={item} id={key} key={key} />
+                    {albums?.map((item,key)=>(
+                        key < 6 && <ArtistAlbum data={item} id={key} key={key} />
                     ))}
                 </ul>
             </div>

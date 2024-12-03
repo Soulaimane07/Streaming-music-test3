@@ -41,7 +41,7 @@ function Tracks() {
               <p className='mb-8 opacity-60'> Only visivle for you </p>
           </div>
           <div className='min-h-screen '>
-            <TracksTable  />
+            <TracksTable type="album"  />
             <ul className='px-12 mt-2 space-y-1'>
                 {tracks.map((item, key) => (
                     50 && <PlaylistTrack hover={hover} setHover={setHover}  data={item} id={key} key={key} />

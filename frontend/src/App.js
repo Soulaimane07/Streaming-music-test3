@@ -18,7 +18,7 @@ function App() {
   const user = useSelector(state => state.user.logged)
   
   useEffect(()=> {
-    if (userLocal !== null) {
+    if (userLocal == null) {
       dispatch(login(userLocal))
       setIsLogged(true)
 

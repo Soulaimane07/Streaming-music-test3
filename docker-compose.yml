@@ -7,9 +7,9 @@ services:
     container_name: DB-User
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: spotify
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
+      MYSQL_DATABASE: userDb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
       - mysqldata:/var/lib/mysql
     ports:

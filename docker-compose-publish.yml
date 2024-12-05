@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:6
+    image: mongo:latest
     container_name: DB-Catalog
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
@@ -34,7 +34,7 @@ services:
 
   # MySQL for User Service
   mysql:
-    image: mysql:8
+    image: mysql:latest
     container_name: DB-User
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -81,9 +81,8 @@ services:
       - app-network
 
 volumes:
-  pgdata: # For PostgreSQL data persistence
-  mongodata: # For MongoDB data persistence
-  mysqldata: # For MySQL data persistence
+  mongodata: mongo-data
+  mysqldata: mysql-data
 
 networks:
   app-network:

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { artists, GetTop } from '../../../../Components/Functions'
+import { GetTop } from '../../../../Components/Functions'
 import Header from '../../../../Components/Header/Header'
 import Artist from '../../../../Components/Elements/Artist/Artist'
+import { useSelector } from 'react-redux';
 
 function PopularArtists() {
   const [showName, setShowName] = useState(false);
@@ -27,6 +28,8 @@ function PopularArtists() {
     }, []);
 
     GetTop("Popular artists")
+    const artists = useSelector((state)=> state.artists.data)
+
 
   return (
     <div className='relative py-2 pb-80'>

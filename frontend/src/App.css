@@ -140,3 +140,10 @@
 .table-row td {
   white-space: nowrap; /* Prevent text wrapping for cleaner rows */
 }
+
+
+
+.BG{
+  background-position: center;
+  object-fit: cover;
+}

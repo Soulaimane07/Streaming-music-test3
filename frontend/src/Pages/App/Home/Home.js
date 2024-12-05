@@ -4,6 +4,7 @@ import Box1 from './Box1'
 import Box2 from './Box2'
 import Box3 from './Box3'
 import { GetTop } from '../../../Components/Functions'
+import { useSelector } from 'react-redux'
 
 function Home() {
     const [showName, setShowName] = useState(false);
@@ -29,6 +30,9 @@ function Home() {
     }, []);
 
     GetTop("Browse your music")
+
+
+    
 
   return (
       <div className='flex-1 relative pb-60'>

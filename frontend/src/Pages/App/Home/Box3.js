@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Artist from '../../../Components/Elements/Artist/Artist'
-// import { useSelector } from 'react-redux'
-import { artists } from '../../../Components/Functions'
+import { useSelector } from 'react-redux'
 
 function Box3() {
-    // const artists = useSelector(state => state.artists.data)
+    const artists = useSelector(state => state.artists.data)
 
   return (
     <div className='px-10 mt-16'>
@@ -14,7 +13,7 @@ function Box3() {
             <Link to={"/artists/popular"} className='hover:underline'> Show all </Link>
         </div>
         <div className=' grid grid-cols-6 gap-6'>
-            {artists.map((item, key)=> (
+            {artists?.map((item, key)=> (
                 key < 6 && <Artist data={item} key={key} />
             ))}
         </div>

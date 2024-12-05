@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../../../Components/Header/Header'
 import { useSelector } from 'react-redux';
-import { artists, genres, playlists, tracks } from '../../../Components/Functions'
+import { playlists, tracks } from '../../../Components/Functions'
 import Artist from '../../../Components/Elements/Artist/Artist'
 import PlaylistBox from '../../../Components/Playlist/PlaylistBox'
 import { ProfileTrack } from '../../../Components/Elements/Tracks/Tracks';
@@ -32,6 +32,8 @@ function Search() {
     }, []);
 
     const searchText = useSelector(state => state.searchBox.data)
+    const genres = useSelector((state)=> state.genres.data)
+    const artists = useSelector((state)=> state.artists.data)
 
 
 
@@ -40,6 +42,8 @@ function Search() {
 
     const [option, setOption] = useState("All")
     const [hover, setHover] = useState(null)
+
+
 
 
   return (
@@ -52,10 +56,10 @@ function Search() {
                     {genres?.map((item,key)=>(
                         <button 
                             key={key}
-                            onClick={()=> setOption(item.title)}
-                            className={`${option == item.title ? " bg-white text-black hover:bg-zinc-200 " : "bg-zinc-700 hover:bg-zinc-600 "} bg-transparent rounded-2xl px-5 py-1.5 text-sm font-medium transition-all `}
+                            onClick={()=> setOption(item?.id)}
+                            className={`${option == item?.id ? " bg-white text-black hover:bg-zinc-200 " : "bg-zinc-700 hover:bg-zinc-600 "} bg-transparent rounded-2xl px-5 py-1.5 text-sm font-medium transition-all `}
                         > 
-                            {item.title} 
+                            {item?.name} 
                         </button>
                     ))}
                 </ul>

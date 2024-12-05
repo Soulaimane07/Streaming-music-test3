@@ -24,7 +24,7 @@ namespace Catalog_Service.Controllers
             var genres = _genres.Find(_ => true).ToList();
 
             // Project the genres into a simplified format
-            var result = genres.Select(g => new { id = g.Id.ToString(), name = g.Name }).ToList();
+            var result = genres.Select(g => new { id = g.Id.ToString(), name = g.Name, image = g.Image }).ToList();
 
             return Ok(result);
         }
@@ -44,7 +44,7 @@ namespace Catalog_Service.Controllers
                 return NotFound();
             }
 
-            return Ok(new { id = genre.Id.ToString(), name = genre.Name });
+            return Ok(new { id = genre.Id.ToString(), name = genre.Name, image = genre.Image });
         }
 
         [HttpPost]
@@ -56,7 +56,7 @@ namespace Catalog_Service.Controllers
             }
 
             _genres.InsertOne(genre);
-            return CreatedAtAction(nameof(GetOneGenre), new { id = genre.Id.ToString() }, new { id = genre.Id.ToString(), name = genre.Name });
+            return CreatedAtAction(nameof(GetOneGenre), new { id = genre.Id.ToString() }, new { id = genre.Id.ToString(), name = genre.Name, image = genre.Image });
         }
         
 
@@ -86,7 +86,7 @@ namespace Catalog_Service.Controllers
             // Retrieve the updated genre document from the database to include in the response
             var genre = _genres.Find(g => g.Id == objectId).FirstOrDefault();
 
-            return Ok(new { id = genre.Id.ToString(), name = genre.Name });
+            return Ok(new { id = genre.Id.ToString(), name = genre.Name, image = genre.Image });
         }
 
 

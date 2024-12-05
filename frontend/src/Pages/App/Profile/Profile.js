@@ -6,7 +6,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RiEditCircleLine } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../../Components/Redux/Slices/UserSlice';
-import { artists, GetTop, playlists, tracks } from '../../../Components/Functions';
+import { GetTop, playlists, tracks } from '../../../Components/Functions';
 import PlaylistBox from '../../../Components/Playlist/PlaylistBox';
 import { ProfileTrack } from '../../../Components/Elements/Tracks/Tracks';
 
@@ -55,6 +55,10 @@ function Profile() {
 
 
     const [hover, setHover] = useState(false);
+
+
+    const artists = useSelector((state)=> state.artists.data)
+
 
 
     return (
@@ -112,7 +116,7 @@ function Profile() {
                         <Link to={"/top/artists"} className='text-sm font-medium hover:underline'> Show all </Link>
                     </div>
 
-                    <ul className='px-14 mt-6 justify-between flex'>
+                    <ul className='px-14 mt-6 justify-between grid grid-cols-6'>
                         {artists?.map((item,key)=>(
                             key < 6 && <Artist data={item} id={key} key={key} />
                         ))}
@@ -130,7 +134,7 @@ function Profile() {
 
                 <div>
                     <h1 className='text-xl font-bold px-12'> Following </h1>
-                    <ul className='px-14 mt-6 justify-between flex'>
+                    <ul className='px-14 mt-6 justify-between grid grid-cols-6'>
                         {artists?.map((item,key)=>(
                             key < 6 && <Artist data={item} id={key} key={key} />
                         ))}

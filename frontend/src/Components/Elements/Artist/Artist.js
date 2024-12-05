@@ -8,14 +8,14 @@ function Artist({data}) {
 
   return (
     <Link 
-        to={"/artists/120"}
+        to={`/artists/${data?.id}`}
         onMouseEnter={()=> setDisplay(true)} 
         onMouseLeave={()=> setDisplay(false)}
         className='hover:bg-zinc-800 p-2 pb-4 rounded-md transition-all bg-transparent bg-opacity-80 pr-2 overflow-hidden items-center space-x-3  text-left'
     >
-        {data?.image 
+        {data?.imageCard 
           ?
-            <div style={{ backgroundImage: `url('../images/singer.jpg')` }} className='w-40 relative h-40 mx-auto BGImage rounded-full'>
+            <div style={{ backgroundImage: `url(${data?.imageCard})` }} className='w-40 shadow-lg shadow-zinc-950 relative h-40 mx-auto BGImage rounded-full'>
                 <i className={`bg-purple-600 p-4 rounded-full absolute right-3 transition-all duration-300 ease-in-out transform ${display ? "opacity-100 translate-y-28" : "opacity-0 translate-y-32"}`}>
                   <FaPlay size={18} />
                 </i>

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { login, logout } from './Components/Redux/Slices/UserSlice';
 import { getArtists } from './Components/Redux/Slices/ArtistsSlice';
 import { getSongs } from './Components/Redux/Slices/SongsSlice';
+import { getGenres } from './Components/Redux/Slices/GenresSlice';
 
 function App() {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function App() {
 
       dispatch(getArtists());
       dispatch(getSongs());
+      dispatch(getGenres());
     } else {
       dispatch(logout())
       setIsLogged(false)

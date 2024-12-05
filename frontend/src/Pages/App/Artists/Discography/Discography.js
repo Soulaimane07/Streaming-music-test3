@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { albums, artist } from '../../../../Components/Functions';
+import { albums } from '../../../../Components/Functions';
 import { FaHeart, FaUserAlt } from 'react-icons/fa';
 import Elements from '../../../../Components/Elements/Discography/Elements';
+import { useDispatch, useSelector } from 'react-redux';
+import { getArtist } from '../../../../Components/Redux/Slices/ArtistsSlice';
+import { useParams } from 'react-router-dom';
 
 function Discography() {
     const [showName, setShowName] = useState(false);
@@ -27,19 +30,31 @@ function Discography() {
     }, []);
 
 
+
+
+
+    const {id} = useParams()
+    const dispatch = useDispatch()
+  
+    useEffect(() => {
+        dispatch(getArtist(id));
+    }, [id, dispatch]);
+    
+    const artist = useSelector((state)=> state.artists.artist)
+
   return (
     <div className='pb-80'>
         <div className=' relative'>
             <div 
-                style={{ backgroundImage: `url('../images/eminem.jpg')` }} 
+                style={{ backgroundImage: `url(${artist?.imageCard})` }} 
                 //   bg-gradient-to-b from-gray-500 to-zinc-900
-                className=' bg-cover w-full h-80 pt-72  flex items-end pb-14 justify-between px-12'
+                className=' bg-cover w-full h-80 pt-72  flex object-cover BG items-end pb-14 justify-between px-12'
             >
                 <div className='flex items-center space-x-4'>
                     <div>
                         <h2 className='text-sm font-medium'> Artist </h2>
                         <h1 className='text-6xl font-bold mt-4' > {artist?.name} </h1>
-                        <h2 className=' text-ms font-medium opacity-70 mt-4'> {Number(artist?.monthlyListeners || 0).toLocaleString()} Monthly listeners </h2>
+                        <h2 className=' text-ms font-medium opacity-70 mt-4'> {Number(artist?.monlis || 0).toLocaleString()} Monthly listeners </h2>
                     </div>
                 </div>
                 <div className='flex items-center mb-8 space-x-2'>
@@ -52,7 +67,7 @@ function Discography() {
         <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-1 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
             <div className='flex items-center space-x-4'>
                 <div className='bg-zinc-600 w-14 h-14 overflow-hidden flex items-center justify-center rounded-full'>
-                    {!artist?.name ? <FaUserAlt size={20} /> : <img src={artist?.image} /> }
+                    {!artist?.imageBg ? <FaUserAlt size={20} /> : <img src={artist?.imageBg} alt={artist?.name} /> }
                 </div>
                 <h1 className='text-2xl font-bold'> {artist?.name} </h1>
             </div>
@@ -66,12 +81,6 @@ function Discography() {
             {albums?.map((item,key)=>(
                 <Elements data={item} key={key} />
             ))}
-            {/* <TracksTable showName={showName} type="plays" />
-            <ul className='mt-2 px-12 space-y-2'>
-                {tracks?.map((item,key)=>(
-                    <ArtistTrack data={item} hover={hover} setHover={setHover} id={key} key={key} />
-                ))}
-            </ul> */}
         </div>
     </div>
   )

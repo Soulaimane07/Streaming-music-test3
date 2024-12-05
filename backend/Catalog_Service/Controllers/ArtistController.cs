@@ -30,7 +30,7 @@ namespace Catalog_Service.Controllers
         {
             var artists = _artists.Find(_ => true).ToList();
 
-            var result = artists.Select(g => new { id = g.Id.ToString(), name = g.Name, description = g.Description, image = g.ImageUrl }).ToList();
+            var result = artists.Select(g => new { id = g.Id.ToString(), name = g.Name, description = g.Description, imageBg = g.ImageBg, imageCard = g.ImageBg, monlis = g.MonthlyListeners }).ToList();
 
             return Ok(result);
         }
@@ -58,8 +58,10 @@ namespace Catalog_Service.Controllers
                 id = artist.Id.ToString(),
                 name = artist.Name,
                 description = artist.Description,
-                image = artist.ImageUrl,
-                songs = songs.Select(s => new { id = s.Id.ToString(), name = s.Name, description = s.Description, duration = s.Duration, audioUrl = s.AudioUrl, image = s.ImageUrl }).ToList()
+                imageCard = artist.ImageCard,
+                imageBg = artist.ImageBg,
+                monlis = artist.MonthlyListeners,
+                songs = songs.Select(s => new { id = s.Id.ToString(), name = s.Name, description = s.Description, duration = s.Duration, audioUrl = s.AudioUrl }).ToList()
             });
         }
 
@@ -74,7 +76,7 @@ namespace Catalog_Service.Controllers
             }
 
             _artists.InsertOne(artist);
-            return CreatedAtAction(nameof(GetOneArtistWithSongs), new { id = artist.Id.ToString() }, new { id = artist.Id.ToString(), name = artist.Name, description = artist.Description, image = artist.ImageUrl });
+            return CreatedAtAction(nameof(GetOneArtistWithSongs), new { id = artist.Id.ToString() }, new { id = artist.Id.ToString(), name = artist.Name, description = artist.Description, imageBg = artist.ImageBg, imageCard = artist.ImageBg, monlis = artist.MonthlyListeners });
         }
         
 
@@ -94,7 +96,8 @@ namespace Catalog_Service.Controllers
             var update = Builders<Artist>.Update
                 .Set(g => g.Name, updatedArtist.Name)
                 .Set(g => g.Description, updatedArtist.Description)
-                .Set(g => g.ImageUrl, updatedArtist.ImageUrl);
+                .Set(g => g.ImageCard, updatedArtist.ImageCard)
+                .Set(g => g.ImageBg, updatedArtist.ImageBg);
 
             var result = _artists.UpdateOne(g => g.Id == objectId, update);
 
@@ -105,7 +108,7 @@ namespace Catalog_Service.Controllers
 
             var artist = _artists.Find(g => g.Id == objectId).FirstOrDefault();
 
-            return Ok(new { id = artist.Id.ToString(), name = artist.Name, description = artist.Description, image = artist.ImageUrl  });
+            return Ok(new { id = artist.Id.ToString(), name = artist.Name, description = artist.Description, imageBg = artist.ImageBg, imageCard = artist.ImageBg, monlis = artist.MonthlyListeners  });
         }
 
 

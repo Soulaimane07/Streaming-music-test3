@@ -13,6 +13,8 @@ namespace Catalog_Service.Models
         public ObjectId Id { get; set; }  // MongoDB ObjectId for _id
         public required string Name { get; set; }
         public required string Description { get; set; }
-        public required string ImageUrl { get; set; }
+        public required string ImageBg { get; set; }
+        public required string ImageCard { get; set; }
+        public required int MonthlyListeners { get; set; }
     }
 }

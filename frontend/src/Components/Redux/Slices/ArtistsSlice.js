@@ -8,10 +8,17 @@ export const getArtists = createAsyncThunk('catalog/getArtists', async () => {
   return data; // Return the fetched data
 });
 
+export const getArtist = createAsyncThunk('catalog/getArtist', async (id) => {
+  const response = await fetch(`${CatalogServiceUrl}/artists/${id}`); // Replace with your API endpoint
+  const data = await response.json();
+  return data; // Return the fetched data
+});
+
 export const artistsSlice = createSlice({
   name: 'artists',
   initialState: {
     data: [],
+    artist: null,
     loading: false,
     error: null,
   },
@@ -27,6 +34,19 @@ export const artistsSlice = createSlice({
         state.data = action.payload; // Set the fetched artists data to state
       })
       .addCase(getArtists.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message; // Store the error message
+      })
+      
+      .addCase(getArtist.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getArtist.fulfilled, (state, action) => {
+        state.loading = false;
+        state.artist = action.payload; // Set the fetched artists data to state
+      })
+      .addCase(getArtist.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message; // Store the error message
       });

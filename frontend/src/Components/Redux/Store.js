@@ -4,6 +4,7 @@ import musicReducer from './Slices/MusicSlice';
 import artistsReducer from './Slices/ArtistsSlice';
 import songsReducer from './Slices/SongsSlice';
 import SearchReducer from './Slices/SearchSlice';
+import GenresReducer from './Slices/GenresSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     artists: artistsReducer,
     songs: songsReducer,
     searchBox: SearchReducer,
+    genres: GenresReducer,
   },
 });
 

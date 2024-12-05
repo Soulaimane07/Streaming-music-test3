@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOCKER_IMAGE_BACKEND: soulaimane00/service-user
+      DOCKER_IMAGE_BACKEND_CATALOG: soulaimane00/service-catalog
+      DOCKER_IMAGE_BACKEND_USER: soulaimane00/service-user
       DOCKER_IMAGE_FRONTEND: soulaimane00/frontend
 
     steps:
@@ -37,7 +38,10 @@ jobs:
           docker-compose -f docker-compose-publish.yml build --no-cache
 
           # Push the backend image to Docker Hub
-          docker push $DOCKER_IMAGE_BACKEND:1.0.0
+          docker push $DOCKER_IMAGE_BACKEND_CATALOG:1.0.0
+
+          # Push the backend image to Docker Hub
+          docker push $DOCKER_IMAGE_BACKEND_USER:1.0.0
 
           # Push the frontend image to Docker Hub
           docker push $DOCKER_IMAGE_FRONTEND:1.0.0

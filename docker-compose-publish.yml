@@ -20,6 +20,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/catalog/Dockerfile
+    image: ${DOCKER_IMAGE_BACKEND_CATALOG}:1.0.0
     container_name: Service-Catalog
     ports:
       - "8081:8080"
@@ -52,6 +53,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/user/Dockerfile
+    image: ${DOCKER_IMAGE_BACKEND_USER}:1.0.0
     container_name: Service-User
     ports:
       - "8082:8080"
@@ -68,6 +70,7 @@ services:
     build:
       context: .
       dockerfile: docker/frontend/Dockerfile
+    image: ${DOCKER_IMAGE_FRONTEND}:1.0.0
     container_name: Frontend
     ports:
       - "3000:3000"

@@ -1,38 +1,69 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database service
-  postgres:
-    image: postgres:15
-    container_name: DB-User
+  mongodb:
+    image: mongo:6
+    container_name: DB-Catalog
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: spotify
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: CatalogDb
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mongodata:/data/db
     ports:
-      - "5432:5432"
+      - "27017:27017"
     networks:
       - app-network
 
-  # User Service backend
+  # Catalog Service
+  catalog-service:
+    build:
+      context: .
+      dockerfile: docker/backend/catalog/Dockerfile
+    container_name: Service-Catalog
+    ports:
+      - "8081:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=catalogdb;Username=admin;Password=password
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  # MySQL for User Service
+  mysql:
+    image: mysql:8
+    container_name: DB-User
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user_service_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  # User Service
   user-service:
     build:
       context: .
-      dockerfile: docker/backend/Dockerfile
+      dockerfile: docker/backend/user/Dockerfile
     container_name: Service-User
     ports:
-      - "8080:8080"
+      - "8082:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Username=postgres;Password=123456;Database=spotify
+      - ConnectionStrings__DefaultConnection=Host=mysql;Port=3306;Database=spotify;Username=user;Password=userpassword
     depends_on:
-      - postgres
+      - mysql
     networks:
       - app-network
 
-  # Frontend service
+  # Frontend Service
   frontend:
     build:
       context: .
@@ -42,11 +73,14 @@ services:
       - "3000:3000"
     depends_on:
       - user-service
+      - catalog-service
     networks:
       - app-network
 
 volumes:
-  pgdata:  # For PostgreSQL data persistence
+  pgdata: # For PostgreSQL data persistence
+  mongodata: # For MongoDB data persistence
+  mysqldata: # For MySQL data persistence
 
 networks:
   app-network:

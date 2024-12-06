@@ -9,7 +9,7 @@ export const NavbarPlaylist = ({data, hover, setHover}) => {
         <Link
             onMouseEnter={()=> setHover(data?.title)}
             onMouseLeave={()=> setHover(null)}
-            to={`/playlists/${data?.title}`} 
+            to={data?.icon ? "/playlists/favorite-songs" : `/playlists/${data?.id}`} 
             className={ 
                 `w-full items-center flex space-x-2.5 hover:bg-zinc-700 hover:opacity-100 rounded-sm transition-all mb-1 px-2 py-1.5 opacity-60 `
             }

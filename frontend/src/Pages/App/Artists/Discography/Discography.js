@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { albums } from '../../../../Components/Functions';
 import { FaHeart, FaUserAlt } from 'react-icons/fa';
 import Elements from '../../../../Components/Elements/Discography/Elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArtist } from '../../../../Components/Redux/Slices/ArtistsSlice';
 import { useParams } from 'react-router-dom';
+import { GetTop } from '../../../../Components/Functions';
 
 function Discography() {
     const [showName, setShowName] = useState(false);
@@ -41,12 +41,16 @@ function Discography() {
     }, [id, dispatch]);
     
     const artist = useSelector((state)=> state.artists.artist)
+    GetTop(`${artist?.name} - Discography`)
+
+
+
 
   return (
     <div className='pb-80'>
         <div className=' relative'>
             <div 
-                style={{ backgroundImage: `url(${artist?.imageCard})` }} 
+                style={{ backgroundImage: `url(${artist?.imageBg})` }} 
                 //   bg-gradient-to-b from-gray-500 to-zinc-900
                 className=' bg-cover w-full h-80 pt-72  flex object-cover BG items-end pb-14 justify-between px-12'
             >
@@ -67,7 +71,7 @@ function Discography() {
         <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-1 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
             <div className='flex items-center space-x-4'>
                 <div className='bg-zinc-600 w-14 h-14 overflow-hidden flex items-center justify-center rounded-full'>
-                    {!artist?.imageBg ? <FaUserAlt size={20} /> : <img src={artist?.imageBg} alt={artist?.name} /> }
+                    {!artist?.imageBg ? <FaUserAlt size={20} /> : <img src={artist?.imageCard} className='w-full h-full object-cover' /> }
                 </div>
                 <h1 className='text-2xl font-bold'> {artist?.name} </h1>
             </div>
@@ -78,7 +82,7 @@ function Discography() {
         </div>
 
         <div className=' relative px-16 space-y-16'>
-            {albums?.map((item,key)=>(
+            {artist?.albums?.map((item,key)=>(
                 <Elements data={item} key={key} />
             ))}
         </div>

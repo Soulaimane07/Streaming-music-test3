@@ -14,6 +14,7 @@ import BrowseAll from '../Pages/App/Search/BrowseAll';
 import Genres from '../Pages/App/Genres/Genres';
 import Tracks from '../Pages/App/Top/Tracks/Tracks';
 import Albums from '../Pages/App/Albums/Albums';
+import Favorite from '../Pages/App/Favorite/Favorite';
 
 function App() {
   const music = useSelector(state => state.music);
@@ -37,6 +38,7 @@ function App() {
             </Route>
             <Route path="/playlists">
               <Route path=":id" element={<Playlists />} />
+              <Route path="favorite-songs" element={<Favorite />} />
             </Route>
             <Route path="/search">
               <Route index element={<BrowseAll />} />

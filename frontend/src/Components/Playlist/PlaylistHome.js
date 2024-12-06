@@ -8,7 +8,7 @@ function PlaylistHome({data}) {
 
   return (
     <Link 
-        to={`/playlists/${data?.title}`} 
+        to={data?.icon ? "/playlists/favorite-songs" : `/playlists/${data?.id}`} 
         onMouseEnter={()=> setDisplay(true)} 
         onMouseLeave={()=> setDisplay(false)}
         className='bg-zinc-900 hover:bg-zinc-800 relative transition-all bg-opacity-80 rounded-sm pr-2 overflow-hidden flex items-center space-x-3  text-left'

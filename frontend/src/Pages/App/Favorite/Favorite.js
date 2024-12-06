@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
 import { GetTop, tracks } from '../../../Components/Functions';
-import { TbPlaylist } from 'react-icons/tb';
-import { GoDotFill } from 'react-icons/go';
-import PlaylisControlls from '../../../Components/Elements/Playlists/PlaylisControlls';
-import TracksTable from '../../../Components/Elements/Tracks/TracksTable';
-import { ArtistTrack } from '../../../Components/Elements/Tracks/Tracks';
 import { FaHeart, FaPlay } from 'react-icons/fa';
-import { getAlbum } from '../../../Components/Redux/Slices/AlbumsSlice';
+import { TbPlaylist } from 'react-icons/tb';
+import { PlaylistTrack } from '../../../Components/Elements/Tracks/Tracks';
+import TracksTable from '../../../Components/Elements/Tracks/TracksTable';
 
-function Albums() {
+import { GoDotFill } from "react-icons/go";
+import PlaylisControlls from '../../../Components/Elements/Playlists/PlaylisControlls';
+import { useSelector } from 'react-redux';
 
+
+function Favorite() {
     const [showName, setShowName] = useState(false);
     const nameDivRef = useRef(null);
 
@@ -38,43 +37,29 @@ function Albums() {
 
 
 
-    const {id} = useParams()
-    const dispatch = useDispatch()
-  
-    useEffect(() => {
-        dispatch(getAlbum(id));
-    }, [id, dispatch]);
-    
-    const album = useSelector((state)=> state.albums.album)
-    GetTop(`${album?.title} - album`)
+    const user = useSelector(state => state.user.data)
+    GetTop(`Favorite songs`)
     
 
 
     return (
         <div className='pb-80 '>
             <div className=' relative'>
-                <div className='bg-gradient-to-b from-purple-900 to-zinc-900 w-full h-72  flex items-end pb-14 justify-between px-12'>
+                <div className='bg-gradient-to-b from-gray-500 to-zinc-900 w-full h-72  flex items-end pb-14 justify-between px-12'>
                     <div className='flex items-center space-x-4'>
                         <div className='bg-gradient-to-tr from-purple-700 to-white rounded-sm overflow-hidden'> 
-                            {album?.image 
-                                ? 
-                                    <img src={album?.image} className='w-44 h-44 rounded-sm' alt="song" />
-                                : 
-                                    <div className='w-40 h-40 flex items-center justify-center'>
-                                        <TbPlaylist size={40} />
-                                    </div>
-                            }
+                            <div className='w-40 h-40 flex items-center justify-center'>
+                                <FaHeart size={60} />
+                            </div>
                         </div>
 
                         <div>
-                            <h2 className='text-sm font-medium'> Album </h2>
-                            <h1 className='text-6xl font-bold mt-4' > {album?.title ?? "Album title"} </h1>
+                            <h2 className='text-sm font-medium'> Playlist </h2>
+                            <h1 className='text-6xl font-bold mt-4' > Favorite Songs </h1>
                             <h2 className=' mt-4 opacity-90 text-sm font-medium flex items-baseline space-x-2'> 
-                                <Link to={`/artists/${album?.artist?.id}`} className='hover:underline transition-all'>{album?.artist?.name ?? "Artist"}</Link> 
-                                <GoDotFill size={10} className=' opacity-70' /> 
-                                <p className=' opacity-70'> {album?.year} </p>
-                                <GoDotFill size={10} className=' opacity-70' /> 
-                                <p className=' opacity-70'> {album?.songs} Songs </p>
+                                <p>{user?.name ?? "Owner"}</p> 
+                                <GoDotFill size={10} /> 
+                                <p className=' opacity-70'> 0 Songs </p>
                             </h2>
                         </div>
 
@@ -84,27 +69,27 @@ function Albums() {
                     </div>
                 </div>
                 <div className='bg-red-6000 mb-10 px-12 w-full'>
-                    <PlaylisControlls data={album} />
+                    <PlaylisControlls data={null} />
                 </div>
                 <div ref={nameDivRef} className=' opacity-0  absolute bottom-2 '> 0 </div>
             </div>
 
             <div aria-hidden={!showName} className={`sticky -mt-16 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100 visiblee' : 'opacity-0 hiddenn'}`}>
                 <div className='flex items-center space-x-2'>
-                    <button title={`Play ${album?.title}`} className='bg-violet-500 p-4 rounded-full hover:scale-105 transition-all'> <FaPlay size={13} /> </button>
-                    <h1 className='text-2xl font-bold'> {album?.title} </h1>
+                    <button title={`Play Favorite Songs`} className='bg-violet-500 p-4 rounded-full hover:scale-105 transition-all'> <FaPlay size={13} /> </button>
+                    <h1 className='text-2xl font-bold'> Favorite Songs </h1>
                 </div>
                 
                 <button title='Follow' className=' transition-all hover:bg-violet-600 p-2 rounded-md'> <FaHeart size={26} /> </button>
             </div>
 
 
-            <TracksTable showName={showName} nameDivRef={nameDivRef} type={"plays"} />
+            <TracksTable showName={showName} nameDivRef={nameDivRef} type="album" />
 
             <div className="min-h-screen relative">
                 <ul className='px-12'>
                     {tracks.map((item, key) => (
-                        <ArtistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
+                        <PlaylistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
                     ))}
                 </ul>
             </div>
@@ -112,4 +97,4 @@ function Albums() {
     );
 }
 
-export default Albums
+export default Favorite;

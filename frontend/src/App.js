@@ -8,6 +8,7 @@ import { login, logout } from './Components/Redux/Slices/UserSlice';
 import { getArtists } from './Components/Redux/Slices/ArtistsSlice';
 import { getSongs } from './Components/Redux/Slices/SongsSlice';
 import { getGenres } from './Components/Redux/Slices/GenresSlice';
+import { getPlaylists } from './Components/Redux/Slices/PlaylistsSlice';
 
 function App() {
   const dispatch = useDispatch()
@@ -22,9 +23,10 @@ function App() {
       dispatch(login(userLocal))
       setIsLogged(true)
 
-      dispatch(getArtists());
-      dispatch(getSongs());
       dispatch(getGenres());
+      dispatch(getSongs());
+      dispatch(getArtists());
+      dispatch(getPlaylists());
     } else {
       dispatch(logout())
       setIsLogged(false)

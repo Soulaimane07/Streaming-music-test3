@@ -16,5 +16,8 @@ namespace Catalog_Service.Models
         public required string ImageBg { get; set; }
         public required string ImageCard { get; set; }
         public required int MonthlyListeners { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> Albums { get; set; } = new();
     }
 }

@@ -10,7 +10,7 @@ function PlaylistBox({data}) {
 
   return (
     <Link 
-        to={`/playlists/${data.title}`}
+        to={`/playlists/${data?.id}`}
         onMouseEnter={()=> setDisplay(true)} 
         onMouseLeave={()=> setDisplay(false)}
         className='p-2 pb-4 hover:bg-zinc-800 rounded-md transition-all bg-transparent bg-opacity-80 pr-2 overflow-hidden items-center space-x-3  text-left'

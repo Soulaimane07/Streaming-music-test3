@@ -5,6 +5,7 @@ import Controlls from './Controlls'
 import TracksTable from '../Tracks/TracksTable'
 import { tracks } from '../../Functions'
 import { DiscographyTrack } from '../Tracks/Tracks'
+import { Link } from 'react-router-dom'
 
 function Elements({data}) {
     const [hover, setHover] = useState(false)
@@ -26,20 +27,19 @@ function Elements({data}) {
 
                     <div className=' flex flex-col justify-between'>
                         <div>
-                            <h1 className='text-4xl font-bold '> {data?.title ?? "Playlist title"} </h1>
+                            <Link to={`/albums/${data?.id}`} className='text-4xl hover:underline transition-all font-bold '> {data?.title ?? "Playlist title"} </Link>
                             <h2 className=' mt-2 opacity-70 text-sm font-medium flex items-baseline space-x-2'> 
                                 <p className=' '> Album </p>
                                 <GoDotFill size={10} /> 
-                                <p className=' '> 2024 </p>
+                                <p className=' '> {data?.year} </p>
                                 <GoDotFill size={10} /> 
-                                <p className=' '> 14 Songs </p>
+                                <p className=' '> {data?.songs} Songs </p>
                             </h2>
                         </div>
                         <div>
                             <Controlls data={data} />
                         </div>
                     </div>
-
                 </div>
             </div>
             <div>
@@ -50,7 +50,6 @@ function Elements({data}) {
                     ))}
                 </ul>
             </div>
-
         </div>
   )
 }

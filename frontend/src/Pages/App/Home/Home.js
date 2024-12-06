@@ -29,16 +29,19 @@ function Home() {
         };
     }, []);
 
-    GetTop("Browse your music")
+    GetTop("Web player: Music for everyone")
 
+
+    const playlists = useSelector((state)=> state.playlists.data)
+    
 
     
 
   return (
       <div className='flex-1 relative pb-60'>
         <Header title="Good evening" bg={false} showName={showName} />
-        <Box1 nameDivRef={nameDivRef} />
-        <Box2 />
+        <Box1 playlists={playlists} nameDivRef={nameDivRef} />
+        <Box2 playlists={playlists} />
         <Box3 />
       </div>
   )

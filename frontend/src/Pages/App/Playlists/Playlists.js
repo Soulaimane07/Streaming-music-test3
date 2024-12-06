@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { playlist, tracks } from '../../../Components/Functions';
+import { GetTop, tracks } from '../../../Components/Functions';
 import { FaHeart, FaPlay } from 'react-icons/fa';
 import { TbPlaylist } from 'react-icons/tb';
 import { PlaylistTrack } from '../../../Components/Elements/Tracks/Tracks';
 import TracksTable from '../../../Components/Elements/Tracks/TracksTable';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { GoDotFill } from "react-icons/go";
 import PlaylisControlls from '../../../Components/Elements/Playlists/PlaylisControlls';
+import { getPlaylist } from '../../../Components/Redux/Slices/PlaylistsSlice';
 
 
 function Playlists() {
@@ -38,8 +39,17 @@ function Playlists() {
 
 
 
+
     const {id} = useParams()
-    const user = useSelector(state => state.user.data)
+    const dispatch = useDispatch()
+  
+    useEffect(() => {
+        dispatch(getPlaylist(id));
+    }, [id, dispatch]);
+    
+    const playlist = useSelector((state)=> state.playlists.playlist)
+    GetTop(`${playlist?.title} - playlist`)
+    
 
 
     return (
@@ -60,11 +70,11 @@ function Playlists() {
 
                         <div>
                             <h2 className='text-sm font-medium'> Playlist </h2>
-                            <h1 className='text-6xl font-bold mt-4' > {id ?? "Playlist title"} </h1>
+                            <h1 className='text-6xl font-bold mt-4' > {playlist?.title ?? "Playlist"} </h1>
                             <h2 className=' mt-4 opacity-90 text-sm font-medium flex items-baseline space-x-2'> 
-                                <p>{playlist?.user ?? user?.name}</p> 
+                                <p>{playlist?.user ?? "Owner"}</p> 
                                 <GoDotFill size={10} /> 
-                                <p className=' opacity-70'> 100 Songs </p>
+                                <p className=' opacity-70'> {playlist?.songs} Songs </p>
                             </h2>
                         </div>
 

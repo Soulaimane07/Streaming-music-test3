@@ -3,6 +3,7 @@ import Header from '../../../Components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getGenre } from '../../../Components/Redux/Slices/GenresSlice';
+import { GetTop } from '../../../Components/Functions';
 
 function Genres() { 
   const [showName, setShowName] = useState(false);
@@ -39,6 +40,8 @@ function Genres() {
   }, [id])
 
   const genre = useSelector((state)=> state.genres.genre)
+  GetTop(genre?.name + " - Genre")
+
   
 
 

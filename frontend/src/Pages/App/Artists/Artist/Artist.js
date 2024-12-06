@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { albums, tracks } from '../../../../Components/Functions';
+import { GetTop, tracks } from '../../../../Components/Functions';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaHeart } from "react-icons/fa6";
 import { Link, useParams } from 'react-router-dom';
@@ -7,9 +7,11 @@ import { ArtistTrack } from '../../../../Components/Elements/Tracks/Tracks';
 import { ArtistAlbum } from '../../../../Components/Elements/Albums/Album';
 import { useDispatch, useSelector } from 'react-redux';
 import { getArtist } from '../../../../Components/Redux/Slices/ArtistsSlice';
+import Spinner from '../../../../Components/Spinner/Spinner';
 
 
 function Artist() {
+
 
     const [showName, setShowName] = useState(false);
     const nameDivRef = useRef(null);
@@ -47,15 +49,17 @@ function Artist() {
         dispatch(getArtist(id));
     }, [id, dispatch]);
     
+    const loading = useSelector((state)=> state.artists.loading)
     const artist = useSelector((state)=> state.artists.artist)
+    GetTop(`${artist?.name} - artist`)
     
 
 
   return (
-    <div>
+    <>
         <div className=' relative'>
             <div 
-                style={{ backgroundImage: `url(${artist?.imageCard})` }} 
+                style={{ backgroundImage: `url(${artist?.imageBg})` }} 
                 //   bg-gradient-to-b from-gray-500 to-zinc-900
                 className=' bg-cover w-full h-80 pt-72  flex object-cover BG items-end pb-14 justify-between px-12'
             >
@@ -76,7 +80,7 @@ function Artist() {
         <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
             <div className='flex items-center space-x-4'>
                 <div className='bg-zinc-600 w-14 h-14 overflow-hidden flex items-center justify-center rounded-full'>
-                    {!artist?.imageBg ? <FaUserAlt size={20} /> : <img src={artist?.imageBg} className='w-full h-full object-cover' /> }
+                    {!artist?.imageBg ? <FaUserAlt size={20} /> : <img src={artist?.imageCard} className='w-full h-full object-cover' /> }
                 </div>
                 <h1 className='text-2xl font-bold'> {artist?.name} </h1>
             </div>
@@ -97,19 +101,30 @@ function Artist() {
                 <button onClick={()=> setSongs(songs === 10 ? songs-5 : songs+5)} className='px-12 mt-8 opacity-50 transition-all hover:opacity-100'> {songs === 10 ? "See Less" : "See More"} </button>
             </div>
 
-            <div>
-                <div className='flex items-center justify-between px-12'>
-                    <Link to={"discography"} className='text-xl font-bold hover:underline'> Discography </Link>
-                    <Link to={"discography"} className='text-sm font-medium hover:underline'> Show all </Link>
-                </div>
-                <ul className='px-12 mt-6 space-x-4 flex'>
-                    {albums?.map((item,key)=>(
-                        key < 6 && <ArtistAlbum data={item} id={key} key={key} />
-                    ))}
-                </ul>
-            </div>
+            {loading 
+                ?
+                    <div className='flex items-center justify-between px-12'>
+                        <Spinner />
+                    </div>
+                :
+                    artist?.albums?.length 
+                        ?
+                            <div>
+                                <div className='flex items-center justify-between px-12'>
+                                    <Link to={"discography"} className='text-xl font-bold hover:underline'> Discography </Link>
+                                    <Link to={"discography"} className='text-sm font-medium hover:underline'> Show all </Link>
+                                </div>
+                                <ul className='px-12 mt-6 space-x-4 flex'>
+                                    {artist?.albums?.map((item,key)=>(
+                                        key < 6 && <ArtistAlbum data={item} id={key} key={key} />
+                                    ))}
+                                </ul>
+                            </div>
+                        : null
+            }
+            
         </div>
-    </div>
+    </>
   )
 }
 

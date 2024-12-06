@@ -6,16 +6,14 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { RiEditCircleLine } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../../Components/Redux/Slices/UserSlice';
-import { GetTop, playlists, tracks } from '../../../Components/Functions';
+import { GetTop, tracks } from '../../../Components/Functions';
 import PlaylistBox from '../../../Components/Playlist/PlaylistBox';
 import { ProfileTrack } from '../../../Components/Elements/Tracks/Tracks';
 
 
 function Profile() {
-    GetTop()
-
-    
     const user = useSelector((state) => state.user.data);
+    GetTop(user?.name)
 
     const [showName, setShowName] = useState(false);
     const nameDivRef = useRef(null);
@@ -58,13 +56,14 @@ function Profile() {
 
 
     const artists = useSelector((state)=> state.artists.data)
+    const playlists = useSelector((state)=> state.playlists.data)
 
 
 
     return (
         <div className='relative'>
             <div className=' relative'>
-                <div className='bg-gradient-to-b from-violet-500 to-zinc-900 w-full h-72  flex items-end pb-14 justify-between px-12'>
+                <div className='bg-gradient-to-b from-violet-800 to-zinc-900 w-full h-72  flex items-end pb-14 justify-between px-12'>
                     <div className='flex items-center space-x-4'>
                         <div className='bg-zinc-600 shadow-lg w-40 h-40 flex items-center justify-center rounded-full'>
                             <FaUserAlt size={40} />

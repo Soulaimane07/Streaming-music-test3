@@ -9,16 +9,8 @@ export const musicSlice = createSlice({
   },
   reducers: {
     play: (state, action) => {
-      state.data = {
-        musicName: "Euphoria",
-        musicImage: '../images/song.jpg',
-        artists: {
-          image: '../images/singer.jpg',
-          name: "Kendrick Lamar"
-        }
-      }
+      state.data = action.payload
       state.isPlaying = true
-      state.isDetails = true
       console.log("==> Played");
     },
     pause: (state) => {
@@ -29,9 +21,13 @@ export const musicSlice = createSlice({
       state.isDetails = false
       console.log("==> closed");
     },
+    openDetails: (state) => {
+      state.isDetails = true
+      console.log("==> opened");
+    },
   },
 });
 
-export const { play, pause, closeDetails } = musicSlice.actions;
+export const { play, pause, openDetails, closeDetails } = musicSlice.actions;
 
 export default musicSlice.reducer;

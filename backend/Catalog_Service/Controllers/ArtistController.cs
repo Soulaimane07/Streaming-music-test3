@@ -16,12 +16,13 @@
         {
             private readonly IMongoCollection<Artist> _artists;
             private readonly IMongoCollection<Album> _albums;
-            
+            private readonly IMongoCollection<Song> _songs;
 
             public ArtistController(CatalogDbContext context)
             {
                 _artists = context.Artists; // Access the MongoDB collection
                 _albums = context.Albums;
+                _songs = context.Songs;
             }
 
             [HttpGet]
@@ -43,46 +44,78 @@
             }
 
             [HttpGet("{id}")]
-            public IActionResult GetOneArtist(string id)
+public IActionResult GetOneArtist(string id)
+{
+    if (!ObjectId.TryParse(id, out var objectId))
+    {
+        return BadRequest("Invalid ID format.");
+    }
+
+    // Fetch the artist
+    var artist = _artists.Find(a => a.Id == objectId).FirstOrDefault();
+    if (artist == null)
+    {
+        return NotFound();
+    }
+
+    // Fetch all album details for this artist
+    var albumIds = artist.Albums ?? new List<string>();
+    var objectIdAlbums = albumIds
+        .Where(albumId => ObjectId.TryParse(albumId, out _))
+        .Select(albumId => ObjectId.Parse(albumId))
+        .ToList();
+
+    var albums = _albums.Find(album => objectIdAlbums.Contains(album.Id)).ToList();
+
+    // Fetch the artist's specific songs (those not tied to albums)
+    var artistSongs = _songs.Find(song => song.ArtistId == artist.Id.ToString()).ToList();
+
+    // Fetch associated songs for each album
+    var albumsWithSongs = albums.Select(album => new
+    {
+        id = album.Id.ToString(),
+        title = album.Title,
+        image = album.Image,
+        year = album.Year,
+        songs = album.SongIds
+            .Select(songId => _songs.Find(s => s.Id == ObjectId.Parse(songId)).FirstOrDefault())
+            .Where(song => song != null) // Ensure nulls are removed
+            .Select(song => new
             {
-                if (!ObjectId.TryParse(id, out var objectId))
-                {
-                    return BadRequest("Invalid ID format.");
-                }
+                id = song.Id.ToString(),
+                name = song.Name,
+                description = song.Description,
+                duration = song.Duration,
+                audioUrl = song.AudioUrl,
+                imageUrl = song.ImageUrl
+            })
+            .ToList()
+    }).ToList();
 
-                var artist = _artists.Find(a => a.Id == objectId).FirstOrDefault();
-                if (artist == null)
-                {
-                    return NotFound();
-                }
+    // Prepare the final response with both artist and album songs
+    return Ok(new
+    {
+        id = artist.Id.ToString(),
+        name = artist.Name,
+        description = artist.Description,
+        imageCard = artist.ImageCard,
+        imageBg = artist.ImageBg,
+        monlis = artist.MonthlyListeners,
+        albums = albumsWithSongs,
+        artistSongs = artistSongs.Select(song => new
+        {
+            id = song.Id.ToString(),
+            name = song.Name,
+            description = song.Description,
+            duration = song.Duration,
+            audioUrl = song.AudioUrl,
+            imageUrl = song.ImageUrl
+        }).ToList()
+    });
+}
 
-                // Fetch all album details for this artist
-                var albumIds = artist.Albums ?? new List<string>();
-                var objectIdAlbums = albumIds
-                    .Where(albumId => ObjectId.TryParse(albumId, out _))
-                    .Select(albumId => ObjectId.Parse(albumId))
-                    .ToList();
 
-                var albums = _albums.Find(album => objectIdAlbums.Contains(album.Id)).ToList();
 
-                return Ok(new
-                {
-                    id = artist.Id.ToString(),
-                    name = artist.Name,
-                    description = artist.Description,
-                    imageCard = artist.ImageCard,
-                    imageBg = artist.ImageBg,
-                    monlis = artist.MonthlyListeners,
-                    albums = albums.Select(a => new
-                    {
-                        id = a.Id.ToString(),
-                        title = a.Title,
-                        image = a.Image,
-                        songs = a.Songs,
-                        year = a.Year
-                    }).ToList()
-                });
-            }
 
 
 

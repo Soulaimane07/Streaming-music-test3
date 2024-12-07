@@ -43,6 +43,7 @@ function Discography() {
     const artist = useSelector((state)=> state.artists.artist)
     GetTop(`${artist?.name} - Discography`)
 
+    const music = useSelector(state => state.music)
 
 
 
@@ -83,7 +84,7 @@ function Discography() {
 
         <div className=' relative px-16 space-y-16'>
             {artist?.albums?.map((item,key)=>(
-                <Elements data={item} key={key} />
+                <Elements data={item} key={key} music={music} />
             ))}
         </div>
     </div>

@@ -46,8 +46,14 @@ function Albums() {
     }, [id, dispatch]);
     
     const album = useSelector((state)=> state.albums.album)
+    
     GetTop(`${album?.title} - album`)
     
+
+
+
+  const music = useSelector(state => state.music)
+
 
 
     return (
@@ -74,7 +80,7 @@ function Albums() {
                                 <GoDotFill size={10} className=' opacity-70' /> 
                                 <p className=' opacity-70'> {album?.year} </p>
                                 <GoDotFill size={10} className=' opacity-70' /> 
-                                <p className=' opacity-70'> {album?.songs} Songs </p>
+                                <p className=' opacity-70'> {album?.songs?.length} Songs </p>
                             </h2>
                         </div>
 
@@ -84,14 +90,14 @@ function Albums() {
                     </div>
                 </div>
                 <div className='bg-red-6000 mb-10 px-12 w-full'>
-                    <PlaylisControlls data={album} />
+                    {album?.songs?.length ? <PlaylisControlls data={album} /> : null}
                 </div>
                 <div ref={nameDivRef} className=' opacity-0  absolute bottom-2 '> 0 </div>
             </div>
 
             <div aria-hidden={!showName} className={`sticky -mt-16 px-12 w-full top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-opacity duration-300 flex items-center justify-between ${showName ? 'opacity-100 visiblee' : 'opacity-0 hiddenn'}`}>
                 <div className='flex items-center space-x-2'>
-                    <button title={`Play ${album?.title}`} className='bg-violet-500 p-4 rounded-full hover:scale-105 transition-all'> <FaPlay size={13} /> </button>
+                    {album?.songs?.length ? <button title={`Play ${album?.title}`} className='bg-violet-500 p-4 rounded-full hover:scale-105 transition-all'> <FaPlay size={13} /> </button> : null}
                     <h1 className='text-2xl font-bold'> {album?.title} </h1>
                 </div>
                 
@@ -99,12 +105,12 @@ function Albums() {
             </div>
 
 
-            <TracksTable showName={showName} nameDivRef={nameDivRef} type={"plays"} />
+            {album?.songs?.length ? <TracksTable showName={showName} nameDivRef={nameDivRef} type={"plays"} /> : null}
 
             <div className="min-h-screen relative">
                 <ul className='px-12'>
-                    {tracks.map((item, key) => (
-                        <ArtistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
+                    {album?.songs?.map((item, key) => (
+                        <ArtistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} music={music} />
                     ))}
                 </ul>
             </div>

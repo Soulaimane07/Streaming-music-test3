@@ -81,7 +81,7 @@ function Profile() {
                 <div ref={nameDivRef} className=' opacity-0 absolute bottom-16'> 0 </div>
             </div>
 
-            <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full transition-all duration-300 top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-all flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
+            <div aria-hidden={!showName} className={`sticky -mt-10 px-12 w-full duration-300 top-0 left-0 bg-zinc-800 shadow-md z-50 py-3 transition-all flex items-center justify-between ${showName ? 'opacity-100' : 'opacity-0'}`}>
                 <h1 className='text-2xl font-bold'> {user?.name} </h1>
 
                 <div className='flex items-center space-x-2'>

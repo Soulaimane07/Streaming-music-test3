@@ -17,11 +17,14 @@ namespace Catalog_Service.Controllers
     {
         private readonly IMongoCollection<Song> _songs;
         private readonly IMongoCollection<Artist> _artists;
+        private readonly IMongoCollection<Album> _albums;
+
 
         public SongController(CatalogDbContext context)
         {
             _songs = context.Songs; // Access the MongoDB collection
             _artists = context.Artists; // Access the MongoDB collection
+            _albums = context.Albums;
         }
 
         [HttpGet]
@@ -142,5 +145,51 @@ namespace Catalog_Service.Controllers
 
             return Ok();
         }
+
+
+
+
+[HttpPost("add-song")]
+public IActionResult AddSongToAlbum([FromBody] Song song)
+{
+    if (song == null || string.IsNullOrWhiteSpace(song.Name) || string.IsNullOrWhiteSpace(song.AlbumId))
+    {
+        return BadRequest("Song data is required and must include a valid name and AlbumId.");
+    }
+
+    // Validate AlbumId
+    if (!ObjectId.TryParse(song.AlbumId, out var albumObjectId))
+    {
+        return BadRequest("Invalid Album ID format.");
+    }
+
+    // Fetch the album
+    var album = _albums.Find(a => a.Id == albumObjectId).FirstOrDefault();
+    if (album == null)
+    {
+        return NotFound($"Album with ID {song.AlbumId} not found.");
+    }
+
+    // Insert the song into the Songs collection
+    _songs.InsertOne(song);
+
+    // Update the Album's SongIds list
+    var update = Builders<Album>.Update.Push(a => a.SongIds, song.Id.ToString());
+    _albums.UpdateOne(a => a.Id == albumObjectId, update);
+
+    // Return the created song details
+    return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, new
+    {
+        id = song.Id.ToString(),
+        name = song.Name,
+        description = song.Description,
+        duration = song.Duration,
+        audioUrl = song.AudioUrl,
+        imageUrl = song.ImageUrl,
+        albumId = song.AlbumId
+    });
+}
+
+
     }
 }

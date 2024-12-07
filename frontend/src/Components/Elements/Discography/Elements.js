@@ -3,12 +3,13 @@ import { GoDotFill } from 'react-icons/go'
 import { TbPlaylist } from 'react-icons/tb'
 import Controlls from './Controlls'
 import TracksTable from '../Tracks/TracksTable'
-import { tracks } from '../../Functions'
 import { DiscographyTrack } from '../Tracks/Tracks'
 import { Link } from 'react-router-dom'
 
-function Elements({data}) {
+function Elements({data, music}) {
     const [hover, setHover] = useState(false)
+    console.log(data);
+    
 
   return (
         <div className=' relative'>
@@ -33,20 +34,20 @@ function Elements({data}) {
                                 <GoDotFill size={10} /> 
                                 <p className=' '> {data?.year} </p>
                                 <GoDotFill size={10} /> 
-                                <p className=' '> {data?.songs} Songs </p>
+                                <p className=' '> {data?.songs?.length} Songs </p>
                             </h2>
                         </div>
                         <div>
-                            <Controlls data={data} />
+                            {data?.songs?.length ? <Controlls data={data} /> : null }
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <TracksTable showName={null} type="plays" />
+                {data?.songs?.length ? <TracksTable showName={null} type="plays" /> : null }
                 <ul className='mt-2 px-12 space-y-2'>
-                    {tracks?.map((item,key)=>(
-                        <DiscographyTrack data={item} hover={hover} setHover={setHover} id={key} key={key} />
+                    {data?.songs?.map((item,key)=>(
+                        <DiscographyTrack data={item} hover={hover} setHover={setHover} id={key} key={key} music={music} />
                     ))}
                 </ul>
             </div>

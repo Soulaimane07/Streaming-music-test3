@@ -18,5 +18,8 @@ namespace Catalog_Service.Models
 
         [BsonRepresentation(BsonType.ObjectId)]  // Store as string in MongoDB
         public required string ArtistId { get; set; }  // Reference to the Artist
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> SongIds { get; set; } = new();
     }
 }

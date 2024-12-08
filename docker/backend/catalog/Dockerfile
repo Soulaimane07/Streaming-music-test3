@@ -20,4 +20,4 @@ COPY --from=build /app/publish/. .
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["dotnet", "Catalog.Service.dll"]
+ENTRYPOINT ["dotnet", "Catalog_Service.dll"]

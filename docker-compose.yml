@@ -16,10 +16,11 @@ services:
     networks:
       - spotify
 
+
   user-service:
     build:
-      context: . # Point to the source code directory
-      dockerfile: ./docker/backend/user/Dockerfile # Relative path to the Dockerfile
+      context: .
+      dockerfile: ./docker/backend/user/Dockerfile
     container_name: Service-User
     ports:
       - "8091:8080"
@@ -31,9 +32,58 @@ services:
     networks:
       - spotify
 
+
+  mongodb:
+    image: mongo:6
+    container_name: DB-Catalog
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: CatalogDb
+    volumes:
+      - mongo-db:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - spotify
+
+
+  catalog-service:
+    build:
+      context: .
+      dockerfile: docker/backend/catalog/Dockerfile
+    container_name: Service-Catalog
+    ports:
+      - "8090:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+    depends_on:
+      - mongodb
+    networks:
+      - spotify
+
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    container_name: Frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - catalog-service
+    networks:
+      - spotify
+
+
 networks:
   spotify:
     driver: bridge
 
 volumes:
   mysql-db:
+    external: true
+  mongo-db:
+    external: true

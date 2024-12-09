@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Playlist_Service.props" />
+</Project>

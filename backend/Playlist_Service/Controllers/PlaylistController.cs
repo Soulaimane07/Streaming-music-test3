@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Catalog_Service.Data;
-using Catalog_Service.Models;
+using Playlist_Service.Data;
+using Playlist_Service.Models;
 using MongoDB.Driver;
 using MongoDB.Bson;
 
-namespace Catalog_Service.Controllers
+namespace Playlist_Service.Controllers
 {
     [ApiController]
     [Route("api/playlists")]
@@ -16,7 +16,7 @@ namespace Catalog_Service.Controllers
     {
         private readonly IMongoCollection<Playlist> _playlists;
 
-        public PlaylistController(CatalogDbContext context)
+        public PlaylistController(PlaylistDbContext context)
         {
             _playlists = context.Playlists; // Access the MongoDB collection for playlists
         }

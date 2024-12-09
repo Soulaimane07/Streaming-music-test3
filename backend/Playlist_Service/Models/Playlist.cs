@@ -21,7 +21,7 @@ namespace Playlist_Service.Models
         [BsonRequired]
         public required int Songs { get; set; }
 
-        [BsonRequired]
-        public required int UserId { get; set; }
+        // [BsonRequired]
+        // public required int UserId { get; set; }
     }
 }

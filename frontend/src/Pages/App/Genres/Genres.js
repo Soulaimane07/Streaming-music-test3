@@ -3,9 +3,14 @@ import Header from '../../../Components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getGenre } from '../../../Components/Redux/Slices/GenresSlice';
-import { GetTop } from '../../../Components/Functions';
+import { GetTop, PageTitle } from '../../../Components/Functions';
+import Footer2 from '../../../Components/Footer2/Footer2';
 
 function Genres() { 
+  useEffect(()=> {
+    GetTop()
+  }, [])
+
   const [showName, setShowName] = useState(false);
   const nameDivRef = useRef(null);
 
@@ -40,22 +45,25 @@ function Genres() {
   }, [id])
 
   const genre = useSelector((state)=> state.genres.genre)
-  GetTop(genre?.name + " - Genre")
+  PageTitle(genre?.name + " - Genre")
 
   
 
 
   return (
-    <div className='relative py-2 pb-60'>
-        <Header title={genre?.name ?? "Genre title"} bg={true} showName={showName} />
+    <div className='flex-1 relative '>
+        <div className='pb-40  min-h-screen'>
+          <Header title={genre?.name ?? "Genre title"} bg={true} showName={showName} />
 
-        <>
-          <div ref={nameDivRef} className='min-h-40 pt-20 -mt-24 pb-20 bg-gradient-to-b from-purple-900 to-zinc-900  px-10'>
-              <h1 className=' mt-4 mb-8 text-6xl font-bold'> {genre?.name ?? "Genre title"} </h1>
-          </div>
-          <div className='h-screen px-12'>
-          </div>
-        </>
+          <>
+            <div ref={nameDivRef} className='min-h-40 pt-20 -mt-24 pb-20 bg-gradient-to-b from-purple-900 to-zinc-900  px-10'>
+                <h1 className=' mt-4 mb-8 text-6xl font-bold'> {genre?.name ?? "Genre title"} </h1>
+            </div>
+            <div className='px-12'>
+            </div>
+          </>
+        </div>
+        <Footer2 />
     </div>
   )
 }

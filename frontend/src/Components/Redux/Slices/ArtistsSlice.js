@@ -19,35 +19,36 @@ export const artistsSlice = createSlice({
   initialState: {
     data: [],
     artist: null,
-    loading: false,
+    loadingArtists: false,
+    loadingArtist: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getArtists.pending, (state) => {
-        state.loading = true;
+        state.loadingArtists = true;
         state.error = null;
       })
       .addCase(getArtists.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingArtists = false;
         state.data = action.payload; // Set the fetched artists data to state
       })
       .addCase(getArtists.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingArtists = false;
         state.error = action.error.message; // Store the error message
       })
       
       .addCase(getArtist.pending, (state) => {
-        state.loading = true;
+        state.loadingArtist = true;
         state.error = null;
       })
       .addCase(getArtist.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingArtist = false;
         state.artist = action.payload; // Set the fetched artists data to state
       })
       .addCase(getArtist.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingArtist = false;
         state.error = action.error.message; // Store the error message
       });
   },

@@ -10,10 +10,14 @@ export const tracks = [{"image": "../images/song.jpg", "title": "Lbaroud", "albu
 
 
 
-export const GetTop = (title) => {
+export const GetTop = () => {
+    console.log("hhhh");
+    
+    window.scrollTo(0, 0); // Scroll to the top of the page
+}
+
+export const PageTitle = (title) => {
     useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to the top of the page
         document.title = "Spotify | " + title;
-        console.log("--> Get Top");
     }, [title]);
 }

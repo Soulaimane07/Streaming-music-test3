@@ -19,6 +19,7 @@ export const playlistsSlice = createSlice({
   initialState: {
     data: [],
     playlist: null,
+    loadingPlaylists: false,
     loading: false,
     error: null,
   },
@@ -26,15 +27,15 @@ export const playlistsSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(getPlaylists.pending, (state) => {
-      state.loading = true;
+      state.loadingPlaylists = true;
       state.error = null;
     })
     .addCase(getPlaylists.fulfilled, (state, action) => {
-      state.loading = false;
+      state.loadingPlaylists = false;
       state.data = action.payload; // Set the fetched artists data to state
     })
     .addCase(getPlaylists.rejected, (state, action) => {
-      state.loading = false;
+      state.loadingPlaylists = false;
       state.error = action.error.message; // Store the error message
     })
     

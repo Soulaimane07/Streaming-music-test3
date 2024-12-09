@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export const UserServiceUrl = "http://localhost:5002/api"
 export const CatalogServiceUrl = "http://localhost:5003/api"
@@ -11,8 +12,6 @@ export const tracks = [{"image": "../images/song.jpg", "title": "Lbaroud", "albu
 
 
 export const GetTop = () => {
-    console.log("hhhh");
-    
     window.scrollTo(0, 0); // Scroll to the top of the page
 }
 
@@ -20,4 +19,21 @@ export const PageTitle = (title) => {
     useEffect(() => {
         document.title = "Spotify | " + title;
     }, [title]);
+}
+
+
+export const GetPlans = () => {
+    const [plans, setPlans] = useState([])
+    
+    useEffect(()=> {
+        axios.get(`${UserServiceUrl}/subscriptionplans`)
+            .then((res)=> {
+                setPlans(res.data)
+            })
+            .catch((err)=> {
+                console.error(err);
+            })
+    }, [])
+
+    return plans
 }

@@ -15,6 +15,7 @@ import Genres from '../Pages/App/Genres/Genres';
 import Tracks from '../Pages/App/Top/Tracks/Tracks';
 import Albums from '../Pages/App/Albums/Albums';
 import Favorite from '../Pages/App/Favorite/Favorite';
+import Settings from '../Pages/App/Settings/Settings';
 
 function App() {
   const music = useSelector(state => state.music);
@@ -52,6 +53,7 @@ function App() {
               <Route index element={<Profile />} />
               <Route path='playlists' element={<Profile />} />
               <Route path='followings' element={<Profile />} />
+              <Route path='settings' element={<Settings />} />
             </Route>
             <Route path="/*" element={<Navigate to="/" replace={true} />} />
           </Routes>

@@ -31,8 +31,7 @@ function Login() {
         axios.post(`${UserServiceUrl}/users/login`, user)
             .then((res)=> {
                 if(res.status === 200){
-                    console.log(res.data)
-                    dispatch(login(res.data))
+                    dispatch(login(res.data.user))
                     navigate('/')
                 }
                 setSpinner(false)

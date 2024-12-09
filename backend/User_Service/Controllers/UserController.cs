@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace User_Service.Controllers
 {
@@ -23,7 +23,15 @@ namespace User_Service.Controllers
             _configuration = configuration;
         }
 
-        // Create a new user
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] User user)
         {
@@ -36,7 +44,6 @@ namespace User_Service.Controllers
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.UserId }, createdUser);
         }
 
-        // Get a user by ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
@@ -48,48 +55,6 @@ namespace User_Service.Controllers
             return Ok(user);
         }
 
-        // Get all users
-        [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
-        }
-
-        // Update an existing user
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User updatedUser)
-        {
-            if (updatedUser == null)
-            {
-                return BadRequest("User data is required.");
-            }
-
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound($"User with ID {id} not found.");
-            }
-
-            await _userService.UpdateUserAsync(id, updatedUser);
-            return NoContent(); // 204 No Content
-        }
-
-        // Delete a user
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound($"User with ID {id} not found.");
-            }
-
-            await _userService.DeleteUserAsync(id);
-            return NoContent(); // 204 No Content
-        }
-
-
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
@@ -99,32 +64,21 @@ namespace User_Service.Controllers
             }
 
             var user = await _userService.GetUserByEmailAsync(loginModel.Email);
-
-            if (user == null || user.Password != loginModel.Password)  // You should use hashed passwords, not plain text
+            if (user == null || user.Password != loginModel.Password)  // You should use hashed passwords
             {
                 return Unauthorized("Invalid credentials.");
             }
 
             var token = GenerateJwtToken(user);
-            return Ok(user);
+            return Ok(new { Token = token, User = user });
         }
-
-
 
         private string GenerateJwtToken(User user)
         {
-            // Ensure the key has at least 256 bits (32 bytes)
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-256-bit-long-secret-key-here")); // 32 bytes long key
-
-            // Create JWT claims and credentials
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.Name, user.Email),
-                // Add other claims here...
-            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-256-bit-long-secret-key-here"));
+            var claims = new[] { new Claim(ClaimTypes.Name, user.Email) };
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            
             var token = new JwtSecurityToken(
                 issuer: "your_issuer",
                 audience: "your_audience",
@@ -136,7 +90,7 @@ namespace User_Service.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-
+        // Additional CRUD actions here...
     }
 
     public class LoginModel

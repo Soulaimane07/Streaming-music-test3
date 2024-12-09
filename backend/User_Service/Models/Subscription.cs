@@ -2,19 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using User_Service.Models;
 
 namespace User_Service.Models
 {
     public class Subscription
     {
-        public int SubscriptionId { get; set; }
-        public int UserId { get; set; }
-        public string PlanName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public bool IsActive { get; set; }
+        public int SubscriptionId { get; set; }  // No need to mark this as required if it's auto-generated.
+        
+        public required int UserId { get; set; }
+        public User User { get; set; }
 
-        // You can include User object here if needed for GET or other operations, but not on POST
-        // public User User { get; set; }
+        public required int SubscriptionPlanId { get; set; }
+        public SubscriptionPlan SubscriptionPlan { get; set; }
+
+        public required DateTime StartDate { get; set; }
+        public required DateTime EndDate { get; set; }
     }
+
 }

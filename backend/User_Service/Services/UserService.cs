@@ -12,6 +12,9 @@ namespace User_Service.Services
     {
         private readonly UserDbContext _context;
 
+
+
+
         public UserService(UserDbContext context)
         {
             _context = context;
@@ -60,59 +63,73 @@ namespace User_Service.Services
         }
 
 
-        public async Task<Subscription> CreateSubscriptionAsync(Subscription subscription)
+
+
+
+
+        public async Task<Subscription> CreateSubscriptionAsync(int userId, int subscriptionPlanId, DateTime startDate, DateTime endDate, bool isActive)
         {
-            // Fetch the user by the provided userId
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == subscription.UserId);
+            // Fetch the user by userId
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             if (user == null)
             {
-                throw new Exception($"User with ID {subscription.UserId} not found.");
+                throw new Exception($"User with ID {userId} not found.");
             }
 
-            // Associate the user with the subscription
-            subscription.UserId = user.UserId; // Ensure that subscription is linked to a valid user
+            // Fetch the subscription plan by subscriptionPlanId
+            var subscriptionPlan = await _context.SubscriptionPlans.FirstOrDefaultAsync(sp => sp.SubscriptionPlanId == subscriptionPlanId);
+            if (subscriptionPlan == null)
+            {
+                throw new Exception($"Subscription Plan with ID {subscriptionPlanId} not found.");
+            }
 
+            // Create the subscription
+            var subscription = new Subscription
+            {
+                UserId = userId,
+                SubscriptionPlanId = subscriptionPlanId,
+                StartDate = startDate,
+                EndDate = endDate
+            };
+
+            // Add to the database
             _context.Subscriptions.Add(subscription);
             await _context.SaveChangesAsync();
+
             return subscription;
         }
 
-
-        // Get a subscription by ID
         public async Task<Subscription> GetSubscriptionByIdAsync(int id)
         {
             return await _context.Subscriptions
                 .FirstOrDefaultAsync(s => s.SubscriptionId == id);
         }
 
-        // Get subscriptions for a specific user
         public async Task<List<Subscription>> GetUserSubscriptionsAsync(int userId)
         {
             return await _context.Subscriptions
                 .Where(s => s.UserId == userId)
+                .Include(s => s.SubscriptionPlan)  // Include SubscriptionPlan details
                 .ToListAsync();
         }
 
-        // Update a subscription
-        public async Task UpdateSubscriptionAsync(int id, Subscription updatedSubscription)
+        public async Task UpdateSubscriptionAsync(int id, int subscriptionPlanId, DateTime startDate, DateTime endDate)
         {
-            var subscription = await GetSubscriptionByIdAsync(id);
+            var subscription = await _context.Subscriptions.FirstOrDefaultAsync(s => s.SubscriptionId == id);
             if (subscription != null)
             {
-                subscription.PlanName = updatedSubscription.PlanName;
-                subscription.StartDate = updatedSubscription.StartDate;
-                subscription.EndDate = updatedSubscription.EndDate;
-                subscription.IsActive = updatedSubscription.IsActive;
+                subscription.SubscriptionPlanId = subscriptionPlanId;
+                subscription.StartDate = startDate;
+                subscription.EndDate = endDate;
 
                 _context.Subscriptions.Update(subscription);
                 await _context.SaveChangesAsync();
             }
         }
 
-        // Delete a subscription
         public async Task DeleteSubscriptionAsync(int id)
         {
-            var subscription = await GetSubscriptionByIdAsync(id);
+            var subscription = await _context.Subscriptions.FirstOrDefaultAsync(s => s.SubscriptionId == id);
             if (subscription != null)
             {
                 _context.Subscriptions.Remove(subscription);
@@ -120,14 +137,57 @@ namespace User_Service.Services
             }
         }
 
-
-
         public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
 
+
+
+
+        public async Task<SubscriptionPlan> CreateSubscriptionPlanAsync(SubscriptionPlan subscriptionPlan)
+        {
+            _context.SubscriptionPlans.Add(subscriptionPlan);
+            await _context.SaveChangesAsync();
+            return subscriptionPlan;
+        }
+
+        public async Task<SubscriptionPlan?> GetSubscriptionPlanByIdAsync(int id)
+        {
+            return await _context.SubscriptionPlans.FirstOrDefaultAsync(sp => sp.SubscriptionPlanId == id);
+        }
+
+        public async Task<List<SubscriptionPlan>> GetAllSubscriptionPlansAsync()
+        {
+            return await _context.SubscriptionPlans.ToListAsync();
+        }
+
+        public async Task UpdateSubscriptionPlanAsync(int id, SubscriptionPlan updatedPlan)
+        {
+            var subscriptionPlan = await GetSubscriptionPlanByIdAsync(id);
+            if (subscriptionPlan != null)
+            {
+                subscriptionPlan.Name = updatedPlan.Name;
+                subscriptionPlan.Description = updatedPlan.Description;
+                subscriptionPlan.DescriptionText = updatedPlan.DescriptionText;
+                subscriptionPlan.Color = updatedPlan.Color;
+                subscriptionPlan.Image = updatedPlan.Image;
+
+                _context.SubscriptionPlans.Update(subscriptionPlan);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteSubscriptionPlanAsync(int id)
+        {
+            var subscriptionPlan = await GetSubscriptionPlanByIdAsync(id);
+            if (subscriptionPlan != null)
+            {
+                _context.SubscriptionPlans.Remove(subscriptionPlan);
+                await _context.SaveChangesAsync();
+            }
+        }
 
 
     }

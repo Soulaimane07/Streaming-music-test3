@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using User_Service.Services;
 using User_Service.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace User_Service.Controllers
 {
@@ -15,7 +17,6 @@ namespace User_Service.Controllers
             _userService = userService;
         }
 
-        // Create a new subscription
         [HttpPost]
         public async Task<IActionResult> CreateSubscription([FromBody] Subscription subscription)
         {
@@ -24,19 +25,17 @@ namespace User_Service.Controllers
                 return BadRequest("Subscription data is required.");
             }
 
-            // Ensure that the user exists and create the subscription
             try
             {
-                var createdSubscription = await _userService.CreateSubscriptionAsync(subscription);
+                var createdSubscription = await _userService.CreateSubscriptionAsync(subscription.UserId, subscription.SubscriptionPlanId, subscription.StartDate, subscription.EndDate, true); // Set subscription active
                 return CreatedAtAction(nameof(GetSubscriptionById), new { id = createdSubscription.SubscriptionId }, createdSubscription);
             }
             catch (Exception ex)
             {
-                return NotFound(ex.Message); // Return error if user is not found
+                return NotFound(ex.Message); // Return error if user or plan is not found
             }
         }
 
-        // Get a subscription by ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSubscriptionById(int id)
         {
@@ -48,7 +47,6 @@ namespace User_Service.Controllers
             return Ok(subscription);
         }
 
-        // Get all subscriptions for a specific user
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetSubscriptionsByUserId(int userId)
         {
@@ -60,7 +58,6 @@ namespace User_Service.Controllers
             return Ok(subscriptions);
         }
 
-        // Update a subscription
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSubscription(int id, [FromBody] Subscription updatedSubscription)
         {
@@ -75,11 +72,13 @@ namespace User_Service.Controllers
                 return NotFound($"Subscription with ID {id} not found.");
             }
 
-            await _userService.UpdateSubscriptionAsync(id, updatedSubscription);
+            // Add the missing parameters (startDate, endDate, and isActive) here
+            await _userService.UpdateSubscriptionAsync(id, updatedSubscription.SubscriptionPlanId, updatedSubscription.StartDate, updatedSubscription.EndDate);
+            
             return NoContent(); // 204 No Content
         }
 
-        // Delete a subscription
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSubscription(int id)
         {
@@ -92,6 +91,5 @@ namespace User_Service.Controllers
             await _userService.DeleteSubscriptionAsync(id);
             return NoContent(); // 204 No Content
         }
-
     }
 }

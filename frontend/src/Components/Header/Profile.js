@@ -39,7 +39,7 @@ function Profile() {
           className=' absolute rounded-md right-0 bg-zinc-800 mt-2 transition-all overflow-hidden w-52 flex flex-col text-left '
         >
           <Link to={"/profile"} className='hover:bg-zinc-700 transition-all py-3 text-left px-6'> Profile </Link>
-          <button className='hover:bg-zinc-700 transition-all py-3 text-left px-6'> Settings </button>
+          <Link to={"/profile/settings"} className='hover:bg-zinc-700 transition-all py-3 text-left px-6'> Settings </Link>
           <hr className=' opacity-40'></hr>
           <button 
             onClick={Logout}

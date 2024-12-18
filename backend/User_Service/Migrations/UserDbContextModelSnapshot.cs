@@ -79,6 +79,10 @@ namespace User_Service.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("SubscriptionPlanId");
 
                     b.ToTable("SubscriptionPlans");

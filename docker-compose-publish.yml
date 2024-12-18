@@ -2,20 +2,20 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:6
     container_name: DB-Catalog
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: CatalogDb
     volumes:
-      - mongodata:/data/db
+      - mongo-db:/data/db
     ports:
       - "27017:27017"
     networks:
-      - app-network
+      - spotify
 
-  # Catalog Service
+
   catalog-service:
     build:
       context: .
@@ -30,7 +30,7 @@ services:
     depends_on:
       - mongodb
     networks:
-      - app-network
+      - spotify
 
   # MySQL for User Service
   mysql:
@@ -46,7 +46,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - app-network
+      - spotify
 
   # User Service
   user-service:
@@ -63,7 +63,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - app-network
+      - spotify
 
   # Frontend Service
   frontend:
@@ -78,12 +78,14 @@ services:
       - user-service
       - catalog-service
     networks:
-      - app-network
-
-volumes:
-  mongodata: mongo-data
-  mysqldata: mysql-data
+      - spotify
 
 networks:
-  app-network:
+  spotify:
     driver: bridge
+
+volumes:
+  mysql-db:
+    external: true
+  mongo-db:
+    external: true

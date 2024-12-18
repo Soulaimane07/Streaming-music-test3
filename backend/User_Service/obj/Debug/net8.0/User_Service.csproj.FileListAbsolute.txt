@@ -109,3 +109,7 @@ D:\Coding\Streaming-music-test3\backend\User_Service\obj\Debug\net8.0\refint\Use
 D:\Coding\Streaming-music-test3\backend\User_Service\obj\Debug\net8.0\User_Service.pdb
 D:\Coding\Streaming-music-test3\backend\User_Service\obj\Debug\net8.0\User_Service.genruntimeconfig.cache
 D:\Coding\Streaming-music-test3\backend\User_Service\obj\Debug\net8.0\ref\User_Service.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Stripe.net.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll

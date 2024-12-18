@@ -1,12 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaMinus } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
-import { GetPlans } from '../../../Components/Functions';
+import { GetPlans, UserServiceUrl } from '../../../Components/Functions';
 import Plan from '../../../Components/Elements/Plans/Plan';
 import Footer2 from '../../../Components/Footer2/Footer2';
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe('pk_test_51QUADdAEkvVKIt6fm67B6OmRIE8dTDS4lkHtEOjmXPV83j3mf7Sef7rPswIABRoZaCuMhhxt0vjTTYkSftJ7xozp00Q2unKmDe');
 
 function Settings() {
+    const [loading, setLoading] = useState(null)
+    console.log(loading);
+    
+
     const plans = GetPlans()
+    
+
+    const handleCheckout = async (data) => {
+        try{
+            setLoading(data)
+            const stripe = await stripePromise;
+            
+            const response = await fetch("http://localhost:5002/api/subscriptions/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            
+            const { sessionId } = await response.json();
+            await stripe.redirectToCheckout({ sessionId });
+        }catch(e){
+            setLoading(null)
+            console.error(e);
+        }
+    };
+    
+    
 
   return (
     <div className='flex-1 relative '>
@@ -98,7 +127,7 @@ function Settings() {
                 <h1 className='text-3xl font-bold w-1/2 mx-auto'> Avantages inclus dans tous les abonnements Premium </h1>
                 <div className=' grid grid-cols-3 gap-6 mt-10 '>
                     {plans?.map((item,key)=> (
-                        <Plan data={item} key={key} />
+                        <Plan data={item} key={key} handleCheckout={handleCheckout} loading={loading} />
                     ))}
                 </div>
             </div>

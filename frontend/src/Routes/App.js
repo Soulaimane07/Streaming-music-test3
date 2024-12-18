@@ -26,7 +26,7 @@ function App() {
         <Navbar />
         <div className="Scroll bg-zinc-900 flex-1 rounded-md overflow-y-auto">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/*" element={<Home />} />
             <Route path="/artists">
               <Route path=":id">
                 <Route index element={<Artist />} />
@@ -55,7 +55,7 @@ function App() {
               <Route path='followings' element={<Profile />} />
               <Route path='settings' element={<Settings />} />
             </Route>
-            <Route path="/*" element={<Navigate to="/" replace={true} />} />
+            {/* <Route path="/*" element={<Navigate to="/" replace={true} />} /> */}
           </Routes>
         </div>
         {music.isDetails && <Sidebar />}

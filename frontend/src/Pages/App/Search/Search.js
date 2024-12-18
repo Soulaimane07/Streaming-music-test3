@@ -76,7 +76,7 @@ function Search() {
                             <button 
                                 key={key}
                                 onClick={()=> setOption(item?.id)}
-                                className={`${option == item?.id ? " bg-white text-black hover:bg-zinc-200 " : "bg-zinc-700 hover:bg-zinc-600 "} bg-transparent rounded-2xl px-5 py-1.5 text-sm font-medium transition-all `}
+                                className={`${option === item?.id ? " bg-white text-black hover:bg-zinc-200 " : "bg-zinc-700 hover:bg-zinc-600 "} bg-transparent rounded-2xl px-5 py-1.5 text-sm font-medium transition-all `}
                             > 
                                 {item?.name} 
                             </button>

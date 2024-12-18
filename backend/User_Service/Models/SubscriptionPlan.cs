@@ -13,5 +13,6 @@ namespace User_Service.Models
         public required string DescriptionText { get; set; }
         public required string Color { get; set; }
         public required string Image { get; set; }
+        public required string ProductId { get; set; }
     }
 }

@@ -12,7 +12,7 @@ function Tracks() {
     PageTitle("Top tracks")
 
     const [showName, setShowName] = useState(false);
-  const nameDivRef = useRef(null);
+    const nameDivRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(

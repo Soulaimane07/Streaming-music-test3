@@ -1,4 +1,7 @@
 User_Service/bin
 Catalog_Service/bin
 
-User_Service/obj/Debug
+User_Service/obj
+Catalog_Service/obj
+
+User_Service/Migrations

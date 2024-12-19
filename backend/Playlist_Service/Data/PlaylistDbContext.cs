@@ -7,7 +7,6 @@ namespace Playlist_Service.Data
     {
         private readonly IMongoDatabase _database;
 
-        // Constructor that accepts the connection string
         public PlaylistDbContext(string connectionString)
         {
             var client = new MongoClient(connectionString);

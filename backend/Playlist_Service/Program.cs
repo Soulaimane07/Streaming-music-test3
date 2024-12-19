@@ -1,15 +1,13 @@
 using Playlist_Service.Data;
-using Playlist_Service.Models;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Register PlaylistDbContext
 builder.Services.AddSingleton<PlaylistDbContext>(serviceProvider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("MongoDb");
     return new PlaylistDbContext(connectionString);
 });
-
 
 builder.Services.AddCors(options =>
 {
@@ -21,11 +19,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

@@ -40,3 +40,10 @@ D:\Coding\Streaming-music-test3\backend\Catalog_Service\obj\Debug\net8.0\refint\
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\obj\Debug\net8.0\Catalog_Service.pdb
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\obj\Debug\net8.0\Catalog_Service.genruntimeconfig.cache
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\obj\Debug\net8.0\ref\Catalog_Service.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Google.Protobuf.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.Common.dll

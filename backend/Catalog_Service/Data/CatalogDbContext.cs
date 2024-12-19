@@ -18,6 +18,5 @@ namespace Catalog_Service.Data
         public IMongoCollection<Artist> Artists => _database.GetCollection<Artist>("Artists");
         public IMongoCollection<Song> Songs => _database.GetCollection<Song>("Songs");
         public IMongoCollection<Album> Albums => _database.GetCollection<Album>("Album");
-        // public IMongoCollection<Playlist> Playlists => _database.GetCollection<Playlist>("Playlists");
     }
 }

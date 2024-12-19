@@ -1,27 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Playlist_Service.Controllers;
 
 namespace Playlist_Service.Models
 {
     public class Playlist
     {
-        [BsonId]  // MongoDB's default identifier
-        public ObjectId Id { get; set; }  // MongoDB ObjectId for _id
+        [BsonId]
+        public ObjectId Id { get; set; }
 
-        [BsonRequired]
-        public required string Title { get; set; }
+        [BsonElement("title")]
+        public string Title { get; set; } = string.Empty;
 
-        [BsonRequired]
-        public required string Image { get; set; }
+        [BsonElement("image")]
+        public string Image { get; set; } = string.Empty;
 
-        [BsonRequired]
-        public required int Songs { get; set; }
-
-        // [BsonRequired]
-        // public required int UserId { get; set; }
+        [BsonElement("songs")]
+        public List<Song> Songs { get; set; } = new();
     }
 }

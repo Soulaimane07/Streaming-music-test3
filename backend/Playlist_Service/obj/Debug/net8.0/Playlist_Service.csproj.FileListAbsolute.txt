@@ -38,3 +38,7 @@ D:\Coding\Streaming-music-test3\backend\Playlist_Service\obj\Debug\net8.0\refint
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\obj\Debug\net8.0\Playlist_Service.pdb
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\obj\Debug\net8.0\Playlist_Service.genruntimeconfig.cache
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\obj\Debug\net8.0\ref\Playlist_Service.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Google.Protobuf.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Net.Common.dll

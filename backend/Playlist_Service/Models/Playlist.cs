@@ -1,6 +1,5 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using Playlist_Service.Controllers;
 
 namespace Playlist_Service.Models
 {
@@ -15,7 +14,7 @@ namespace Playlist_Service.Models
         [BsonElement("image")]
         public string Image { get; set; } = string.Empty;
 
-        [BsonElement("songs")]
-        public List<Song> Songs { get; set; } = new();
+        // [BsonElement("songs")]
+        // public List<Song> Songs { get; set; } = new();
     }
 }

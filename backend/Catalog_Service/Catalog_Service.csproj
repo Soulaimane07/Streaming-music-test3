@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.29.2" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
+    <PackageReference Include="Grpc.Core" Version="2.46.6" />
     <PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
     <PackageReference Include="Grpc.Tools" Version="2.68.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,6 +19,9 @@
     <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Protobuf Include="Protos\song.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

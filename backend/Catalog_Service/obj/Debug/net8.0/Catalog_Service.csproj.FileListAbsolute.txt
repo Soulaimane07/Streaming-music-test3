@@ -47,3 +47,9 @@ D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Co
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Net.Common.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Grpc.Core.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll

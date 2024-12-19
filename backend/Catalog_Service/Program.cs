@@ -1,16 +1,32 @@
 using Catalog_Service.Data;
-
-
+using Catalog_Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to use HTTP/1.1 for REST and HTTP/2 for gRPC
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // This applies HTTP/2 to gRPC endpoints
+    options.ListenAnyIP(5004, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+    });
+
+    // Default settings for HTTP/1.1 (For REST API)
+    options.ListenAnyIP(5003, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
+    });
+});
+
+// Register CatalogDbContext with MongoDB connection string
 builder.Services.AddSingleton<CatalogDbContext>(serviceProvider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("MongoDb");
     return new CatalogDbContext(connectionString);
 });
 
-
+// Configure CORS to allow frontend access
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -21,15 +37,16 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add gRPC services
 builder.Services.AddGrpc();
 
 var app = builder.Build();
 
+// Enable Swagger for development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -37,6 +54,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Apply CORS policy
 app.UseCors("AllowFrontend");
+
+// Map controllers (REST API) and gRPC services
 app.MapControllers();
+app.MapGrpcService<SongRPCService>();
+
 app.Run();

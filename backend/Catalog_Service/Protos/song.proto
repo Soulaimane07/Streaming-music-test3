@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "Catalog_Service";
+
+package song;
+
+// The greeting service definition.
+service Songer {
+  // Sends a greeting
+  rpc GetSong (SongRequest) returns (SongResponse);
+}
+
+// The request message containing the user's name.
+message SongRequest {
+  string id = 1;
+}
+
+// The response message containing the greetings.
+message SongResponse {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string duration = 4;
+  string audioUrl = 5;
+  string imageUrl = 6;
+}

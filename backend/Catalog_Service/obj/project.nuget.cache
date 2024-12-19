@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2LfGJO7UXdk=",
+  "dgSpecHash": "AhJj6NfHmsU=",
   "success": true,
   "projectFilePath": "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.aspnetcore\\2.67.0\\grpc.aspnetcore.2.67.0.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.aspnetcore.server\\2.67.0\\grpc.aspnetcore.server.2.67.0.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.67.0\\grpc.aspnetcore.server.clientfactory.2.67.0.nupkg.sha512",
+    "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.core.api\\2.67.0\\grpc.core.api.2.67.0.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.net.client\\2.67.0\\grpc.net.client.2.67.0.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\grpc.net.clientfactory\\2.67.0\\grpc.net.clientfactory.2.67.0.nupkg.sha512",

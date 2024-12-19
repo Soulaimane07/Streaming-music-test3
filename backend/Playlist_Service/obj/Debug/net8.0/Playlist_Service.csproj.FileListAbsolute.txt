@@ -42,3 +42,6 @@ D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Google
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Core.Api.dll
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
 D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Net.Common.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\Coding\Streaming-music-test3\backend\Playlist_Service\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll

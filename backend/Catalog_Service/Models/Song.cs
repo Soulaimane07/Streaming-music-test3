@@ -18,9 +18,9 @@ namespace Catalog_Service.Models
         public required string ImageUrl { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)] // Store as ObjectId in MongoDB
-        public string ArtistId { get; set; }  // Reference to the Artist
+        public required string ArtistId { get; set; }  // Reference to the Artist
         
         [BsonRepresentation(BsonType.ObjectId)]
-        public string AlbumId { get; set; }
+        public required string AlbumId { get; set; }
     }
 }

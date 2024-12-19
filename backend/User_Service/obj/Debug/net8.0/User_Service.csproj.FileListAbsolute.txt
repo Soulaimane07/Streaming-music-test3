@@ -113,3 +113,10 @@ D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Newtonsoft
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Stripe.net.dll
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Google.Protobuf.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.Common.dll

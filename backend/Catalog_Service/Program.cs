@@ -40,13 +40,10 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// Add gRPC services
 builder.Services.AddGrpc();
 
 var app = builder.Build();
 
-// Enable Swagger for development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -54,12 +51,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// Apply CORS policy
 app.UseCors("AllowFrontend");
-
-// Map controllers (REST API) and gRPC services
 app.MapControllers();
 app.MapGrpcService<SongRPCService>();
-
 app.Run();

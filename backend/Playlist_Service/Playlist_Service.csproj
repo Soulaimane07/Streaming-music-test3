@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\song.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\user.proto" GrpcServices="Client" />
   </ItemGroup>
 
 

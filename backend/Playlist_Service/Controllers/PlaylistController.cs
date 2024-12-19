@@ -2,9 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Playlist_Service.Models;
 using Playlist_Service.Data;
 using Grpc.Net.Client;
-using Playlist_Service;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
 
@@ -14,29 +11,34 @@ namespace Playlist_Service.Controllers
     [Route("api/[controller]")]
     public class PlaylistController : ControllerBase, IDisposable
     {
-        private readonly IMongoCollection<Playlist> _songs;
-        private readonly GrpcChannel _channel;
+        private readonly IMongoCollection<Playlist> _playlists;
+        private readonly GrpcChannel _channelSong;
+        private readonly GrpcChannel _channelUser;
         private readonly Songer.SongerClient _songerClient;
+        private readonly Userer.UsererClient _userClient;
 
         public PlaylistController(PlaylistDbContext context)
         {
-            _songs = context.Playlists;
+            _playlists = context.Playlists;
 
             // Create a gRPC channel to Catalog Service
-            _channel = GrpcChannel.ForAddress("http://localhost:5004"); // Catalog service URL
-            _songerClient = new Songer.SongerClient(_channel);
+            _channelSong = GrpcChannel.ForAddress("http://localhost:5004"); // Catalog service URL
+            _channelUser = GrpcChannel.ForAddress("http://localhost:5001"); // Catalog service URL
+            _songerClient = new Songer.SongerClient(_channelSong);
+            _userClient = new Userer.UsererClient(_channelUser);
         }
 
         public void Dispose()
         {
-            _channel?.Dispose();
+            _channelSong?.Dispose();
+            _channelUser?.Dispose();
         }
 
 
         [HttpGet]
         public async Task<IActionResult> GetAllPlaylists()
         {
-            var playlists = await _songs.Find(_ => true).ToListAsync();
+            var playlists = await _playlists.Find(_ => true).ToListAsync();
             if (playlists == null || playlists.Count == 0)
             {
                 return NotFound();
@@ -57,15 +59,18 @@ namespace Playlist_Service.Controllers
                     songs.Add(song);
                 }
             }
+            
+            var user = await GetUserFromUserService(request.UserId);
 
             var playlist = new Playlist
             {
                 Title = request.Title,
                 Image = request.Image,
-                Songs = songs
+                Songs = songs,
+                User = user
             };
 
-            await _songs.InsertOneAsync(playlist);
+            await _playlists.InsertOneAsync(playlist);
 
             return CreatedAtAction(nameof(GetPlaylist), new { id = playlist.Id.ToString() }, playlist);
         }
@@ -73,7 +78,7 @@ namespace Playlist_Service.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlaylist(string id)
         {
-            var playlist = await _songs.Find(p => p.Id == new ObjectId(id)).FirstOrDefaultAsync();
+            var playlist = await _playlists.Find(p => p.Id == new ObjectId(id)).FirstOrDefaultAsync();
             if (playlist == null)
             {
                 return NotFound();
@@ -104,6 +109,27 @@ namespace Playlist_Service.Controllers
 
             return null;
         }
+
+        private async Task<User> GetUserFromUserService(int userId)
+        {
+            var request = new userRequest { Id = userId };
+
+            // gRPC call to Catalog Service
+            var response = await _userClient.GetUserAsync(request);
+
+            if (response != null)
+            {
+                return new User
+                {
+                    Id = response.Id,
+                    Name = response.Name,
+                    Email = response.Email,
+                    ProfilePictureUrl = response.ProfilePictureUrl
+                };
+            }
+
+            return null;
+        }
     }
 
     public class CreatePlaylistRequest
@@ -111,5 +137,6 @@ namespace Playlist_Service.Controllers
         public string Title { get; set; }
         public string Image { get; set; }
         public List<string> SongIds { get; set; }
+        public int UserId { get; set; }
     }
 }

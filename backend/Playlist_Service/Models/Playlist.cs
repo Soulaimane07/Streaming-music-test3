@@ -13,23 +13,32 @@ namespace Playlist_Service.Models
         public ObjectId Id { get; set; }
 
         [BsonElement("title")]
-        public string Title { get; set; } = string.Empty;
+        public required string Title { get; set; } = string.Empty;
 
         [BsonElement("image")]
-        public string Image { get; set; } = string.Empty;
+        public required string Image { get; set; } = string.Empty;
 
         public List<Song> Songs { get; set; } = new();
+        public User User { get; set; } = new();
     }
 
     
 }
 
 public class Song
-    {
-        public string Id { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string Duration { get; set; } = string.Empty;
-        public string AudioUrl { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;
-    }
+{
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string Duration { get; set; } = string.Empty;
+    public string AudioUrl { get; set; } = string.Empty;
+    public string ImageUrl { get; set; } = string.Empty;
+}
+
+public class User 
+{
+    public int Id { get; set; } = 0;
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string ProfilePictureUrl { get; set; } = string.Empty;
+}

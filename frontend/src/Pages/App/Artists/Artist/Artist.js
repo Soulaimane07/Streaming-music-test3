@@ -100,22 +100,22 @@ function Artist() {
             <div className='space-y-14 mt-4'>
                 {
                     artist?.loading 
-                    ?
-                        <div className='flex items-center justify-between px-12'>
-                            <Spinner />
-                        </div>
-                    :
-                artist?.artist?.artistSongs?.length ?
-                <div>
-                    <h1 className='text-xl font-bold px-12 mb-4'> Popular </h1>
-                    <ul className='px-12 mt-6 space-y-2 relative'>
-                        {artist?.artist?.artistSongs?.map((item,key)=>(
-                            key < songs && <ArtistTrack data={item} id={key} key={key} hover={hover} setHover={setHover} music={music} />
-                        ))}
-                    </ul>
-                    {artist?.artist?.artistSongs?.length >= 10 && <button onClick={()=> setSongs(songs === 10 ? songs-5 : songs+5)} className='px-12 mt-8 opacity-50 transition-all hover:opacity-100'> {songs === 10 ? "See Less" : "See More"} </button>}
-                </div>
-                : null
+                        ?
+                            <div className='flex items-center justify-between px-12'>
+                                <Spinner />
+                            </div>
+                        :
+                            artist?.artist?.artistSongs?.length ?
+                                <div>
+                                    <h1 className='text-xl font-bold px-12 mb-4'> Popular </h1>
+                                    <ul className='px-12 mt-6 space-y-2 relative'>
+                                        {artist?.artist?.artistSongs?.map((item,key)=>(
+                                            key < songs && <ArtistTrack data={item} id={key} key={key} hover={hover} setHover={setHover} music={music} />
+                                        ))}
+                                    </ul>
+                                    {artist?.artist?.artistSongs?.length >= 10 && <button onClick={()=> setSongs(songs === 10 ? songs-5 : songs+5)} className='px-12 mt-8 opacity-50 transition-all hover:opacity-100'> {songs === 10 ? "See Less" : "See More"} </button>}
+                                </div>
+                            :   null
                 }
 
                 {
@@ -132,7 +132,7 @@ function Artist() {
                                     ))}
                                 </ul>
                             </div>
-                        : null
+                        :   null
                 }
                 
             </div>

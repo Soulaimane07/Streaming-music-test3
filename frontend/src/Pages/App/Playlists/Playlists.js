@@ -52,8 +52,13 @@ function Playlists() {
         dispatch(getPlaylist(id));
     }, [id, dispatch]);
     
-    const playlist = useSelector((state)=> state.playlists.playlist)
+    //const playlist = useSelector((state)=> state.playlists.playlist)
+    const playlist = useSelector((state)=> state.playlists.data[8])
+    
     PageTitle(`${playlist?.title} - Playlist`)
+    
+
+    
     
 
 
@@ -78,9 +83,9 @@ function Playlists() {
                                 <h2 className='text-sm font-medium'> Playlist </h2>
                                 <h1 className='text-6xl font-bold mt-4' > {playlist?.title ?? "Playlist"} </h1>
                                 <h2 className=' mt-4 opacity-90 text-sm font-medium flex items-baseline space-x-2'> 
-                                    <p>{playlist?.user ?? "Owner"}</p> 
+                                    <p>{playlist?.user?.name ?? "Owner"}</p> 
                                     <GoDotFill size={10} /> 
-                                    <p className=' opacity-70'> {playlist?.songs} Songs </p>
+                                    <p className=' opacity-70'> {playlist?.songs?.length} Songs </p>
                                 </h2>
                             </div>
 
@@ -104,12 +109,11 @@ function Playlists() {
                     <button title='Follow' className=' transition-all hover:bg-violet-600 p-2 rounded-md'> <FaHeart size={26} /> </button>
                 </div>
 
-
                 <TracksTable showName={showName} nameDivRef={nameDivRef} type="album" />
 
                 <div className="relative">
                     <ul className='px-12'>
-                        {tracks.map((item, key) => (
+                        {playlist?.songs?.map((item, key) => (
                             <PlaylistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
                         ))}
                     </ul>

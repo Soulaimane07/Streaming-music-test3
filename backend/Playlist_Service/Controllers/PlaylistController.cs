@@ -51,12 +51,16 @@ namespace Playlist_Service.Controllers
         public async Task<IActionResult> CreatePlaylist([FromBody] CreatePlaylistRequest request)
         {
             var songs = new List<Song>();
-            foreach (var songId in request.SongIds)
+
+            if (request.SongIds.Count > 0)
             {
-                var song = await GetSongFromCatalogService(songId);
-                if (song != null)
+                foreach (var songId in request.SongIds)
                 {
-                    songs.Add(song);
+                    var song = await GetSongFromCatalogService(songId);
+                    if (song != null)
+                    {
+                        songs.Add(song);
+                    }
                 }
             }
             
@@ -107,7 +111,7 @@ namespace Playlist_Service.Controllers
                 };
             }
 
-            return null;
+            return new();
         }
 
         private async Task<User> GetUserFromUserService(int userId)
@@ -128,15 +132,15 @@ namespace Playlist_Service.Controllers
                 };
             }
 
-            return null;
+            return new();
         }
     }
 
     public class CreatePlaylistRequest
     {
-        public string Title { get; set; }
-        public string Image { get; set; }
-        public List<string> SongIds { get; set; }
+        public required string Title { get; set; }
+        public required string Image { get; set; }
+        public required List<string> SongIds { get; set; }
         public int UserId { get; set; }
     }
 }

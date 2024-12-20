@@ -2,9 +2,7 @@ import { TbPlaylist } from "react-icons/tb"
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 export const NavbarPlaylist = ({data, hover, setHover}) => {
-
     return (
         <Link
             onMouseEnter={()=> setHover(data?.title)}
@@ -18,12 +16,16 @@ export const NavbarPlaylist = ({data, hover, setHover}) => {
                 ? <div className="bg-zinc-600 w-11 h-11 flex items-center justify-center rounded-sm"> <FaPlay size={12} /> </div> 
                 :
                 data?.image 
-                    ? <img src={data?.image} className="w-11 rounded-sm" /> 
+                    ? <div className="bg-zinc-700 w-11 h-11 flex items-center justify-center rounded-sm"><img src={data?.image} className="w-full" /> </div>
                     : <div className="bg-zinc-700 w-11 h-11 flex items-center justify-center rounded-sm"> {data?.icon ? data?.icon : <TbPlaylist size={18} />} </div> 
                 
             } 
-            <p className=" font-medium"> {data?.title ?? "Playlist title"} </p>
+            <div>
+                <p className=" font-medium"> {data?.title ?? "Playlist title"} </p>
+                <div className="items-center flex flex-wrap">
+                    <p className=" font-normal text-xs flex items-center"> {data?.songs?.length} {data?.songs?.length && "Songs"} </p>
+                </div>
+            </div>
         </Link>
     )
 }
-

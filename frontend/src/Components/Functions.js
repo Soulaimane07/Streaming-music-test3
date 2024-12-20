@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-export const UserServiceUrl = "http://localhost:5002/api"
+export const UserServiceUrl = "http://localhost:5000/api"
 export const CatalogServiceUrl = "http://localhost:5003/api"
-export const PlaylistServiceUrl = "http://localhost:5004/api"
+export const PlaylistServiceUrl = "http://localhost:5005/api"
 
 
 

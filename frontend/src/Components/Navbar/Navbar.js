@@ -23,7 +23,7 @@ function Navbar() {
             <div className='mt-10'>
                 <div className='mb-2 px-2 pr-1 text-sm opacity-60 flex items-center justify-between'> 
                     <h1 className=' font-medium '> Your Library </h1>
-                    <button title='Create a new playlist' className='hover:bg-zinc-700 transition-all flex items-center justify-center p-1.5 rounded-full'> <FaPlus size={16} /> </button>
+                    <Link to={"/playlists/create"} title='Create a new playlist' className='hover:bg-zinc-700 transition-all flex items-center justify-center p-1.5 rounded-full'> <FaPlus size={16} /> </Link>
                 </div>
                 <ul>
                     <NavbarPlaylist data={{title:"Favorite Songs", icon: <FaHeart size={20} />}} hover={hover} setHover={setHover} />

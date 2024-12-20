@@ -3,13 +3,13 @@ import { PlaylistServiceUrl } from '../../Functions';
 
 // Asynchronous thunk to fetch playlists
 export const getPlaylists = createAsyncThunk('catalog/getPlaylists', async () => {
-  const response = await fetch(`${PlaylistServiceUrl}/playlists`); // Replace with your API endpoint
+  const response = await fetch(`${PlaylistServiceUrl}/playlist`); // Replace with your API endpoint
   const data = await response.json();
   return data; // Return the fetched data
 });
 
 export const getPlaylist = createAsyncThunk('catalog/getPlaylist', async (id) => {
-  const response = await fetch(`${PlaylistServiceUrl}/playlists/${id}`); // Replace with your API endpoint
+  const response = await fetch(`${PlaylistServiceUrl}/playlist/${id}`); // Replace with your API endpoint
   const data = await response.json();
   return data; // Return the fetched data
 });

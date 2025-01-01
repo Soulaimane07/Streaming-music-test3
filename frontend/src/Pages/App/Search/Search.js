@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../../../Components/Header/Header'
 import { useDispatch, useSelector } from 'react-redux';
-import { GetTop, PageTitle, tracks } from '../../../Components/Functions'
+import { GetTop, PageTitle } from '../../../Components/Functions'
 import Artist from '../../../Components/Elements/Artist/Artist'
 import PlaylistBox from '../../../Components/Playlist/PlaylistBox'
 import { ProfileTrack } from '../../../Components/Elements/Tracks/Tracks';
@@ -45,23 +45,12 @@ function Search() {
         dispatch(getAlbums())
     }, [])
 
-    const searchText = useSelector(state => state.searchBox.data)
+    const searchText = useSelector(state => state.searchBox.searchText)
+    const searchData = useSelector(state => state.searchBox.data)
     const genres = useSelector((state)=> state.genres.data)
-    const artists = useSelector((state)=> state.artists.data)
-    const playlists = useSelector((state)=> state.playlists.data)
-    const albums = useSelector((state)=> state.albums.data)
-    
-
-
-
-    
 
     const [option, setOption] = useState("All")
     const [hover, setHover] = useState(null)
-
-    
-
-
 
 
   return (
@@ -95,9 +84,20 @@ function Search() {
                         <div className='w-full'>
                             <button onClick={()=>setOption("Songs")} className='text-2xl font-bold mb-4 hover:underline transition-all'> Songs </button>
                             <ul className='space-y-2'>
-                                {tracks?.map((item,key)=>(
-                                    key < 5 && <ProfileTrack data={item} hover={hover} setHover={setHover} id={key} key={key} />
-                                ))}
+                                {searchData &&
+                                    searchData
+                                        .filter((item) => item.type === "Song") // Filter only songs
+                                        .slice(0, 5) // Select the first 5 songs
+                                        .map((item, index) => (
+                                        <ProfileTrack
+                                            data={item.data}
+                                            hover={hover}
+                                            setHover={setHover}
+                                            id={index} // Use index for unique key
+                                            key={index}
+                                        />
+                                        ))
+                                }
                             </ul>
                         </div>
                     </div>
@@ -107,9 +107,17 @@ function Search() {
                             <button onClick={()=>setOption("Artists")} className='text-2xl font-bold hover:underline'> Artists </button>
                         </div>
                         <div className=' grid grid-cols-6 gap-6'>
-                            {artists.map((item, key)=> (
-                                key < 6 && <Artist data={item} key={key} />
-                            ))}
+                            {searchData &&
+                                searchData
+                                    .filter((item) => item.type === "Artist") // Filter only songs
+                                    .slice(0, 6) // Select the first 5 songs
+                                    .map((item, index) => (
+                                        <Artist
+                                            data={item.data}
+                                            key={index}
+                                        />
+                                    ))
+                            }
                         </div>
                     </div>
 
@@ -118,9 +126,17 @@ function Search() {
                             <button onClick={()=>setOption("Albums")} className='text-2xl font-bold hover:underline'> Albums </button>
                         </div>
                         <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4'>
-                            {albums?.map((item, key)=> (
-                                key < 6 && <ArtistAlbum data={item} key={key} />
-                            ))}
+                            {searchData &&
+                                searchData
+                                    .filter((item) => item.type === "Album") // Filter only songs
+                                    .slice(0, 6) // Select the first 5 songs
+                                    .map((item, index) => (
+                                    <ArtistAlbum
+                                        data={item.data}
+                                        key={index}
+                                    />
+                                    ))
+                            }
                         </div>
                     </div>
 
@@ -129,9 +145,17 @@ function Search() {
                             <button onClick={()=>setOption("Playlists")} className='text-2xl font-bold hover:underline'> Playlists </button>
                         </div>
                         <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4'>
-                            {playlists?.map((item, key)=> (
-                                key < 6 && <PlaylistBox data={item} key={key} />
-                            ))}
+                            {searchData &&
+                                searchData
+                                    .filter((item) => item.type === "Artist") // Filter only songs
+                                    .slice(0, 6) // Select the first 5 songs
+                                    .map((item, index) => (
+                                        <PlaylistBox
+                                            data={item.data}
+                                            key={index}
+                                        />
+                                    ))
+                            }
                         </div>
                     </div>
                 </div>

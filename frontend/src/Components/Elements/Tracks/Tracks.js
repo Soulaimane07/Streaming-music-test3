@@ -131,7 +131,7 @@ export const ProfileTrack = ({hover, setHover, data, id}) => {
             : <div className='bg-gradient-to-br from-violet-600 to-violet-200 w-12 h-12 rounded-sm overflow-hidden flex items-center justify-center'> <IoMusicalNotes /> </div>
           }
           <div>
-            <p className='font-medium'> {data?.title ?? "Track name"} </p>
+            <p className='font-medium'> {data?.name ?? "Track name"} </p>
             <Link to={`/artists/${data?.artist?.name}`} className=' hover:opacity-100 opacity-60 text-sm hover:underline transition-all'> {data?.artist?.name ?? "Artist name"} </Link>
           </div>
         </div>

@@ -135,76 +135,9 @@
             }
 
 
-            [HttpPost("create-portal-session")]
-            public ActionResult CreatePortalSession()
-            {
-                var checkoutService = new SessionService();
-                var checkoutSession = checkoutService.Get(Request.Form["session_id"]);
 
-                var returnUrl = "http://localhost:4242";
 
-                var options = new Stripe.BillingPortal.SessionCreateOptions
-                {
-                    Customer = checkoutSession.CustomerId,
-                    ReturnUrl = returnUrl,
-                };
-                var service = new Stripe.BillingPortal.SessionService();
-                var session = service.Create(options);
 
-                Response.Headers.Add("Location", session.Url);
-                return new StatusCodeResult(303);
-            }
-
-            [HttpPost("webhook")]
-            public async Task<IActionResult> Webhook()
-            {
-                var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-
-                const string endpointSecret = "whsec_12345";
-                try
-                {
-                    var stripeEvent = EventUtility.ParseEvent(json);
-                    var signatureHeader = Request.Headers["Stripe-Signature"];
-                    stripeEvent = EventUtility.ConstructEvent(json, signatureHeader, endpointSecret);
-
-                    switch (stripeEvent.Type)
-                    {
-                        case EventTypes.CustomerSubscriptionDeleted:
-                            var subscriptionDeleted = stripeEvent.Data.Object as StripeSubscription;
-                            Console.WriteLine("Subscription canceled: " + subscriptionDeleted.Id);
-                            break;
-
-                        case EventTypes.CustomerSubscriptionUpdated:
-                            var subscriptionUpdated = stripeEvent.Data.Object as StripeSubscription;
-                            Console.WriteLine("Subscription updated: " + subscriptionUpdated.Id);
-                            break;
-
-                        case EventTypes.CustomerSubscriptionCreated:
-                            var subscriptionCreated = stripeEvent.Data.Object as StripeSubscription;
-                            Console.WriteLine("Subscription created: " + subscriptionCreated.Id);
-                            break;
-
-                        case EventTypes.CustomerSubscriptionTrialWillEnd:
-                            var trialEndSubscription = stripeEvent.Data.Object as StripeSubscription;
-                            Console.WriteLine("Subscription trial will end: " + trialEndSubscription.Id);
-                            break;
-
-                        // case EventTypes.ActiveEntitlementSummaryUpdated:
-                        //     var summary = stripeEvent.Data.Object as ActiveEntitlementSummary;
-                        //     Console.WriteLine("Entitlement updated for customer: " + summary.Customer);
-                        //     break;
-
-                        default:
-                            Console.WriteLine("Unhandled event type: " + stripeEvent.Type);
-                            break;
-                    }
-                    return Ok();
-                }
-                catch (StripeException e)
-                {
-                    Console.WriteLine("Stripe error: " + e.Message);
-                    return BadRequest();
-                }
-            }
+            
         }
     }

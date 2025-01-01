@@ -90,12 +90,18 @@ namespace User_Service.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        // Additional CRUD actions here...
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
+        }
     }
 
     public class LoginModel
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public required string Email { get; set; }
+        public required string Password { get; set; }
     }
 }

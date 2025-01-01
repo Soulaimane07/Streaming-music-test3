@@ -53,3 +53,5 @@ D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtime
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
 D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Coding\Streaming-music-test3\backend\Catalog_Service\bin\Debug\net8.0\RabbitMQ.Client.dll

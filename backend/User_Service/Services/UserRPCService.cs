@@ -21,6 +21,11 @@ namespace User_Service.Services
         {
             var user = await _userService.GetUserByIdAsync(request.Id);
 
+            if (user == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+            }
+
             return new userResponse
             {
                 Id = user.UserId,

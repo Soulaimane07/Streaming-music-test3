@@ -4,17 +4,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
+    // HTTP/1.1 for REST API
+    options.ListenAnyIP(5004, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
+    });
+
+
     // HTTP/2 for gRPC
-    options.ListenAnyIP(5006, listenOptions =>
+    options.ListenAnyIP(5005, listenOptions =>
     {
         listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
     });
 
-    // HTTP/1.1 for REST API
-    options.ListenAnyIP(5005, listenOptions =>
-    {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
-    });
 });
 
 // Register PlaylistDbContext

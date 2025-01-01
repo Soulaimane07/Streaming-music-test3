@@ -8,6 +8,7 @@ using Catalog_Service.Data;
 using Catalog_Service.Models;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using Catalog_Service.Services;
 
 namespace Catalog_Service.Controllers
 {
@@ -73,6 +74,10 @@ namespace Catalog_Service.Controllers
             }
 
             _songs.InsertOne(song);
+
+            MessageBroker broker = new MessageBroker();
+            broker.PublishMessage("catalog_exchangee", "song.added", song);
+
             return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, song);
         }
         

@@ -11,13 +11,23 @@ namespace User_Service.Models
         public int SubscriptionId { get; set; }  // No need to mark this as required if it's auto-generated.
         
         public required int UserId { get; set; }
-        public User User { get; set; }
+        public required User User { get; set; }
 
         public required int SubscriptionPlanId { get; set; }
-        public SubscriptionPlan SubscriptionPlan { get; set; }
+        public required SubscriptionPlan SubscriptionPlan { get; set; }
 
         public required DateTime StartDate { get; set; }
         public required DateTime EndDate { get; set; }
     }
 
+
+    public class UserSubscription
+    {
+        public int SubscriptionId { get; set; }  // No need to mark this as required if it's auto-generated.
+        public required int UserId { get; set; }
+        public required int SubscriptionPlanId { get; set; }
+
+        public required DateTime StartDate { get; set; }
+        public required DateTime EndDate { get; set; }
+    }
 }

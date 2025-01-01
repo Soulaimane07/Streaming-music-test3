@@ -89,7 +89,9 @@ namespace User_Service.Services
                 UserId = userId,
                 SubscriptionPlanId = subscriptionPlanId,
                 StartDate = startDate,
-                EndDate = endDate
+                EndDate = endDate,
+                User = user,
+                SubscriptionPlan = subscriptionPlan
             };
 
             // Add to the database
@@ -101,8 +103,13 @@ namespace User_Service.Services
 
         public async Task<Subscription> GetSubscriptionByIdAsync(int id)
         {
-            return await _context.Subscriptions
+            var subscription = await _context.Subscriptions
                 .FirstOrDefaultAsync(s => s.SubscriptionId == id);
+            if (subscription == null)
+            {
+                throw new Exception($"Subscription with ID {id} not found.");
+            }
+            return subscription;
         }
 
         public async Task<List<Subscription>> GetUserSubscriptionsAsync(int userId)
@@ -139,7 +146,12 @@ namespace User_Service.Services
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                throw new Exception($"User with email {email} not found.");
+            }
+            return user;
         }
 
 

@@ -6,16 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure Kestrel to use HTTP/1.1 for REST and HTTP/2 for gRPC
 builder.WebHost.ConfigureKestrel(options =>
 {
-    // This applies HTTP/2 to gRPC endpoints
-    options.ListenAnyIP(5004, listenOptions =>
-    {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
-    });
-
     // Default settings for HTTP/1.1 (For REST API)
-    options.ListenAnyIP(5003, listenOptions =>
+    options.ListenAnyIP(5002, listenOptions =>
     {
         listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
+    });
+
+    // This applies HTTP/2 to gRPC endpoints
+    options.ListenAnyIP(5003, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
     });
 });
 

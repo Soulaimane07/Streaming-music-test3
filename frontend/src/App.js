@@ -38,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
-        {/* {isLogged ? <Appp /> : <Auth /> } */}
+        {isLogged ? <Appp /> : <Auth /> }
       </div>
     </BrowserRouter>
   );

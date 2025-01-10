@@ -22,7 +22,7 @@ function SearchBar() {
   const search = debounce((e) => {
     const value = e.target.value;
 
-    if (value.length > 3) {
+    if (value.length > 1) {
       dispatch(open());
 
       if (searchOpened) {
@@ -30,9 +30,9 @@ function SearchBar() {
       }
       dispatch(setSearchText(value));
       dispatch(fetchSearchResults(value));
-    } else {
+    } else if (value.length === 0) {
+      navigate('/search');
       dispatch(close());
-      navigate('/');
     }
   }, 100);
 

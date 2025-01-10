@@ -10,8 +10,6 @@ const stripePromise = loadStripe('pk_test_51QUADdAEkvVKIt6fm67B6OmRIE8dTDS4lkHtE
 
 function Settings() {
     const [loading, setLoading] = useState(null)
-    console.log(loading);
-    
 
     const plans = GetPlans()
     
@@ -21,7 +19,7 @@ function Settings() {
             setLoading(data)
             const stripe = await stripePromise;
             
-            const response = await fetch("http://localhost:5002/api/subscriptions/create-checkout-session", {
+            const response = await fetch(`${UserServiceUrl}/subscriptions/create-checkout-session`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),

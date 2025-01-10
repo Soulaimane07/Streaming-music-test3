@@ -73,13 +73,17 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.1.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.2, )"
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[47.1.0, )"
+              "version": "[47.2.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

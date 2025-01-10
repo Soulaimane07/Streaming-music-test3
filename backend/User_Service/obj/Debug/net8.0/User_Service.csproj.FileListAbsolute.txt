@@ -120,3 +120,17 @@ D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Core.
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.Client.dll
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
 D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\Grpc.Net.Common.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\K4os.Compression.LZ4.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\K4os.Hash.xxHash.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\MySql.Data.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Security.Permissions.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\System.Windows.Extensions.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\ZstdSharp.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
+D:\Coding\Streaming-music-test3\backend\User_Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll

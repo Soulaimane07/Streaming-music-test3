@@ -6,7 +6,7 @@ services:
     container_name: DB-User
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: userDb
+      MYSQL_DATABASE: userdb
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
     volumes:
@@ -17,20 +17,20 @@ services:
       - spotify
 
 
-  user-service:
-    build:
-      context: .
-      dockerfile: ./docker/backend/user/Dockerfile
-    container_name: Service-User
-    ports:
-      - "8090:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=mysql;Port=3306;Database=userDb;Username=myuser;Password=mypassword
-    depends_on:
-      - mysql
-    networks:
-      - spotify
+  # user-service:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/backend/user/Dockerfile
+  #   container_name: Service-User
+  #   ports:
+  #     - "8090:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mysql;Port=3306;Database=userDb;Username=myuser;Password=mypassword
+  #   depends_on:
+  #     - mysql
+  #   networks:
+  #     - spotify
 
 
   mongodb:
@@ -48,82 +48,82 @@ services:
       - spotify
 
 
-  catalog-service:
-    build:
-      context: .
-      dockerfile: docker/backend/catalog/Dockerfile
-    container_name: Service-Catalog
-    ports:
-      - "8091:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
-    depends_on:
-      - mongodb
-    networks:
-      - spotify
+  # catalog-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/catalog/Dockerfile
+  #   container_name: Service-Catalog
+  #   ports:
+  #     - "8091:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
 
 
-  playlist-service:
-    build:
-      context: .
-      dockerfile: docker/backend/playlist/Dockerfile
-    container_name: Service-playlist
-    ports:
-      - "8090:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
-    depends_on:
-      - mongodb
-    networks:
-      - spotify
+  # playlist-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/playlist/Dockerfile
+  #   container_name: Service-playlist
+  #   ports:
+  #     - "8090:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
 
 
-  search-service:
-    build:
-      context: .
-      dockerfile: docker/backend/search/Dockerfile
-    container_name: Service-search
-    ports:
-      - "8092:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
-    depends_on:
-      - mongodb
-    networks:
-      - spotify
+  # search-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/search/Dockerfile
+  #   container_name: Service-search
+  #   ports:
+  #     - "8092:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
 
 
-  recommendation-service:
-    build:
-      context: .
-      dockerfile: docker/backend/recommendation/Dockerfile
-    container_name: Service-recommendation
-    ports:
-      - "8093:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
-    depends_on:
-      - mongodb
-    networks:
-      - spotify
+  # recommendation-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/recommendation/Dockerfile
+  #   container_name: Service-recommendation
+  #   ports:
+  #     - "8093:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
 
 
-  frontend:
-    build:
-      context: .
-      dockerfile: docker/frontend/Dockerfile
-    container_name: Frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - user-service
-      - catalog-service
-    networks:
-      - spotify
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/frontend/Dockerfile
+  #   container_name: Frontend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - user-service
+  #     - catalog-service
+  #   networks:
+  #     - spotify
 
 
 networks:

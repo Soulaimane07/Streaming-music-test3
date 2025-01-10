@@ -3,8 +3,13 @@ import axios from "axios"
 
 export const UserServiceUrl = "http://localhost:5000/api"
 export const CatalogServiceUrl = "http://localhost:5002/api"
+<<<<<<< HEAD
 export const PlaylistServiceUrl = "http://localhost:5004/api"
 export const SearchServiceUrl = "http://localhost:5006/api"
+=======
+export const PlaylistServiceUrl = "http://localhost:5005/api"
+export const SearchServiceUrl = "http://localhost:5113/api"
+>>>>>>> 920df15e8c1c31fc50e827d2bea4b713514ec850
 
 
 

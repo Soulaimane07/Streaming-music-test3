@@ -58,7 +58,7 @@ namespace Catalog_Service.Controllers
             _genres.InsertOne(genre);
             return CreatedAtAction(nameof(GetOneGenre), new { id = genre.Id.ToString() }, new { id = genre.Id.ToString(), name = genre.Name, image = genre.Image });
         }
-        
+
 
         [HttpPut("{id}")]
         public IActionResult UpdateGenre(string id, [FromBody] Genre updatedGenre)

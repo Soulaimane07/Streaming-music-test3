@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj": {}
+    "D:\\Feirouz\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj": {
+    "D:\\Feirouz\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj",
+        "projectUniqueName": "D:\\Feirouz\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj",
         "projectName": "Catalog_Service",
-        "projectPath": "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj",
-        "packagesPath": "C:\\Users\\Soulaimane\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\Streaming-music-test3\\backend\\Catalog_Service\\obj\\",
+        "projectPath": "D:\\Feirouz\\Streaming-music-test3\\backend\\Catalog_Service\\Catalog_Service.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\Feirouz\\Streaming-music-test3\\backend\\Catalog_Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Soulaimane\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -109,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

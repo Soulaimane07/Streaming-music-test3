@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Feirouz\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj": {}
+    "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj": {}
   },
   "projects": {
-    "D:\\Feirouz\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj": {
+    "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Feirouz\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj",
+        "projectUniqueName": "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj",
         "projectName": "User_Service",
-        "projectPath": "D:\\Feirouz\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Feirouz\\Streaming-music-test3\\backend\\User_Service\\obj\\",
+        "projectPath": "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj",
+        "packagesPath": "C:\\Users\\Soulaimane\\.nuget\\packages\\",
+        "outputPath": "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Soulaimane\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -113,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

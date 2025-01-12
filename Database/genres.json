@@ -1,14 +1,16 @@
-{"_id":{"$oid":"67812ae1ad36cef03c849239"},"Name":"Afro","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/afro.jpg"}
-{"_id":{"$oid":"67812b98ad36cef03c84923a"},"Name":"Arab","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/arab.jpg"}
-{"_id":{"$oid":"67812bacad36cef03c84923b"},"Name":"Blues","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/blues.jpg"}
-{"_id":{"$oid":"67812bb4ad36cef03c84923c"},"Name":"Chill","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/chill.jpg"}
-{"_id":{"$oid":"67812bbdad36cef03c84923d"},"Name":"Classical","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/classical.jpg"}
-{"_id":{"$oid":"67812bc5ad36cef03c84923e"},"Name":"Funk","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/funk.jpg"}
-{"_id":{"$oid":"67812bcaad36cef03c84923f"},"Name":"HipHop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/hiphop.jpg"}
-{"_id":{"$oid":"67812bd1ad36cef03c849240"},"Name":"Jazz","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/jazz.jpg"}
-{"_id":{"$oid":"67812bd7ad36cef03c849241"},"Name":"K-Pop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/k-pop.jpg"}
-{"_id":{"$oid":"67812bddad36cef03c849242"},"Name":"Love","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/love.jpg"}
-{"_id":{"$oid":"67812be2ad36cef03c849243"},"Name":"Party","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/party.jpg"}
-{"_id":{"$oid":"67812beaad36cef03c849244"},"Name":"Pop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/pop.jpg"}
-{"_id":{"$oid":"67812befad36cef03c849245"},"Name":"Rock","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/rock.jpg"}
-{"_id":{"$oid":"67812bf4ad36cef03c849246"},"Name":"Workout","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/workout.jpg"}
+[
+    {"_id":{"$oid":"67812ae1ad36cef03c849239"},"Name":"Afro","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/afro.jpg"},
+    {"_id":{"$oid":"67812b98ad36cef03c84923a"},"Name":"Arab","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/arab.jpg"},
+    {"_id":{"$oid":"67812bacad36cef03c84923b"},"Name":"Blues","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/blues.jpg"},
+    {"_id":{"$oid":"67812bb4ad36cef03c84923c"},"Name":"Chill","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/chill.jpg"},
+    {"_id":{"$oid":"67812bbdad36cef03c84923d"},"Name":"Classical","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/classical.jpg"},
+    {"_id":{"$oid":"67812bc5ad36cef03c84923e"},"Name":"Funk","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/funk.jpg"},
+    {"_id":{"$oid":"67812bcaad36cef03c84923f"},"Name":"HipHop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/hiphop.jpg"},
+    {"_id":{"$oid":"67812bd1ad36cef03c849240"},"Name":"Jazz","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/jazz.jpg"},
+    {"_id":{"$oid":"67812bd7ad36cef03c849241"},"Name":"K-Pop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/k-pop.jpg"},
+    {"_id":{"$oid":"67812bddad36cef03c849242"},"Name":"Love","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/love.jpg"},
+    {"_id":{"$oid":"67812be2ad36cef03c849243"},"Name":"Party","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/party.jpg"},
+    {"_id":{"$oid":"67812beaad36cef03c849244"},"Name":"Pop","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/pop.jpg"},
+    {"_id":{"$oid":"67812befad36cef03c849245"},"Name":"Rock","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/rock.jpg"},
+    {"_id":{"$oid":"67812bf4ad36cef03c849246"},"Name":"Workout","Image":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/genres/workout.jpg"}
+]

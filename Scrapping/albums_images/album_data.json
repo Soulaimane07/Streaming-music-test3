@@ -1,0 +1,32 @@
+[
+    {
+        "album_name": "The Cursed Characters Album, Pt. 1",
+        "release_date": "March 11, 2024",
+        "album_link": "https://genius.com/albums/Aaron-fraser-nash/The-cursed-characters-album-pt-1",
+        "cover_image_url": "https://images.genius.com/05f034d2be22a4bc5f5cbe10408b01eb.300x300x1.jpg"
+    },
+    {
+        "album_name": "The Five Nights at Freddy’s Album",
+        "release_date": "December 31, 2023",
+        "album_link": "https://genius.com/albums/Aaron-fraser-nash/The-five-nights-at-freddys-album",
+        "cover_image_url": "https://images.genius.com/803eae51660004ddd3b90869daa11a7d.300x300x1.jpg"
+    },
+    {
+        "album_name": "The Spider-Man Album",
+        "release_date": "January 28, 2022",
+        "album_link": "https://genius.com/albums/Aaron-fraser-nash/The-spider-man-album",
+        "cover_image_url": "https://images.genius.com/fedba1df6d9bfbff307eac1509828229.256x256x1.png"
+    },
+    {
+        "album_name": "The Killer Doll Collection",
+        "release_date": "December 19, 2020",
+        "album_link": "https://genius.com/albums/Aaron-fraser-nash/The-killer-doll-collection",
+        "cover_image_url": "https://images.genius.com/ffe19baaa23910756cd97fb99a48eabb.300x300x1.jpg"
+    },
+    {
+        "album_name": "The 2020 Nightmare",
+        "release_date": "October 24, 2020",
+        "album_link": "https://genius.com/albums/Aaron-fraser-nash/The-2020-nightmare",
+        "cover_image_url": "https://images.genius.com/dfccdae1f89aae0473f95fb9ab6e9af1.300x300x1.jpg"
+    }
+]

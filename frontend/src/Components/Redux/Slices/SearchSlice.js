@@ -1,13 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { SearchServiceUrl } from '../../Functions';
 
 // Replace this with your actual API base URL
-const API_BASE_URL = 'http://localhost:5113/api/Search';
-
 export const fetchSearchResults = createAsyncThunk(
   'catalog/fetchSearchResults',
   async (query, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/search?query=${query}`);
+      const response = await fetch(`http://localhost:5006/api/Search/search?query=${query}`);
       if (!response.ok) {
         throw new Error('Failed to fetch search results');
       }

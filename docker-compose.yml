@@ -55,6 +55,7 @@ services:
   #   container_name: Service-Catalog
   #   ports:
   #     - "8091:8080"
+  # - "5003:5003"
   #   environment:
   #     - ASPNETCORE_ENVIRONMENT=Production
   #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
@@ -88,6 +89,7 @@ services:
       - "9300:9300"
     environment:
       - discovery.type=single-node
+      - ELASTIC_PASSWORD=password
     volumes:
       - es-data:/usr/share/elasticsearch/data
     networks:

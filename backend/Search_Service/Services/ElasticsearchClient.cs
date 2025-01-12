@@ -14,7 +14,7 @@ namespace Search_Service.Services
         {
             var settings = new ConnectionSettings(new Uri(configuration["Elasticsearch:Url"]))
                 .ServerCertificateValidationCallback((sender, cert, chain, errors) => true)
-                .BasicAuthentication("elastic", "sYnvI+0+rbGii+Q_*xxM")
+                .BasicAuthentication(configuration["Elasticsearch:Username"], configuration["Elasticsearch:Password"])
                 .DefaultMappingFor<Song>(m => m.IndexName("songs"))
                 .DefaultMappingFor<Artist>(m => m.IndexName("artists"))
                 .DefaultMappingFor<Album>(m => m.IndexName("albums"))
@@ -22,6 +22,7 @@ namespace Search_Service.Services
 
             _client = new ElasticClient(settings);
         }
+
 
         public IElasticClient GetClient() => _client;
     }

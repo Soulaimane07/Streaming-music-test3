@@ -60,43 +60,60 @@ namespace Search_Service.Controller
 
         // Search across multiple indices (songs, artists, albums, playlists)
         [HttpGet("search")]
-        public async Task<IActionResult> Search([FromQuery] string query)
-        {
-            var response = await _client.SearchAsync<object>(s => s
-                .Index(new[] { "songs", "artists", "albums", "playlists" }) // Specify indices to search
-                .Query(q => q
-                    .MultiMatch(m => m
-                        .Fields(f => f
-                            .Field("name") // Common field across entities
-                            .Field("description") // Common field for entities like albums or playlists
-                            .Field("title") // Common field across entities
-                        )
-                        .Query(query) // Search query
+public async Task<IActionResult> Search([FromQuery] string query)
+{
+    try
+    {
+        var response = await _client.SearchAsync<object>(s => s
+            .Index(new[] { "songs", "artists", "albums", "playlists" }) // Specify indices to search
+            .Query(q => q
+                .MultiMatch(m => m
+                    .Fields(f => f
+                        .Field("name") // Common field across entities
+                        .Field("description") // Common field for entities like albums or playlists
+                        .Field("title") // Common field across entities
                     )
+                    .Query(query) // Search query
                 )
-            );
+            )
+        );
 
-            if (response.IsValid)
+        if (response.IsValid)
+        {
+            // Check if there are hits and return an empty list if not
+            if (!response.Hits.Any())
+                return Ok(new List<SearchResult>()); // Return empty list if no results
+
+            // Map results to a typed response
+            var results = response.Hits.Select(hit =>
             {
-                if (!response.Hits.Any())
-                    return Ok(new List<object>()); // Return empty list if no results
-
-                var results = response.Hits.Select(hit =>
+                return hit.Index switch
                 {
-                    return hit.Index switch
-                    {
-                        "songs" => new { Type = "Song", Data = hit.Source },
-                        "artists" => new { Type = "Artist", Data = hit.Source },
-                        "albums" => new { Type = "Album", Data = hit.Source },
-                        "playlists" => new { Type = "Playlist", Data = hit.Source },
-                        _ => null
-                    };
-                });
+                    "songs" => new SearchResult { Type = "Song", Data = hit.Source },
+                    "artists" => new SearchResult { Type = "Artist", Data = hit.Source },
+                    "albums" => new SearchResult { Type = "Album", Data = hit.Source },
+                    "playlists" => new SearchResult { Type = "Playlist", Data = hit.Source },
+                    _ => null
+                };
+            }).Where(result => result != null); // Filter out any null results
 
-                return Ok(results);
-            }
-
-            return BadRequest(response.OriginalException?.Message);
+            return Ok(results);
         }
+
+        // Return a BadRequest response with the error message
+        return BadRequest(response.OriginalException?.Message);
+    }
+    catch (Exception ex)
+    {
+        // Catch unexpected errors and return them
+        return BadRequest($"An error occurred: {ex.Message}");
+    }
+}
+
+public class SearchResult
+{
+    public string Type { get; set; }
+    public object Data { get; set; }
+}
     }
 }

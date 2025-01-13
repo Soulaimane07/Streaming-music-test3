@@ -2,13 +2,9 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Newtonsoft.Json;
 using Search_Service.Models;
-using Search_Service.Services;
 using System;
 using System.Text;
-using System.Threading.Tasks;
-
 using Nest;
-using System.Linq;
 
 namespace Search_Service.Services
 {
@@ -31,26 +27,81 @@ namespace Search_Service.Services
 
         public void ConsumeMessages(string exchange, string routingKey, string queueName)
         {
-            _channel.ExchangeDeclare(exchange: exchange, type: "direct", durable: true, autoDelete: false);
-            _channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: queueName, exchange: exchange, routingKey: routingKey);
-
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += async (sender, args) =>
+            try
             {
-                var message = Encoding.UTF8.GetString(args.Body.ToArray());
-                var song = JsonConvert.DeserializeObject<Song>(message);
+                // Declare the exchange
+                _channel.ExchangeDeclare(exchange: exchange, type: "direct", durable: true, autoDelete: false);
 
-                Console.WriteLine($"Message Consumed: {JsonConvert.SerializeObject(song, Formatting.Indented)}");
+                // Declare the queue (shared queue)
+                _channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
-                var response = await _elasticsearchClient.IndexDocumentAsync(song);
-                if (response.IsValid)
-                    Console.WriteLine("Song document indexed successfully.");
+                // Bind the queue to the exchange for the provided routing key
+                _channel.QueueBind(queue: queueName, exchange: exchange, routingKey: routingKey);
 
-                _channel.BasicAck(args.DeliveryTag, false);
-            };
+                // Create a consumer
+                var consumer = new EventingBasicConsumer(_channel);
 
-            _channel.BasicConsume(queue: queueName, autoAck: false, consumer: consumer);
+                consumer.Received += (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    Console.WriteLine($"[x] Received message with routing key '{ea.RoutingKey}': {message}");
+
+                    // Process the message based on the routing key
+                    ProcessMessage(ea.RoutingKey, message);
+                };
+
+                // Start consuming messages from the queue
+                _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
+
+                Console.WriteLine($"Started consuming messages from queue: {queueName} (Routing key: {routingKey})");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error consuming messages: " + ex.Message);
+            }
+        }
+
+        private void ProcessMessage(string routingKey, string message)
+        {
+            try
+            {
+                switch (routingKey)
+                {
+                    case "song.added":
+                        var song = JsonConvert.DeserializeObject<Song>(message);
+                        IndexDocument(song, "songs");
+                        break;
+                    case "artist.added":
+                        var artist = JsonConvert.DeserializeObject<Artist>(message);
+                        IndexDocument(artist, "artists");
+                        break;
+                    case "album.added":
+                        var album = JsonConvert.DeserializeObject<Album>(message);
+                        IndexDocument(album, "albums");
+                        break;
+                    default:
+                        Console.WriteLine($"Unknown routing key: {routingKey}");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error processing message: {ex.Message}");
+            }
+        }
+
+        private void IndexDocument<T>(T document, string indexName) where T : class
+        {
+            var response = _elasticsearchClient.Index(document, i => i.Index(indexName));
+            if (response.IsValid)
+            {
+                Console.WriteLine($"Document indexed successfully in {indexName}: {JsonConvert.SerializeObject(document)}");
+            }
+            else
+            {
+                Console.WriteLine($"Error indexing document in {indexName}: {response.ServerError?.Error?.Reason}");
+            }
         }
     }
 }

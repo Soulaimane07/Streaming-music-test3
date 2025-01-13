@@ -9,7 +9,7 @@ def sanitize_filename(name):
     return re.sub(r'[<>:"/\\|?*]', '-', name)
 
 # URL of the artist's albums page
-url = "https://genius.com/artists/Aaliyah/albums"
+url = "https://genius.com/artists/Don-bigg/albums"
 
 # Directory to save downloaded cover images
 image_directory = "album_covers"

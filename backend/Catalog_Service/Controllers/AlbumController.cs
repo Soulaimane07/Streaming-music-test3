@@ -7,6 +7,9 @@ using Catalog_Service.Data;
 using Catalog_Service.Models;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using Catalog_Service.Services;
+using Newtonsoft.Json;
+
 
 namespace Catalog_Service.Controllers
 {
@@ -132,6 +135,10 @@ namespace Catalog_Service.Controllers
 
             // Insert the album into the database
             _albums.InsertOne(album);
+
+            MessageBroker broker = new MessageBroker();
+            broker.PublishMessage("catalog_exchange", "album.added", album);
+            // Console.WriteLine( JsonConvert.SerializeObject(album));
 
             // Update the artist's album list
             var update = Builders<Artist>.Update.Push(a => a.Albums, album.Id.ToString());

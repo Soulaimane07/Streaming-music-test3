@@ -59,28 +59,28 @@ namespace Catalog_Service.Controllers
 
 
         [HttpPost]
-public IActionResult AddSong([FromBody] Song song)
-{
-    if (song == null || string.IsNullOrWhiteSpace(song.Name) || string.IsNullOrWhiteSpace(song.ArtistId))
-    {
-        return BadRequest("Song data is required and must include a valid name and ArtistId.");
-    }
+        public IActionResult AddSong([FromBody] Song song)
+        {
+            if (song == null || string.IsNullOrWhiteSpace(song.Name) || string.IsNullOrWhiteSpace(song.ArtistId))
+            {
+                return BadRequest("Song data is required and must include a valid name and ArtistId.");
+            }
 
-    // Validate if the artist exists
-    var artistExists = _artists.Find(a => a.Id == ObjectId.Parse(song.ArtistId)).Any();
-    if (!artistExists)
-    {
-        return BadRequest("Invalid ArtistId. Artist does not exist.");
-    }
+            // Validate if the artist exists
+            var artistExists = _artists.Find(a => a.Id == ObjectId.Parse(song.ArtistId)).Any();
+            if (!artistExists)
+            {
+                return BadRequest("Invalid ArtistId. Artist does not exist.");
+            }
 
-    _songs.InsertOne(song);
+            _songs.InsertOne(song);
 
-    // Publish the message
-    MessageBroker broker = new MessageBroker();
-    broker.PublishMessage("catalog_exchangee", "song.added", song);
+            // Publish the message
+            MessageBroker broker = new MessageBroker();
+            broker.PublishMessage("catalog_exchange", "song.added", song);
 
-    return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, song);
-}
+            return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, song);
+        }
 
         
         [HttpGet("artist/{artistId}")]

@@ -21,7 +21,7 @@ namespace Catalog_Service.Services
         _channel = _connection.CreateModel();
     }
 
-    public void PublishMessage(string exchange, string routingKey, Song song)
+    public void PublishMessage(string exchange, string routingKey, object obj)
     {
         try
         {
@@ -29,13 +29,13 @@ namespace Catalog_Service.Services
             _channel.ExchangeDeclare(exchange: exchange, type: "direct", durable: true, autoDelete: false);
 
             // Declare the queue if it doesn't exist
-            _channel.QueueDeclare(queue: "songs_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueDeclare(queue: "catalog_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             // Bind the queue to the exchange with the correct routing key
-            _channel.QueueBind(queue: "songs_queue", exchange: exchange, routingKey: routingKey);
+            _channel.QueueBind(queue: "catalog_queue", exchange: exchange, routingKey: routingKey);
 
             // Serialize the Song object to JSON
-            var message = JsonConvert.SerializeObject(song);
+            var message = JsonConvert.SerializeObject(obj);
             var body = Encoding.UTF8.GetBytes(message);  // Convert JSON string to byte array
 
             // Publish the message to the exchange

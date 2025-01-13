@@ -45,7 +45,9 @@ app.UseCors("AllowFrontend");
 
 // Start consuming messages from RabbitMQ
 var broker = app.Services.GetRequiredService<MessageBroker>();
-Task.Run(() => broker.ConsumeMessages("catalog_exchangee", "song.added", "songs_queue"));
+Task.Run(() => broker.ConsumeMessages("catalog_exchange", "song.added", "catalog_queue"));
+Task.Run(() => broker.ConsumeMessages("catalog_exchange", "artist.added", "catalog_queue"));
+Task.Run(() => broker.ConsumeMessages("catalog_exchange", "album.added", "catalog_queue"));
 
 
 app.Run();

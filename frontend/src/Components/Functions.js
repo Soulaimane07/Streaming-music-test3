@@ -39,6 +39,16 @@ export const GetPlans = () => {
     return plans
 }
 
+export const GetGenreData = async (genreId) => {
+    try {
+      const response = await axios.get(`${CatalogServiceUrl}/songs/genre/${genreId}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching genre data:", error);
+      return [];
+    }
+  };
+
 
 
 

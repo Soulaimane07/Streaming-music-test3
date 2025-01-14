@@ -1,0 +1,134 @@
+[
+    {
+        "id": {},
+      "name": "Echoes of Eternity",
+      "description": "A haunting melody that explores the mysteries of time and space, blending ethereal vocals with a deep, resonant beat.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/20.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923a"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Neon Skies",
+      "description": "A vibrant synthwave anthem inspired by the dazzling lights of a futuristic cityscape.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/19.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923a"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Sings A Song ",
+      "description": "Song lyrics that are both whimsical and haunting, inspired by an eccentric character's dark perspective.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/21.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923b"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Midnight Serenade",
+      "description": "A smooth jazz track that captures the elegance and mystery of the midnight hour.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/18.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923c"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Golden Sunset",
+      "description": "A calming acoustic piece that evokes the warmth and beauty of a sunset.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/17.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923d"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Crimson Tide",
+      "description": "A high-energy rock anthem with electrifying guitar solos and a powerful chorus.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/16.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923e"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Ocean Dreams",
+      "description": "A soothing instrumental track inspired by the rhythm of ocean waves.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/15.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923d"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Fire and Ice",
+      "description": "An epic orchestral piece that portrays the clash of elemental forces.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/14.mp3",
+      "imageUrl":"https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923f"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Digital Horizon",
+      "description": "A pulsating electronic track that captures the essence of futuristic technology.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/13.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923a"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Starlight Waltz",
+      "description": "A classical waltz that evokes the elegance of a starry night.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/12.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923d"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Moonlit Sonata",
+      "description": "A piano solo inspired by the tranquility of moonlight.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/11.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812ae1ad36cef03c849239", "67812b98ad36cef03c84923d"],
+      "albumId": "678541f2a3317223a0f211c2"
+    },
+    {
+        "id": {},
+      "name": "Chasing Shadows",
+      "description": "A suspenseful instrumental piece with dark undertones.",
+      "duration": 0,
+      "audioUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/songs/10.mp3",
+      "imageUrl": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/albums/Talet.jpg",
+      "artistId": "67853720a3317223a0f211b0",
+      "genreIds": ["67812befad36cef03c849245"],
+      "albumId": "678541f2a3317223a0f211c2"
+    }
+]

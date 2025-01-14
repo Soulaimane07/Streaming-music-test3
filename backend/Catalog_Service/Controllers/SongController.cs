@@ -156,46 +156,81 @@ namespace Catalog_Service.Controllers
 
 
 
-[HttpPost("add-song")]
-public IActionResult AddSongToAlbum([FromBody] Song song)
-{
-    if (song == null || string.IsNullOrWhiteSpace(song.Name) || string.IsNullOrWhiteSpace(song.AlbumId))
-    {
-        return BadRequest("Song data is required and must include a valid name and AlbumId.");
-    }
+        [HttpPost("add-song")]
+        public IActionResult AddSongToAlbum([FromBody] Song song)
+        {
+            if (song == null || string.IsNullOrWhiteSpace(song.Name) || string.IsNullOrWhiteSpace(song.AlbumId))
+            {
+                return BadRequest("Song data is required and must include a valid name and AlbumId.");
+            }
 
-    // Validate AlbumId
-    if (!ObjectId.TryParse(song.AlbumId, out var albumObjectId))
-    {
-        return BadRequest("Invalid Album ID format.");
-    }
+            // Validate AlbumId
+            if (!ObjectId.TryParse(song.AlbumId, out var albumObjectId))
+            {
+                return BadRequest("Invalid Album ID format.");
+            }
 
-    // Fetch the album
-    var album = _albums.Find(a => a.Id == albumObjectId).FirstOrDefault();
-    if (album == null)
-    {
-        return NotFound($"Album with ID {song.AlbumId} not found.");
-    }
+            // Fetch the album
+            var album = _albums.Find(a => a.Id == albumObjectId).FirstOrDefault();
+            if (album == null)
+            {
+                return NotFound($"Album with ID {song.AlbumId} not found.");
+            }
 
-    // Insert the song into the Songs collection
-    _songs.InsertOne(song);
+            // Insert the song into the Songs collection
+            _songs.InsertOne(song);
+            MessageBroker broker = new MessageBroker();
+            broker.PublishMessage("catalog_exchange", "song.added", song);
 
-    // Update the Album's SongIds list
-    var update = Builders<Album>.Update.Push(a => a.SongIds, song.Id.ToString());
-    _albums.UpdateOne(a => a.Id == albumObjectId, update);
+            // Update the Album's SongIds list
+            var update = Builders<Album>.Update.Push(a => a.SongIds, song.Id.ToString());
+            _albums.UpdateOne(a => a.Id == albumObjectId, update);
 
-    // Return the created song details
-    return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, new
-    {
-        id = song.Id.ToString(),
-        name = song.Name,
-        description = song.Description,
-        duration = song.Duration,
-        audioUrl = song.AudioUrl,
-        imageUrl = song.ImageUrl,
-        albumId = song.AlbumId
-    });
-}
+            // Return the created song details
+            return CreatedAtAction(nameof(GetOneSong), new { id = song.Id.ToString() }, new
+            {
+                id = song.Id.ToString(),
+                name = song.Name,
+                description = song.Description,
+                duration = song.Duration,
+                audioUrl = song.AudioUrl,
+                imageUrl = song.ImageUrl,
+                albumId = song.AlbumId
+            });
+        }
+
+
+        [HttpGet("genre/{genreId}")]
+        public IActionResult GetSongsByGenre(string genreId)
+        {
+            if (!ObjectId.TryParse(genreId, out var genreObjectId))
+            {
+                return BadRequest("Invalid Genre ID format.");
+            }
+
+            // Find songs that have the specified genre ID in their GenreIds list
+            var songs = _songs.Find(song => song.GenreIds.Contains(genreId)).ToList();
+
+            if (!songs.Any())
+            {
+                return NotFound($"No songs found for Genre ID {genreId}.");
+            }
+
+            // Format the result to include only relevant fields
+            var result = songs.Select(s => new
+            {
+                id = s.Id.ToString(),
+                name = s.Name,
+                description = s.Description,
+                duration = s.Duration,
+                audioUrl = s.AudioUrl,
+                imageUrl = s.ImageUrl,
+                genreIds = s.GenreIds
+            }).ToList();
+
+            return Ok(result);
+        }
+
 
 
     }

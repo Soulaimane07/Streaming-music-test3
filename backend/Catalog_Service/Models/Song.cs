@@ -23,7 +23,7 @@ namespace Catalog_Service.Models
         public string AlbumId { get; set; }  
 
         // List of genre references (ObjectIds) in the Song model
-        // [BsonRepresentation(BsonType.ObjectId)] 
-        // public List<ObjectId> GenreIds { get; set; }  // List of genre ObjectIds for the song
+        [BsonRepresentation(BsonType.ObjectId)] 
+        public List<string> GenreIds { get; set; }  // List of genre ObjectIds for the song
     }
 }

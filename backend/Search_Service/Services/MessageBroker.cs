@@ -80,6 +80,10 @@ namespace Search_Service.Services
                         var album = JsonConvert.DeserializeObject<Album>(message);
                         IndexDocument(album, "albums");
                         break;
+                    case "playlist.added":
+                        var playlist = JsonConvert.DeserializeObject<Playlist>(message);
+                        IndexDocument(playlist, "playlists");
+                        break;
                     default:
                         Console.WriteLine($"Unknown routing key: {routingKey}");
                         break;

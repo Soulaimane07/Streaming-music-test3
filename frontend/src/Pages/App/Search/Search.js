@@ -53,6 +53,10 @@ function Search() {
     const [hover, setHover] = useState(null)
 
 
+    console.log(searchData);
+    
+
+
   return (
     <div className='flex-1 relative '>
         <div className='pb-40 py-2 min-h-screen'>
@@ -147,7 +151,7 @@ function Search() {
                         <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4'>
                             {searchData &&
                                 searchData
-                                    .filter((item) => item.type === "Artist") // Filter only songs
+                                    .filter((item) => item.type === "Playlist") // Filter only songs
                                     .slice(0, 6) // Select the first 5 songs
                                     .map((item, index) => (
                                         <PlaylistBox

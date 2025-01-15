@@ -53,11 +53,12 @@ function Playlists() {
     }, [id, dispatch]);
     
     //const playlist = useSelector((state)=> state.playlists.playlist)
-    const playlist = useSelector((state)=> state.playlists.data[8])
+    const playlist = useSelector((state)=> state.playlists.playlist)
     
     PageTitle(`${playlist?.title} - Playlist`)
+    const music = useSelector(state => state.music)
     
-
+    
     
     
 
@@ -114,7 +115,7 @@ function Playlists() {
                 <div className="relative">
                     <ul className='px-12'>
                         {playlist?.songs?.map((item, key) => (
-                            <PlaylistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
+                            <PlaylistTrack hover={hover} setHover={setHover} data={item} id={key} key={key} music={music} />
                         ))}
                     </ul>
                 </div>

@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Replace with your frontend URL
+        policy.WithOrigins("http://localhost:3000", "http://localhost:3001") // Replace with your frontend URL
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -48,6 +48,7 @@ var broker = app.Services.GetRequiredService<MessageBroker>();
 Task.Run(() => broker.ConsumeMessages("catalog_exchange", "song.added", "catalog_queue"));
 Task.Run(() => broker.ConsumeMessages("catalog_exchange", "artist.added", "catalog_queue"));
 Task.Run(() => broker.ConsumeMessages("catalog_exchange", "album.added", "catalog_queue"));
+Task.Run(() => broker.ConsumeMessages("catalog_exchange", "playlist.added", "catalog_queue"));
 
 
 app.Run();

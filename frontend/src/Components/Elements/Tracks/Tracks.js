@@ -80,9 +80,9 @@ export const PlaylistTrack = ({data, setHover, hover, id, music}) => {
               ? <img src={data?.imageUrl} className="w-12 rounded-sm" /> 
               : <div className='bg-gradient-to-br from-violet-600 to-violet-200 w-12 h-12 rounded-sm overflow-hidden flex items-center justify-center'> <IoMusicalNotes /> </div>
             }
-            <div>
-              <p className='font-medium'> {data?.name ?? "Track name"} </p>
-              <Link to={`/artists/${data?.artist?.name}`} className=' hover:opacity-100 opacity-60 text-sm hover:underline transition-all'> {data?.artist?.name ?? "Artist name"} </Link>
+            <div className="flex flex-col">
+              <p className='font-medium text-left'> {data?.name ?? "Track name"} </p>
+              <Link to={`/artists/${data?.artist?.name}`} className=' text-left justify-end  hover:opacity-100 opacity-60 text-sm hover:underline transition-all'> {data?.artist?.name ?? "Artist name"} </Link>
             </div>
           </div>
 
@@ -125,14 +125,14 @@ export const ProfileTrack = ({hover, setHover, data, id}) => {
 
 
       <div className='flex space-x-2 w-full justify-between items-center '>
-        <div className='flex space-x-2 items-center'>
+        <div className='flex space-x-2 w-1/2 items-center'>
           {data?.image 
             ? <img src={data?.image} className="w-12 rounded-sm" /> 
             : <div className='bg-gradient-to-br from-violet-600 to-violet-200 w-12 h-12 rounded-sm overflow-hidden flex items-center justify-center'> <IoMusicalNotes /> </div>
           }
-          <div>
+          <div className="flex flex-col">
             <p className='font-medium'> {data?.name ?? "Track name"} </p>
-            <Link to={`/artists/${data?.artist?.name}`} className=' hover:opacity-100 opacity-60 text-sm hover:underline transition-all'> {data?.artist?.name ?? "Artist name"} </Link>
+            <Link to={`/artists/${data?.artist?.name}`} className=' text-left hover:opacity-100 opacity-60 text-sm hover:underline transition-all'> {data?.artist?.name ?? "Artist name"} </Link>
           </div>
         </div>
 

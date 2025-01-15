@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "X3Ay22/7sAk=",
+  "dgSpecHash": "uKpAZQ4Y4jQ=",
   "success": true,
   "projectFilePath": "D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\User_Service.csproj",
   "expectedPackageFiles": [
@@ -93,12 +93,5 @@
     "C:\\Users\\Soulaimane\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
     "C:\\Users\\Soulaimane\\.nuget\\packages\\zstdsharp.port\\0.8.0\\zstdsharp.port.0.8.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problème de lecture du fichier cache D:\\Coding\\Streaming-music-test3\\backend\\User_Service\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

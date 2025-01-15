@@ -65,13 +65,17 @@ public async Task<IActionResult> Search([FromQuery] string query)
     try
     {
         var response = await _client.SearchAsync<object>(s => s
-            .Index(new[] { "songs", "artists", "albums", "playlists" }) // Specify indices to search
+            .Index(new[] { "songs", "artists", "playlists", "albums" }) // Specify indices to search
             .Query(q => q
                 .MultiMatch(m => m
                     .Fields(f => f
                         .Field("name") // Common field across entities
-                        .Field("description") // Common field for entities like albums or playlists
                         .Field("title") // Common field across entities
+                        .Field("year") // Common field across entities
+                        .Field("description") // Common field for entities like albums or playlists
+                        .Field("id") // Common field for entities like albums or playlists
+                        .Field("songs") // Common field for entities like albums or playlists
+                        .Field("user") // Common field for entities like albums or playlists
                     )
                     .Query(query) // Search query
                 )

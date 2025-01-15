@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Pop Playlist 2024",
+        "link": "https://music.apple.com/ca/playlist/pop-playlist-2024/pl.8041a56e48ac4650aa0bb67aff6194c6",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/3e/bf/9d/3ebf9d1a-6ec6-078d-8254-9fcb674ffb3f/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_1.webp"
+    },
+    {
+        "name": "Indie Folk Feels",
+        "link": "https://music.apple.com/ca/playlist/indie-folk-feels/pl.c347d6cdea1d4946a793aff5cbf87054",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/5e/66/00/5e6600fc-e79e-4f64-d57b-fbaaf3f89cf8/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_2.webp"
+    },
+    {
+        "name": "Blues Guitar Masters",
+        "link": "https://music.apple.com/ca/playlist/blues-guitar-masters/pl.f20778db579e4f1485c05d4754893f1c",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/0a/48/31/0a4831fe-61cc-6820-25d1-c9d1a1385537/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_3.webp"
+    },
+    {
+        "name": "Sad Songs",
+        "link": "https://music.apple.com/ca/playlist/sad-songs/pl.671f09ef235f4b37acb059bb95258d9c",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/91/cb/ef/91cbef87-c75d-cadb-5b67-d7c9589caf26/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_4.webp"
+    },
+    {
+        "name": "Happy Songs",
+        "link": "https://music.apple.com/ca/playlist/happy-songs/pl.d6ef843f757c478eb4c1fa34163e4af3",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-001-Image000001/v4/23/a6/76/23a676df-a49d-01e8-4d7f-34563317b7a8/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_5.webp"
+    },
+    {
+        "name": "North Americana",
+        "link": "https://music.apple.com/ca/playlist/north-americana/pl.be86721d77cf42d880cb7022e36b4bfa",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/7aampC0TrU5l36toq-uCAA/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_6.webp"
+    },
+    {
+        "name": "True North Acoustic",
+        "link": "https://music.apple.com/ca/playlist/true-north-acoustic/pl.1c352b76ed234bcdb761d1f6ea4e2673",
+        "description": "N/A",
+        "image_url": "https://is1-ssl.mzstatic.com/image/thumb/SG-MQ-US-035-Image000001/v4/b8/24/ce/b824ce24-8a9f-6bf9-55b1-9ddbdac2136b/image/296x296cc.webp 296w",
+        "image_file": "playlist_images\\playlist_7.webp"
+    }
+]

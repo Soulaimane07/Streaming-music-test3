@@ -4,6 +4,7 @@ using Playlist_Service.Data;
 using Grpc.Net.Client;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using Playlist_Service.Services;
 
 namespace Playlist_Service.Controllers
 {
@@ -22,8 +23,8 @@ namespace Playlist_Service.Controllers
             _playlists = context.Playlists;
 
             // Create a gRPC channel to Catalog Service
-            _channelSong = GrpcChannel.ForAddress("http://localhost:5004"); // Catalog service URL
-            _channelUser = GrpcChannel.ForAddress("http://localhost:5001"); // Catalog service URL
+            _channelSong = GrpcChannel.ForAddress("http://localhost:5003"); // Catalog service URL
+            _channelUser = GrpcChannel.ForAddress("http://localhost:5001"); // User service URL
             _songerClient = new Songer.SongerClient(_channelSong);
             _userClient = new Userer.UsererClient(_channelUser);
         }
@@ -44,7 +45,16 @@ namespace Playlist_Service.Controllers
                 return NotFound();
             }
 
-            return Ok(playlists);
+            var result = playlists.Select(a => new
+            {
+                id = a.Id.ToString(),
+                title = a.Title,
+                image = a.Image,
+                songs = a.Songs,
+                user = a.User
+            }).ToList();
+
+            return Ok(result);
         }
 
         [HttpPost]
@@ -76,7 +86,17 @@ namespace Playlist_Service.Controllers
 
             await _playlists.InsertOneAsync(playlist);
 
-            return CreatedAtAction(nameof(GetPlaylist), new { id = playlist.Id.ToString() }, playlist);
+            MessageBroker broker = new MessageBroker();
+            broker.PublishMessage("catalog_exchange", "playlist.added", playlist);
+
+            return CreatedAtAction(nameof(GetPlaylist), new { id = playlist.Id.ToString() }, new
+            {
+                id = playlist.Id.ToString(),
+                title = playlist.Title,
+                image = playlist.Image,
+                songs = playlist.Songs,
+                user = playlist.User
+            });
         }
 
         [HttpGet("{id}")]

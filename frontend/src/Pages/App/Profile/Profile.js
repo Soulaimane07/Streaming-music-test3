@@ -62,6 +62,7 @@ function Profile() {
 
     const artists = useSelector((state)=> state.artists.data)
     const playlists = useSelector((state)=> state.playlists.data)
+    const songs = useSelector((state)=> state.songs.data)
 
 
 
@@ -106,7 +107,7 @@ function Profile() {
                             <Link to={"/top/tracks"} className='text-sm font-medium hover:underline'> Show all </Link>
                         </div>
                         <ul className='px-12 mt-6 space-y-2'>
-                            {tracks?.map((item,key)=>(
+                            {songs?.map((item,key)=>(
                                 key < 5 && <ProfileTrack hover={hover} setHover={setHover} data={item} id={key} key={key} />
                             ))}
                         </ul>

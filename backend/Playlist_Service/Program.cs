@@ -1,4 +1,5 @@
 using Playlist_Service.Data;
+using Playlist_Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +31,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Replace with your frontend URL
+        policy.WithOrigins("http://localhost:3000", "http://localhost:3001") // Replace with your frontend URL
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -39,6 +40,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<MessageBroker>();
 
 builder.Services.AddGrpc();
 

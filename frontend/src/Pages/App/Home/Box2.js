@@ -5,6 +5,8 @@ import { HeaderSkeleton } from '../../../Components/Elements/Skeletons/Headers'
 import { SkeletonHomePlaylists } from '../../../Components/Elements/Skeletons/Playlists'
 
 function Box2({playlists, playlistsLoading}) {
+  console.log(playlists);
+  
   return (
     <div className='px-10 -mt-6'>
       {(playlists?.length !== 0 | playlistsLoading)

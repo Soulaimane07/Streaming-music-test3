@@ -1,0 +1,193 @@
+[
+    {
+        "title": "Pop Playlist 2024",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/1.jpg"
+    },
+    {
+        "title": "Indie Folk Feels",
+        "userId": 1,
+        "songIds": [
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/3.webp"
+    },
+    {
+        "title": "Blues Guitar Masters",
+        "userId": 1,
+        "songIds": [
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/6.png"
+    },
+    {
+        "title": "Sad Songs",
+        "userId": 1,
+        "songIds": [
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/9.png"
+    },
+    {
+        "title": "Happy Songs",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/10.webp"
+    },
+    {
+        "title": "North Americana",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/7.jpg"
+    },
+    {
+        "title": "True North Acoustic",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/2.jpg"
+    },
+    {
+        "title": "True North ",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/5.png"
+    },
+    {
+        "title": "Acoustic",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/4.jpg"
+    },
+    {
+        "title": "True North Acoustic",
+        "userId": 1,
+        "songIds": [
+             "6785a881243688c68d204a6c",
+             "6785a884243688c68d204a73",
+             "6785a886243688c68d204a76",
+             "6785aa9f243688c68d204a7b",
+             "6785aa9f243688c68d204a7d",
+             "6785aa9f243688c68d204a80",
+             "6785aaa0243688c68d204a84",
+             "6785b153243688c68d204a97",
+             "6785b153243688c68d204a9c",
+             "6785b1a5243688c68d204aa2",
+             "6785b1a5243688c68d204aa3",
+             "6785b1a5243688c68d204aa4",
+             "6785b1a5243688c68d204aa5",
+             "6785b1a5243688c68d204aa6",
+             "6785b1a5243688c68d204aa7"
+        ],
+        "image": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/playlists/8.webp"
+    }
+]

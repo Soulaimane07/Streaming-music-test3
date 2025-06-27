@@ -1,0 +1,9 @@
+@Catalog_Service_HostAddress = http://localhost:5131
+
+GET {{Catalog_Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+
+  // "MongoDb": "mongodb://root:root@DB-Catalog:27017/CatalogDb"

@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: DB-User
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userdb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql-db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - spotify
+
+
+  user-service:
+    build:
+      context: .
+      dockerfile: ./docker/backend/user/Dockerfile
+    container_name: Service-User
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=mysql;Port=3306;Database=userDb;Username=myuser;Password=mypassword
+    depends_on:
+      - mysql
+    networks:
+      - spotify
+
+
+  # mongodb:
+  #   image: mongo:6
+  #   container_name: DB-Catalog
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: root
+  #     MONGO_INITDB_DATABASE: CatalogDb
+  #   volumes:
+  #     - mongo-db:/data/db
+  #   ports:
+  #     - "27017:27017"
+  #   networks:
+  #     - spotify
+
+
+  # catalog-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/catalog/Dockerfile
+  #   container_name: Service-Catalog
+  #   ports:
+  #     - "5002:8080"
+  #     - "5003:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
+
+
+  # playlist-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/playlist/Dockerfile
+  #   container_name: Service-playlist
+  #   ports:
+  #     - "5004:8080"
+  #     - "5005:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - mongodb
+  #   networks:
+  #     - spotify
+
+
+  # elasticsearch:
+  #   image: elasticsearch:8.10.1
+  #   container_name: DB-Search
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   environment:
+  #     - discovery.type=single-node
+  #     - ELASTIC_PASSWORD=password
+  #   volumes:
+  #     - es-data:/usr/share/elasticsearch/data
+  #   networks:
+  #     - spotify
+
+
+  # rabbitmq:
+  #   image: rabbitmq:management
+  #   container_name: Message-Queue
+  #   ports:
+  #     - "5672:5672"  # RabbitMQ server
+  #     - "15672:15672"  # Management console
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: guest
+  #     RABBITMQ_DEFAULT_PASS: guest
+  #   volumes:
+  #     - rabbitmq-data:/var/lib/rabbitmq  # Persistent data
+  #   networks:
+  #     - spotify
+
+
+  # search-service:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/backend/search/Dockerfile
+  #   container_name: Service-search
+  #   ports:
+  #     - "5006:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=mongodb;Port=27017;Database=CatalogDb;Username=root;Password=root
+  #   depends_on:
+  #     - elasticsearch
+  #     - rabbitmq
+  #   networks:
+  #     - spotify
+
+
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/frontend/Dockerfile
+  #   container_name: Frontend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - user-service
+  #     - catalog-service
+  #   networks:
+  #     - spotify
+
+
+networks:
+  spotify:
+    driver: bridge
+
+volumes:
+  mysql-db:
+    external: true
+  mongo-db:
+    external: true
+  es-data:
+    external: true
+  rabbitmq-data:
+    external: true

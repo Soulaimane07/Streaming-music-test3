@@ -1,0 +1,170 @@
+[
+    {
+        "id": 1,
+        "name": "Cursed Homer Simpson Sings A SongLyrics",
+        "description": "Cursed Homer Simpson Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/1",
+        "imageUrl": "https://example.com/images/1.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Cursed SpongeBob Sings A SongLyrics",
+        "description": "Cursed SpongeBob Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/2",
+        "imageUrl": "https://example.com/images/2.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Cursed Willy Wonka Sings A Song (Ft. Tyler Levs)Lyrics",
+        "description": "Cursed Willy Wonka Sings A Song (Ft. Tyler Levs)Lyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/3",
+        "imageUrl": "https://example.com/images/3.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Cursed Woody Sings A Song (Ft. Jennifer Victor)Lyrics",
+        "description": "Cursed Woody Sings A Song (Ft. Jennifer Victor)Lyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/4",
+        "imageUrl": "https://example.com/images/4.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Cursed Peppa Pig Sings A Song (Ft. Whatadizzydance)Lyrics",
+        "description": "Cursed Peppa Pig Sings A Song (Ft. Whatadizzydance)Lyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/5",
+        "imageUrl": "https://example.com/images/5.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Cursed Scooby Doo Sings A SongLyrics",
+        "description": "Cursed Scooby Doo Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/6",
+        "imageUrl": "https://example.com/images/6.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Cursed Sonic Sings A Song (Ft. Luke James Shaffer)Lyrics",
+        "description": "Cursed Sonic Sings A Song (Ft. Luke James Shaffer)Lyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/7",
+        "imageUrl": "https://example.com/images/7.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Cursed Barney The Dinosaur Sings A SongLyrics",
+        "description": "Cursed Barney The Dinosaur Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/8",
+        "imageUrl": "https://example.com/images/8.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Cursed Shrek Sings A SongLyrics",
+        "description": "Cursed Shrek Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/9",
+        "imageUrl": "https://example.com/images/9.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Cursed Peter Griffin Sings A SongLyrics",
+        "description": "Cursed Peter Griffin Sings A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/10",
+        "imageUrl": "https://example.com/images/10.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Cursed Thomas The Tank Engine Sings A Song (Ft. Ringo Star)Lyrics",
+        "description": "Cursed Thomas The Tank Engine Sings A Song (Ft. Ringo Star)Lyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/11",
+        "imageUrl": "https://example.com/images/11.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Cursed Buzz Lightyear Sing A SongLyrics",
+        "description": "Cursed Buzz Lightyear Sing A SongLyrics description",
+        "duration": 180,
+        "audioUrl": "https://example.com/audio/12",
+        "imageUrl": "https://example.com/images/12.jpg",
+        "artistId": "678164dc9550e6bd88f73f14",
+        "albumId": "67828738520954f83193d310",
+        "genreIds": [
+            "genre-1",
+            "genre-2"
+        ]
+    }
+]

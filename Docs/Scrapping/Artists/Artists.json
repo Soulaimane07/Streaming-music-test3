@@ -1,0 +1,195 @@
+[
+    {
+        "id": {},
+      "name": "Aaliyah",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaliyah.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaliyah.jpg",
+      "description": "Born on January 16, 1979 in Brooklyn, New York and raised in Detroit, Michigan, Aaliyah Dana Haughton, sometimes referred to as the “Princess of R&B,” was an American singer and actress who debuted in the early ‘90s. In 1989, at age ten, she appeared on the American talent television show, Star Search. In 1994, she made her debut in the music industry with her debut album, Age Ain’t Nothing But a Number.",
+      "monthlyListeners": 5400000
+    },
+    {
+        "id": {},
+      "name": "Aaron Fraser-Nash",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Fraser-Nash.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Fraser-Nash.jpg",
+      "monthlyListeners": 1200000,
+      "description": "Aaron Fraser-Nash (born April 18, 1987) is an English songwriter and artist, specializing in songs related to meme culture, movies and video games."
+    },
+    {
+        "id": {},
+      "name": "Aaron Keyes",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Keyes.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Keyes.jpg",
+      "monthlyListeners": 850000,
+      "description": "Aaron Keyes is a singer and songwriter from Snellville, GA. Over his career, Keyes has released one independent album, two studio albums, and two live recordings; some of his top songs include “Sovereign Over Us,” “Psalm 62,” “Trust You,” and more. Keyes is also the founder of worship school 10,000 Fathers and MereWorship, a source of content made by worship leaders for worship leaders. Currently, Keyes is a worship pastor for New Life Church in Colorado Springs, CO with his wife Megan and their four sons."
+    },
+    {
+        "id": {},
+      "name": "Aaron Lewis",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Lewis.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Lewis.jpg",
+      "monthlyListeners": 3200000,
+      "description": "Aaron Lewis (born April 13, 1972) is an American musician, who is the lead vocalist, rhythm guitarist, and founding member of the rock group Staind, with whom he has released seven studio albums. He has since ventured into country music with his debut solo EP Town Line, which was released on March 1, 2011 on Stroudavarious Records. Lewis' first full-length solo release, The Road, was released by Blaster Records on November 13, 2012"
+    },
+    {
+        "id": {},
+      "name": "Aaron May",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+May.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+May.jpg",
+      "monthlyListeners": 740000,
+      "description": "20 YEARS IN HOUSTON"
+    },
+    {
+        "id": {},
+      "name": "Aaron Smith",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Smith.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Smith.jpg",
+      "monthlyListeners": 1600000,
+      "description": "Aaron J. Simpson Smith is an American house music DJ from Chicago, Illinois. He is best known for recording a track called “Dancin'” which features female vocalist Luvli."
+    },
+    {
+        "id": {},
+      "name": "Aaron Tveit",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Tveit.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Aaron+Tveit.jpg",
+      "monthlyListeners": 950000,
+      "description": "Aaron Tveit is an American actor and singer. He originated the roles of Gabe, Frank Abagnale Jr. and Christian in the broadway musicals Next to Normal, Catch Me If You Can, and Moulin Rouge the Musical, respectively. He also starred in film musicals as Enjolras in Les Miserables and Danny Zuko in Grease Live, as well as appearing in multiple TV shows and movies."
+    },
+    {
+        "id": {},
+      "name": "E1 (3x3)",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/E1+3x3.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/E1+3x3.jpg",
+      "monthlyListeners": 680000,
+      "description": "E1 is a young UK rapper who specialises in drill music. He is apart of the drill group 3x3 from Edmonton Green, North London."
+    },
+    {
+        "id": {},
+      "name": "E-40",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/E-40.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/E-40.jpg",
+      "monthlyListeners": 4200000,
+      "description": "Known as The Ambassador of the Bay, Vallejo’s Earl “E-40” Stevens is a boss, from starting his own independent record label Sick Wid It Records to releasing his own line of wine. 40 Water has been in the rap game since the 1980s and has stayed relevant for decades as his slanguage has found its way into the songs of other rappers."
+    },
+    {
+        "id": {},
+      "name": "Eagle-Eye Cherry",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eagle-Eye+Cherry.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eagle-Eye+Cherry.jpg",
+      "monthlyListeners": 1700000,
+      "description": "Eagle-Eye Lanoo Cherry is a Swedish singer and stage performer, born 7 May 1968 in Stockholm, Sweden."
+    },
+    {
+        "id": {},
+      "name": "Eagles of Death Metal",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eagles+of+Death+Metal.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eagles+of+Death+Metal.jpg",
+      "monthlyListeners": 950000,
+      "description": "Founded in Palm Desert, Ca in 1998 by Jesse Hughes and Josh Homme, Eagles of Death Metal is a fun, tongue-in-cheek rock and roll band."
+    },
+    {
+        "id": {},
+      "name": "eaJ",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/eaJ.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/eaJ.jpg",
+      "monthlyListeners": 680000,
+      "description": "Jae Park, otherwise known by his Korean name Park Jae Hyung (박제형), is a former vocalist and electric guitarist for the band DAY6. He was born in Buenos Aires, Argentina, raised in Long Beach, California and is currently based in South Korea. Prior to joining DAY6, he gained attention as one of the final six finalists of the first season of the singing competition television series K-pop Star."
+    },
+    {
+        "id": {},
+      "name": "Eamon",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eamon.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Eamon.jpg",
+      "monthlyListeners": 740000,
+      "description": "Platinum recording artist and unapologetic soul singer Eamon is set to release his new album Captive Thoughts on December 6 through Now Again Records. After his ambitious and critically acclaimed 2017 album Golden Rail Motel, Eamon’s new record feels like an even deeper expression of the lost art of the singer’s ability to make the listener feel every single lyric. “Simply put, I’m singing every note as if my life depends on it,” says Eamon through a thick Staten Island accent that hasn’t faded since relocating to Los Angeles."
+    },
+    {
+        "id": {},
+      "name": "Early B",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Early B.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Early+B.jpg",
+      "monthlyListeners": 950000,
+      "description": "Early B is an Afrikaans/English rapper from Port Elizabeth South Africa. He is known for his humorous storytelling and using the catch phrase “Van die Dal af”, which is the neighborhood he grew up in. Real name Earl Swartz, he started making music as part of a group known as MC Earl and Agemi."
+    },
+    {
+        "id": {},
+      "name": "The Early November",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/The+Early+November.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/The+Early+November.jpg",
+      "monthlyListeners": 5400000,
+      "description": "The Early November is an American Emo/Indie Rock rock band from Hammonton, New Jersey, formed in 1999. Their current line-up consists of vocalist/guitarist Ace Enders and drummer Jeff Kummer. Lead guitarist Bill Lugg, bassist Sergio Anello, and keyboardist Joe Marro all contributed to the recording of the group’s fifth album, Lilac, released in 2019; however, they are not officially part of TEN and do not tour with them (although Joe manages the group)."
+    },
+    {
+        "id": {},
+      "name": "D12",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D12.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D12.jpg",
+      "monthlyListeners": 700900,
+      "description": "https://www.youtube.com/watch?v=f5hQjoL1drM"
+    },
+    {
+        "id": {},
+      "name": "D1MA",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D1MA.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D1MA.jpg",
+      "monthlyListeners": 840000,
+      "description": "D1MA er en af danmarks mest omtalte franskinspireret Rap og Hiphop stjerner. Han debuterede med sangen “COME MY WAY” i samarbejde med den svenske rapper VC Barre. Senere har han udgivet store singler som “DRØM MIG VÆK” og “NO LOVE”, som har dannet grundlaget for udgivelsen af debutalbummet “EV1GT&ALT1D”, der bl.a indeholder kæmpehittet “MOONLIGHT”. I efteråret 2024 udgav D1MA det album alle havde ventet, men en helt anden lyd overraskede D1MA-elskerne, den 11. oktober da “7” blev udgivet. “CLEOPATRA” blev en lille appetizer til et nyt lydunivers der for alvor kom til udtryk i boombap-sangen “VÅGN OP” der har indtaget pladserne på TOP-50 op til flere gange. Han er dog stadig maskeret og hans indentitet er endnu ukendt. Der går mange teorier om ham, vi kan sige med stor sikkerhed at han er over 21 år, marrokansk baggrund, kører en Rolls Royce Drophead Coupé, fra Aarhus (Gellerupparken/Trillegården), har haft en svær opvækst og har gået under navnet Grizzy (hans musik findes på SoundCloud)."
+    },
+    {
+        "id": {},
+      "name": "D3",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D3.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D3.jpg",
+      "monthlyListeners": 3560000,
+      "description": "Hip-hop kariyerine 2017-2018 yıllarında Karaköy'de graffiti yaparak Dant3 mahlası ile başlayan Deniz, daha sonrasında soundcloud'da paylaştığı demolarla devam etti. 2020 yılının başında https://genius.com/artists/2run ile birlikte başladığı Anne Affet kollektifinin ilk EP'si olan https://genius.com/albums/D3-and-2run/Playboy-magazine ile profesyonel olarak müziğe girdi. Daha sonrasında https://genius.com/artists/Sam ile tanışması ile beraber Tophane Aç Kurtlar projesi altında ÇEKBİNBEŞYÜZDUMAN ile çıkış yaptı."
+    },
+    {
+        "id": {},
+      "name": "d3r",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/d3r.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/d3r.jpg",
+      "monthlyListeners": 8400000,
+      "description": "d3r (pronounced “der”) is a 21-year-old vocalist and new time producer from British Columbia, Canada. He is currently a part of the music collective, FabFantasy."
+    },
+    {
+        "id": {},
+      "name": "D4L",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D4L.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/D4L.jpg",
+      "monthlyListeners": 3300000,
+      "description": "D4L was a hip-hop group formed in 2003 formerly comprised of Atlanta rappers Fabo, Mook-B, Stoney aka Stuntman, and Shawty Lo. The group’s name stands for “Down for Life” and signed to Dee Money Entertainment."
+    },
+    {
+        "id": {},
+      "name": "DaBaby",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/DaBaby.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/DaBaby.jpg",
+      "monthlyListeners": 3000000,
+      "description": "Jonathan Lyndale Kirk (b. December 22, 1991), better known as his stage name DaBaby (formerly Baby Jesus), is a rapper hailing from Charlotte, North Carolina."
+    },
+    {
+        "id": {},
+      "name": "Dabeull",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Dabeull.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Dabeull.jpg",
+      "monthlyListeners": 600000,
+      "description": "Dabeull is a self-proclaimed French “NewFonk” artist, who is part of the popular French label Roche Musique. Dabeull recently collaborated on disco legend Cerrone’s hit record ‘Red Lips’ and later featured Cerrone on his own 2017 compilation “Indastudio”. The name for the compilation came from the songs stemming from his popular videos of him creating them in his homestudio."
+    },
+    {
+        "id": {},
+      "name": "DaBoii",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/DaBoii.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/DaBoii.jpg",
+      "monthlyListeners": 5000000,
+      "description": "DaBoii, born on August 14, 1997, is a former member of rap collective SOB X RBE and went to school with another SOB member Slimmy B."
+    },
+    {
+        "id": {},
+      "name": "Ca7riel & Paco Amoroso",
+      "imageBg": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Ca7riel++Paco+Amoroso.jpg",
+      "imageCard": "https://streaming-app-datastore.s3.eu-west-3.amazonaws.com/artists/Ca7riel++Paco+Amoroso.jpg",
+      "monthlyListeners": 100000,
+      "description": "Ca7riel & Paco Amoroso son un dúo de artistas argentinos dedicados al pop experimental, formados en Buenos Aires en 2016. Sus discos se caracterizan por combinar géneros musicales variados como el trap, el rock, la música electrónica y el reggaetón, lo que les da un sonido innovador y fresco."
+    }
+]
+  

@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database service
+  postgres:
+    image: postgres:15
+    container_name: DB-User
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: spotify
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  # User Service backend
+  user-service:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    image: ${DOCKER_IMAGE_BACKEND}:1.0.0
+    container_name: Service-User
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Username=postgres;Password=123456;Database=spotify
+    depends_on:
+      - postgres
+    command: ["sh", "-c", "until pg_isready -h postgres -p 5432; do sleep 2; done; dotnet User.Service.dll"]
+    networks:
+      - app-network
+
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    image: ${DOCKER_IMAGE_FRONTEND}:1.0.0
+    container_name: Frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+    networks:
+      - app-network
+
+volumes:
+  pgdata:  # For PostgreSQL data persistence
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,9 @@
+User_Service/bin
+Catalog_Service/bin
+Playlist_Service/bin
+
+User_Service/obj
+Catalog_Service/obj
+Playlist_Service/obj
+
+User_Service/Migrations

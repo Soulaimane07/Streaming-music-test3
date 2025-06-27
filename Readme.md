@@ -12,43 +12,28 @@
 - ⏯️ Play/pause, skip, repeat, shuffle
 - 👤 User authentication & profile management
 - 📱 Responsive web & mobile UI
-- 📊 Admin dashboard for managing music content
 - 💾 Cloud-based media storage and CDN
-- 📈 View listening history and trends
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend:
-- React / Angular / Next.js
-- Tailwind CSS / Material UI
-- Progressive Web App (PWA) ready
+- JS / React
+- Tailwind CSS
 
 ### Backend:
-- Node.js / .NET / Django / Spring Boot
-- RESTful API / GraphQL
+- C# / .NET
+- RESTful API / GRPC
 - JWT Authentication
 
 ### Database:
-- PostgreSQL / MongoDB / MySQL
-- Redis (for caching)
+- MySQL
+- MongoDB
+- ElasticSearch
 
 ### Cloud & DevOps:
-- AWS / Azure / Firebase
+- AWS
 - S3 for music storage
 - Docker & CI/CD (GitHub Actions)
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js / .NET SDK
-- Docker (optional)
-- PostgreSQL or MongoDB
-
-### Clone the repo
-```bash
-git clone https://github.com/yourusername/streamify.git
-cd streamify
